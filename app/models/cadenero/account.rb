@@ -9,7 +9,6 @@ module Cadenero
     validates :subdomain, :presence => true, :uniqueness => true
 
     def self.create_with_owner(params={})
-      puts params
       account = new(params)
       if account.save
         account.users << account.owner
@@ -27,7 +26,7 @@ module Cadenero
     end
 
     # Generate new authentication token (a.k.a. "single access token").
-    def reset_authentication_token
+    def reset_authentication_token!
       self.authentication_token = self.class.authentication_token
     end
 

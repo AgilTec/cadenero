@@ -15,7 +15,6 @@ module Cadenero
           }
           render json: data, status: 201
         else
-          errors = "Sorry, your account could not be created."
           render json: {errors: @account.errors}, status: 422
         end
       end

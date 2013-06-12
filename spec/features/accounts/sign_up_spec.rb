@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 def create_account
-  @visitor ||= { name: "Testy", subdomain: "test", owner_attributes: {email: "testy@example.com",
-    password: "changeme", password_confirmation: "changeme"} }
+  @visitor ||= { name: "Testy", subdomain: "test", owner_attributes:
+    {email: "testy@example.com", password: "changeme", password_confirmation: "changeme"} }
 end
 
 def find_account
@@ -18,7 +18,6 @@ end
 feature 'Accounts' do
   scenario "creating an account" do
     sign_up
-    success_message = "Your account has been successfully created."
     expect(last_response.status).to eq 201
     expect(JSON.parse(last_response.body)).to have_content "auth_token"
   end

@@ -7,7 +7,6 @@
       end
     end
   end
-  helper_method :current_account
 
   def current_user
     if user_signed_in?
@@ -17,17 +16,15 @@
       end
     end
   end
-  helper_method :current_user
   
   def user_signed_in?
     env['warden'].authenticated?(:user)
   end
-  helper_method :user_signed_in?
 
   def authenticate_user!
     unless user_signed_in?
-      errors = "Please sign in."
-      render json: {errors: errors, links: "/accounts"}, status: 422
+      errors = "Please sign in. visit /accounts/new"
+      render json: {errors: errors, links: "/v1/accounts"}, status: 422
     end
   end
 
