@@ -5,8 +5,12 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-# jquery-rails is used by the dummy application
+# gems used by the dummy application
 gem "jquery-rails"
+gem "ember-rails", "~> 0.12.0"
+gem "coffee-rails"
+gem 'ember-source', '1.0.0.rc5' # or the version you need
+gem 'handlebars-source', '1.0.0.rc4' # or the version you need
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
