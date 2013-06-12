@@ -6,6 +6,8 @@ Dummy::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.ember.variant = :development
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -14,7 +16,7 @@ Dummy::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

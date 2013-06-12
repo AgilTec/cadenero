@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount Cadenero::Engine => "/cadenero"
+  mount Cadenero::Engine => "/"
 end
