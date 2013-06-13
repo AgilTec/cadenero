@@ -36,5 +36,9 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
+desc 'run Rspec specs'
+task :spec do
+  sh 'rspec spec'
+end
 
-task :default => :test
+task :default => :spec
