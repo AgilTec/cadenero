@@ -2,8 +2,8 @@
 By [AgilTec](http://agiltec.com.mx/).
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/cadenero.png)](http://badge.fury.io/rb/cadenero)
-[![Build Status](https://api.travis-ci.org/agiltec/cadenero.png?branch=master)](http://travis-ci.org/agiltec/cadenero)
-[![Code Climate](https://codeclimate.com/github/agiltec/cadenero.png)](https://codeclimate.com/github/agiltec/cadenero)
+[![Build Status](https://api.travis-ci.org/AgilTec/cadenero.png?branch=master)](http://travis-ci.org/AgilTec/cadenero)
+[![Code Climate](https://codeclimate.com/github/AgilTec/cadenero.png)](https://codeclimate.com/github/AgilTec/cadenero)
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
