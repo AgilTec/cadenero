@@ -1,9 +1,9 @@
-= Cadenero
+# Cadenero
 By [AgilTec](http://agiltec.com.mx/).
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/cadenero.png)](http://badge.fury.io/rb/cadenero)
-[![Build Status](https://api.travis-ci.org/plataformatec/devise.png?branch=master)](http://travis-ci.org/plataformatec/devise)
-[![Code Climate](https://codeclimate.com/github/plataformatec/devise.png)](https://codeclimate.com/github/plataformatec/devise)
+[![Build Status](https://api.travis-ci.org/agiltec/cadenero.png?branch=master)](http://travis-ci.org/agiltec/cadenero)
+[![Code Climate](https://codeclimate.com/github/agiltec/cadenero.png)](https://codeclimate.com/github/agiltec/cadenero)
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
@@ -14,7 +14,7 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ## Information
 
 ### Why Cadenero?
-**"Cadenero"** is the spanish word for ["Bouncer (doorman)":http://en.wikipedia.org/wiki/Bouncer_(doorman)]. The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
+**"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
 ### The Cadenero wiki
 
