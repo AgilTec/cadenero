@@ -158,4 +158,5 @@ DEPENDENCIES
   launchy (~> 2.3.0)
   pg
   rails-api
+  rake
   rspec-rails (~> 2.13.2)
