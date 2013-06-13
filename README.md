@@ -1,4 +1,4 @@
-# Cadenero
+![Cadenero Logo](https://raw.github.com/AgilTec/cadenero/master/cadenero.logo.png)
 By [AgilTec](http://agiltec.com.mx/).
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/cadenero.png)](http://badge.fury.io/rb/cadenero)
