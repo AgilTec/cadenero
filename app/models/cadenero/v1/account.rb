@@ -1,7 +1,7 @@
-module Cadenero
+module Cadenero::V1
   class Account < ActiveRecord::Base
     belongs_to :owner,  :class_name => "Cadenero::User"
-    has_many :accounts_users, :class_name => "Cadenero::AccountsUsers"
+    has_many :accounts_users, :class_name => "Cadenero::AccountsUser"
     has_many :users, :through => :accounts_users
     
     accepts_nested_attributes_for :owner

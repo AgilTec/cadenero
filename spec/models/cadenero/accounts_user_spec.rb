@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Cadenero
-  describe AccountsUsers do
+  describe AccountsUser do
     
   end
 end

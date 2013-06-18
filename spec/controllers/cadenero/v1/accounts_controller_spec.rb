@@ -4,10 +4,10 @@ module Cadenero
   describe V1::AccountsController do
     context "creates the account's schema" do
 
-      let!(:account) { stub_model(Cadenero::Account) }
+      let!(:account) { stub_model(Cadenero::V1::Account) }
       
       before do
-        Cadenero::Account.should_receive(:create_with_owner).and_return(account)
+        Cadenero::V1::Account.should_receive(:create_with_owner).and_return(account)
         account.stub :valid? => true
         controller.stub(:force_authentication!)
       end

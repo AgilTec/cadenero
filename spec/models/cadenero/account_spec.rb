@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Cadenero
+module Cadenero::V1
   describe Account do
     
   end

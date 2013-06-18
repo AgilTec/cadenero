@@ -1,9 +1,10 @@
 ![Cadenero Logo](https://raw.github.com/AgilTec/cadenero/master/cadenero.logo.png)
-By [AgilTec](http://agiltec.com.mx/).
+By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png)](http://agiltec.com.mx/).
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/cadenero.png)](http://badge.fury.io/rb/cadenero)
 [![Build Status](https://travis-ci.org/AgilTec/cadenero.png?branch=master)](https://travis-ci.org/AgilTec/cadenero)
 [![Code Climate](https://codeclimate.com/github/AgilTec/cadenero.png)](https://codeclimate.com/github/AgilTec/cadenero)
+[![Dependency Status](https://gemnasium.com/AgilTec/cadenero.png)](https://gemnasium.com/AgilTec/cadenero)
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
@@ -14,7 +15,7 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ## Information
 
 ### Why Cadenero?
-**"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
+**"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
 ### The Cadenero wiki
 
@@ -41,7 +42,6 @@ You will usually want to write tests for your changes using BDD tools as RSpec, 
 ### Rails::API
 
 **Cadenero** is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don't require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don't need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api
-
 
 ### Maintainers
 

@@ -5,14 +5,14 @@ def create_account
     {email: "testy@example.com", password: "changeme", password_confirmation: "changeme"} }
 end
 
-def find_account
-  @account = Cadenero::Account.where(name: @visitor[:name]).first
+def find_account_by_name
+  @account = Cadenero::V1::Account.where(name: @visitor[:name]).first
 end
 
 def sign_up
   create_account
   post "/v1/accounts", account: @visitor
-  find_account
+  find_account_by_name
 end
 
 feature 'Accounts' do
@@ -23,7 +23,7 @@ feature 'Accounts' do
   end
 
   scenario "cannot create an account with an already used subdomain" do
-    Cadenero::Account.create!(:subdomain => "test", :name => "Testy")
+    Cadenero::V1::Account.create!(:subdomain => "test", :name => "Testy")
     sign_up
     expect(last_response.status).to eq 422
     errors = { errors: {subdomain:["has already been taken"]} }

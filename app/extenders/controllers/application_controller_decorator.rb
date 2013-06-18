@@ -3,7 +3,7 @@
  def current_account
     if user_signed_in?
       @current_account ||= begin
-        Cadenero::Account.find_by_subdomain(request.subdomain)
+        Cadenero::V1::Account.find_by_subdomain(request.subdomain)
       end
     end
   end

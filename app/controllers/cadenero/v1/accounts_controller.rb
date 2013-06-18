@@ -4,7 +4,7 @@ module Cadenero
   module V1
     class AccountsController < Cadenero::ApplicationController
       def create
-        @account = Cadenero::Account.create_with_owner(params[:account])
+        @account = Cadenero::V1::Account.create_with_owner(params[:account])
         if @account.valid?
           force_authentication!(@account.owner)
           @account.create_schema
