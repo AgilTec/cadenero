@@ -6,7 +6,7 @@ module Cadenero::V1
       if env['warden'].authenticate(:scope => :user)
         render json: current_user, status: 201
       else
-        render json: {errors: "Invalid email or password."}, status: 422
+        render json: {errors: {user:["Invalid email or password"]}}, status: 422
       end
     end
   end
