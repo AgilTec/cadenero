@@ -6,6 +6,9 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'factory_girl'
 require 'database_cleaner'
+require 'coveralls'
+
+Coveralls.wear!
 
 module ApiHelper
   require 'rack/test'

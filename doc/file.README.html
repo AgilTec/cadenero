@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.6.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><p><img src="https://raw.github.com/AgilTec/cadenero/master/cadenero.logo.png" alt="Cadenero Logo" />
+By <a href="http://agiltec.com.mx/"><img src="https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png" alt="Agiltec Logo" /></a>.</p>
+
+<p><a href="http://badge.fury.io/rb/cadenero"><img src="https://fury-badge.herokuapp.com/rb/cadenero.png" alt="Gem Version" /></a>
+<a href="https://travis-ci.org/AgilTec/cadenero"><img src="https://travis-ci.org/AgilTec/cadenero.png?branch=master" alt="Build Status" /></a>
+<a href="https://codeclimate.com/github/AgilTec/cadenero"><img src="https://codeclimate.com/github/AgilTec/cadenero.png" alt="Code Climate" /></a>
+<a href="https://gemnasium.com/AgilTec/cadenero"><img src="https://gemnasium.com/AgilTec/cadenero.png" alt="Dependency Status" /></a></p>
+
+<p>Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
+* Is Racked based
+* Use token authentication as strategy for the API
+* Is RESTful API
+* Allows you to have multiple roles (or models/scopes) signed in at the same time</p>
+
+<h2 id="information">Information</h2>
+
+<h3 id="why-cadenero">Why Cadenero?</h3>
+<p><strong>&#8220;Cadenero&#8221;</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">&#8220;Bouncer (doorman)&#8221;</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
+
+<h3 id="the-cadenero-wiki">The Cadenero wiki</h3>
+
+<h3 id="bug-reports">Bug reports</h3>
+
+<p>If you discover a problem with <strong>Cadenero</strong>, we would like to know about it. However, we ask that you please review these guidelines before submitting a bug report:</p>
+
+<p>https://github.com/agiltec/cadenero/wiki/Bug-reports</p>
+
+<p>If you found a security bug, do <em>NOT</em> use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.</p>
+
+<h3 id="contributing">Contributing</h3>
+
+<p>We hope that you will consider contributing to <strong>Cadenero</strong>. Please read this short overview for some information about how to get started:</p>
+
+<p>https://github.com/agiltec/devise/cadenero/Contributing</p>
+
+<p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>&#8217;s top-level directory and run &#8220;bundle install&#8221; and &#8220;rspec&#8221;.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
+
+<h3 id="warden">Warden</h3>
+
+<p><strong>Cadenero</strong> is based on Warden, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden</p>
+
+<h3 id="railsapi">Rails::API</h3>
+
+<p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don&#8217;t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don&#8217;t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
+
+<h3 id="maintainers">Maintainers</h3>
+
+<ul>
+  <li>Manuel Vidaurre (https://github.com/mvidaurre)</li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>MIT License. Copyright 2013 AgilTec. http://agiltec.com.mx</p>
+
+<p>You are not granted rights or licenses to the trademarks of the AgilTec, including without limitation the <strong>Cadenero</strong> name or logo.</p>
+
+<p>This project rocks and uses MIT-LICENSE.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Jun 23 06:31:43 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
