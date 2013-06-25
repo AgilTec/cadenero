@@ -21,7 +21,7 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ### Access Points
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
-'''
+```
    v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
         v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
      v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
@@ -31,9 +31,12 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
      v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
     v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
         v1_root      /v1(.:format)           cadenero/v1/dashboard#index
-'''
+```
 
-### The Cadenero wiki
+### The Cadenero Task List
+- [x] Specs for the code 100% Coverage using BDD with [Rspec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara)
+- [ ] Documatation for all the code
+- [ ] Examples of use and demo
 
 ### Bug reports
 
@@ -60,7 +63,7 @@ You will usually want to write tests for your changes using BDD tools as RSpec, 
 **Cadenero** is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don't require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don't need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api
 
 ### Multitenancy with Rails And subscriptions too!
-Parts of the code of **Cadenero** has been based on the excellent work of [Ryan Bigg](https://github.com/radar) in his book ["Multitenancy with Rails And subscriptions too!"](https://leanpub.com/multi-tenancy-rails) but modified to be use en a RESTful API
+Parts of the code of **Cadenero** have been based on the excellent work of [Ryan Bigg](https://github.com/radar) in his book ["Multitenancy with Rails And subscriptions too!"](https://leanpub.com/multi-tenancy-rails) but modified to be use in a RESTful API
 
 ### Maintainers
 
