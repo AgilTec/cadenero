@@ -21,7 +21,7 @@ feature 'User sign in' do
   end
 
   let(:account) { FactoryGirl.create(:account_with_schema) }
-  let(:errors_redirect_ro_sign_in) {{errors: "Please sign in. visit /accounts/new", links: "/v1/accounts"}.to_json}
+  let(:errors_redirect_ro_sign_in) {{errors: "Please sign in. posting the user json credentials to /v1/sign_in", links: "/v1/sign_in"}.to_json}
   let(:errors_invalid_email_or_password)  {{ errors: {user:["Invalid email or password"]} }.to_json} 
   let(:sign_in_url) { "http://#{account.subdomain}.example.com/v1/sign_in" }
   let(:root_url) { "http://#{account.subdomain}.example.com/v1" }

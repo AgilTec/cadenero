@@ -62,11 +62,12 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'><p><img src="https://raw.github.com/AgilTec/cadenero/master/cadenero.logo.png" alt="Cadenero Logo" />
-By <a href="http://agiltec.com.mx/"><img src="https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png" alt="Agiltec Logo" /></a>.</p>
+By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png" alt="Agiltec Logo" /></a>.</p>
 
 <p><a href="http://badge.fury.io/rb/cadenero"><img src="https://fury-badge.herokuapp.com/rb/cadenero.png" alt="Gem Version" /></a>
 <a href="https://travis-ci.org/AgilTec/cadenero"><img src="https://travis-ci.org/AgilTec/cadenero.png?branch=master" alt="Build Status" /></a>
 <a href="https://codeclimate.com/github/AgilTec/cadenero"><img src="https://codeclimate.com/github/AgilTec/cadenero.png" alt="Code Climate" /></a>
+<a href="https://coveralls.io/r/AgilTec/cadenero?branch=master"><img src="https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master" alt="Coverage Status" /></a>
 <a href="https://gemnasium.com/AgilTec/cadenero"><img src="https://gemnasium.com/AgilTec/cadenero.png" alt="Dependency Status" /></a></p>
 
 <p>Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
@@ -79,6 +80,21 @@ By <a href="http://agiltec.com.mx/"><img src="https://launchrock-assets.s3.amazo
 
 <h3 id="why-cadenero">Why Cadenero?</h3>
 <p><strong>&#8220;Cadenero&#8221;</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">&#8220;Bouncer (doorman)&#8221;</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
+
+<h3 id="access-points">Access Points</h3>
+<p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
+
+<p>&#8217;&#8217;&#8217;
+   v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
+        v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
+     v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
+    v1_sessions POST /v1/sign_in(.:format)   cadenero/v1/account/sessions#create
+v1_user_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/account/users#new
+v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
+     v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
+    v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
+        v1_root      /v1(.:format)           cadenero/v1/dashboard#index
+&#8216;&#8217;&#8217;</p>
 
 <h3 id="the-cadenero-wiki">The Cadenero wiki</h3>
 
@@ -106,6 +122,9 @@ By <a href="http://agiltec.com.mx/"><img src="https://launchrock-assets.s3.amazo
 
 <p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don&#8217;t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don&#8217;t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
 
+<h3 id="multitenancy-with-rails-and-subscriptions-too">Multitenancy with Rails And subscriptions too!</h3>
+<p>Parts of the code of <strong>Cadenero</strong> has been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">&#8220;Multitenancy with Rails And subscriptions too!&#8221;</a> but modified to be use en a RESTful API</p>
+
 <h3 id="maintainers">Maintainers</h3>
 
 <ul>
@@ -122,7 +141,7 @@ By <a href="http://agiltec.com.mx/"><img src="https://launchrock-assets.s3.amazo
 </div></div>
 
     <div id="footer">
-  Generated on Sun Jun 23 06:31:43 2013 by
+  Generated on Mon Jun 24 23:40:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

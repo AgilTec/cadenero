@@ -107,7 +107,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Account/SessionsController.html" title="Account::SessionsController (class)">SessionsController</a></span>, <span class='object_link'><a href="Account/UsersController.html" title="Account::UsersController (class)">UsersController</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Account/DashboardController.html" title="V1::Account::DashboardController (class)">DashboardController</a></span>, <span class='object_link'><a href="Account/SessionsController.html" title="Account::SessionsController (class)">SessionsController</a></span>, <span class='object_link'><a href="Account/UsersController.html" title="Account::UsersController (class)">UsersController</a></span>
     
   
 </p>
@@ -143,7 +143,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Creates an accout and assign the provided [Cadenero::User] as owner to the
+account.</p>
+</div></span>
   
 </li>
 
@@ -198,7 +201,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create a database schema using the subdomain.</p>
+</div></span>
   
 </li>
 
@@ -294,22 +299,75 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>because this model uses accepts_nested_attributes_for :owner the JSOB
+should have owner_attributes</p>
+</div>
+  </div>
+
+
+<p>Creates an accout and assign the provided [Cadenero::User] as owner to the
+account</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>Example for the params JSON: {name: &quot;Testy&quot;, subdomain: &quot;test&quot;, 
+owner_attributes: {email: &quot;testy@example.com&quot;, password: &quot;changeme&quot;, 
+password_confirmation: &quot;changeme&quot;} }</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-11
-12
-13
-14
-15
-16
-17</pre>
+19
+20
+21
+22
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -348,6 +406,24 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the authentication_token</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -355,12 +431,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span>
   <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='symbol'>:authentication_token</span><span class='rparen'>)</span>
@@ -379,18 +455,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a database schema using the subdomain</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-19
-20
-21</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_schema'>create_schema</span>
   <span class='const'>Apartment</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
@@ -426,12 +513,12 @@
       <pre class="lines">
 
 
-24
-25
-26</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
   <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -460,6 +547,24 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>a unique generated authentication_token</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -467,15 +572,15 @@
       <pre class="lines">
 
 
-39
-40
-41
-42
-43
-44</pre>
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
@@ -514,12 +619,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span>
@@ -534,7 +639,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jun 23 06:31:44 2013 by
+  Generated on Mon Jun 24 23:40:11 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

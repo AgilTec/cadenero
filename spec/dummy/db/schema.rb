@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(:version => 20130612093908) do
   add_index "cadenero_accounts", ["authentication_token"], :name => "index_cadenero_accounts_on_authentication_token"
   add_index "cadenero_accounts", ["owner_id"], :name => "index_cadenero_accounts_on_owner_id"
 
-  create_table "cadenero_accounts_users", :force => true do |t|
+  create_table "cadenero_members", :force => true do |t|
     t.integer  "account_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "cadenero_accounts_users", ["account_id"], :name => "index_cadenero_accounts_users_on_account_id"
-  add_index "cadenero_accounts_users", ["user_id"], :name => "index_cadenero_accounts_users_on_user_id"
+  add_index "cadenero_members", ["account_id"], :name => "index_cadenero_members_on_account_id"
+  add_index "cadenero_members", ["user_id"], :name => "index_cadenero_members_on_user_id"
 
   create_table "cadenero_users", :force => true do |t|
     t.string   "email"

@@ -1,9 +1,10 @@
 ![Cadenero Logo](https://raw.github.com/AgilTec/cadenero/master/cadenero.logo.png)
-By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png)](http://agiltec.com.mx/).
+By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/GpujzvLXPPqzAcz.png)](http://agiltec.github.io/).
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/cadenero.png)](http://badge.fury.io/rb/cadenero)
 [![Build Status](https://travis-ci.org/AgilTec/cadenero.png?branch=master)](https://travis-ci.org/AgilTec/cadenero)
 [![Code Climate](https://codeclimate.com/github/AgilTec/cadenero.png)](https://codeclimate.com/github/AgilTec/cadenero)
+[![Coverage Status](https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master)](https://coveralls.io/r/AgilTec/cadenero?branch=master)
 [![Dependency Status](https://gemnasium.com/AgilTec/cadenero.png)](https://gemnasium.com/AgilTec/cadenero)
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
@@ -16,6 +17,21 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
+
+### Access Points
+**Cadenero** creates the following versioned routes for exposing the authentication RESTful API
+
+'''
+   v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
+        v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
+     v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
+    v1_sessions POST /v1/sign_in(.:format)   cadenero/v1/account/sessions#create
+v1_user_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/account/users#new
+v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
+     v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
+    v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
+        v1_root      /v1(.:format)           cadenero/v1/dashboard#index
+'''
 
 ### The Cadenero wiki
 
@@ -42,6 +58,9 @@ You will usually want to write tests for your changes using BDD tools as RSpec, 
 ### Rails::API
 
 **Cadenero** is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don't require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don't need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api
+
+### Multitenancy with Rails And subscriptions too!
+Parts of the code of **Cadenero** has been based on the excellent work of [Ryan Bigg](https://github.com/radar) in his book ["Multitenancy with Rails And subscriptions too!"](https://leanpub.com/multi-tenancy-rails) but modified to be use en a RESTful API
 
 ### Maintainers
 

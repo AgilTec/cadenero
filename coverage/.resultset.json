@@ -198,7 +198,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/models/cadenero/accounts_user_spec.rb": [
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/models/cadenero/member_spec.rb": [
         1,
         null,
         1,
@@ -264,7 +264,7 @@
         null
       ]
     },
-    "timestamp": 1371997733
+    "timestamp": 1372134775
   },
   "Cucumber Features": {
     "coverage": {
