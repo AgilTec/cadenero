@@ -84,7 +84,7 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <h3 id="access-points">Access Points</h3>
 <p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
 
-<p>&#8217;&#8217;&#8217;
+<p><code>
    v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
         v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
      v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
@@ -94,9 +94,17 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
      v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
     v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
         v1_root      /v1(.:format)           cadenero/v1/dashboard#index
-&#8216;&#8217;&#8217;</p>
+</code></p>
 
-<h3 id="the-cadenero-wiki">The Cadenero wiki</h3>
+<h3 id="the-cadenero-task-list">The Cadenero Task List</h3>
+<ul>
+  <li>[x] Specs for the code 100% Coverage using BDD with <a href="https://github.com/rspec/rspec">Rspec</a> and <a href="https://github.com/jnicklas/capybara">Capybara</a></li>
+  <li>[ ] Documatation for all the code</li>
+  <li>[ ] Examples of use and demo</li>
+</ul>
+
+<h3 id="versions">Versions</h3>
+<p><strong>Cadenero</strong> use <a href="http://semver.org/">Semantic Versioning 2.0.0</a> the current version is: 0.0.2-alpha meaning MAJOR.MINOR.PATCH format</p>
 
 <h3 id="bug-reports">Bug reports</h3>
 
@@ -123,7 +131,7 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 <p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don&#8217;t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don&#8217;t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
 
 <h3 id="multitenancy-with-rails-and-subscriptions-too">Multitenancy with Rails And subscriptions too!</h3>
-<p>Parts of the code of <strong>Cadenero</strong> has been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">&#8220;Multitenancy with Rails And subscriptions too!&#8221;</a> but modified to be use en a RESTful API</p>
+<p>Parts of the code of <strong>Cadenero</strong> have been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">&#8220;Multitenancy with Rails And subscriptions too!&#8221;</a> but modified to be use in a RESTful API</p>
 
 <h3 id="maintainers">Maintainers</h3>
 
@@ -141,7 +149,7 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 </div></div>
 
     <div id="footer">
-  Generated on Mon Jun 24 23:40:10 2013 by
+  Generated on Wed Jun 26 17:27:25 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>
