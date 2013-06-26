@@ -8,10 +8,10 @@ gem 'rails-api'
 
 # gems used by the dummy application
 gem "jquery-rails"
-gem "ember-rails", "~> 0.12.0"
+gem "ember-rails", "~> 0.13.0"
 gem "coffee-rails"
-gem 'ember-source', '1.0.0.rc5' # or the version you need
-gem 'handlebars-source', '1.0.0.rc4' # or the version you need
+gem 'ember-source', '~> 1.0.0.rc5' # or the version you need
+gem 'handlebars-source', '~> 1.0.0.rc4' # or the version you need
 
 
 group :test do

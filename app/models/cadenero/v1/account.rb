@@ -5,7 +5,7 @@ module Cadenero::V1
     has_many :users, :through => :members
     
     accepts_nested_attributes_for :owner
-    attr_accessible :name, :subdomain, :owner_attributes
+    attr_accessible :name, :subdomain, :owner_attributes, :owner
     validates :subdomain, :presence => true, :uniqueness => true
 
     # Creates an accout and assign the provided [Cadenero::User] as owner to the account

@@ -38,6 +38,9 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 - [ ] Documatation for all the code
 - [ ] Examples of use and demo
 
+### Versions
+**Cadenero** use [Semantic Versioning 2.0.0](http://semver.org/) the current version is: 0.0.2-alpha meaning MAJOR.MINOR.PATCH format
+
 ### Bug reports
 
 If you discover a problem with **Cadenero**, we would like to know about it. However, we ask that you please review these guidelines before submitting a bug report:

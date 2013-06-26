@@ -11,10 +11,10 @@ Gem::Specification.new do |s|
   s.email       = ["manuel.vidaurre@agiltec.com.mx"]
   s.homepage    = "http://www.agiltec.com.mx/ruby/gems/cadenero"
   s.summary     = "Rails.API Engine for manage multitenant authentication"
-  s.description = "An Engine tha use Warden and OAuth for authenticate users using a RESTful API"
+  s.description = "A Rails.API Engine that use Warden for authenticate users using a RESTful API in a multitenant way"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails-api", "~> 0.1.0"
   s.add_dependency "bcrypt-ruby", "~> 3.0.1"

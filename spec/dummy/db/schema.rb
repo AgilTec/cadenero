@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612093908) do
+ActiveRecord::Schema.define(:version => 20130612073709) do
 
   create_table "cadenero_accounts", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
+    t.string   "authentication_token"
     t.integer  "owner_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-    t.string   "authentication_token"
   end
 
   add_index "cadenero_accounts", ["authentication_token"], :name => "index_cadenero_accounts_on_authentication_token"

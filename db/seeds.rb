@@ -1,0 +1,2 @@
+user = Cadenero::User.create(email: "testy@example.com", password: "changeme", password_confirmation: "changeme")
+Cadenero::V1::Account.create(name: 'Root Account for the Site', subdomain: 'www', owner: user)
