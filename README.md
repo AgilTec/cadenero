@@ -58,15 +58,12 @@ Then have fun!
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
 ```
-   v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
-        v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
-     v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
-    v1_sessions POST /v1/sign_in(.:format)   cadenero/v1/account/sessions#create
-v1_user_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/account/users#new
-v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
-     v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
-    v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
-        v1_root      /v1(.:format)           cadenero/v1/dashboard#index
+    v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=>:json}
+v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=>:json}
+            DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=>:json}
+   v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=>:json}
+v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=>:json}
+       root        /                      cadenero/v1/account/dashboard#index {:default=>:json}
 ```
 You can check then running:
 ```

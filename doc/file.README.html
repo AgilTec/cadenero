@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>
   File: README
   
@@ -79,21 +79,58 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <h2 id="information">Information</h2>
 
 <h3 id="why-cadenero">Why Cadenero?</h3>
-<p><strong>&#8220;Cadenero&#8221;</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">&#8220;Bouncer (doorman)&#8221;</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
+<p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
+
+<h3 id="inatalling-cadenero">Inatalling <strong>Cadenero</strong></h3>
+<p>Generate first your Rails.API app as usual using:
+<code>
+&gt; rails-api new your_app --skip-test-unit
+</code>
+In the <code>Gemfile</code> add the following lines:
+<code>ruby
+gem 'cadenero', '~&gt; 0.0.2.a1'
+gem 'pg'
+</code>
+In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:
+```
+development:
+  adapter: postgresql
+  database: your_app_development 
+  min_messages: warning</p>
+
+<p>test:
+  adapter: postgresql
+  database: your_app_test 
+  min_messages: warning
+```</p>
+
+<p>Then run bundle, create the databases and the generator:
+<code>
+&gt; bundle install; rake db:create; rails-api g cadenero:install
+</code>
+Finally run the server:
+<code>
+rails-api s
+</code></p>
+
+<p>Check that you can access the API using the default account <code>www</code> and user <code>testy@example.com</code> with password `changeme˜ for that you can use <a href="http://curl.haxx.se/">cURL</a> or <a href="http://restclient.net/">RESTClient</a></p>
+
+<p>Then have fun!</p>
 
 <h3 id="access-points">Access Points</h3>
 <p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
 
 <p><code>
-   v1_users_new GET  /v1/users/new(.:format) cadenero/v1/users#new
-        v1_root      /v1(.:format)           cadenero/v1/account/dashboard#index
-     v1_sign_in GET  /v1/sign_in(.:format)   cadenero/v1/account/sessions#new
-    v1_sessions POST /v1/sign_in(.:format)   cadenero/v1/account/sessions#create
-v1_user_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/account/users#new
-v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
-     v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
-    v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
-        v1_root      /v1(.:format)           cadenero/v1/dashboard#index
+    v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=&gt;:json}
+v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=&gt;:json}
+            DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=&gt;:json}
+   v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=&gt;:json}
+v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=&gt;:json}
+       root        /                      cadenero/v1/account/dashboard#index {:default=&gt;:json}
+</code>
+You can check then running:
+<code>
+rake routes
 </code></p>
 
 <h3 id="the-cadenero-task-list">The Cadenero Task List</h3>
@@ -120,7 +157,7 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 
 <p>https://github.com/agiltec/devise/cadenero/Contributing</p>
 
-<p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>&#8217;s top-level directory and run &#8220;bundle install&#8221; and &#8220;rspec&#8221;.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
+<p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>’s top-level directory and run “bundle install” and “rspec”.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
 
 <h3 id="warden">Warden</h3>
 
@@ -128,10 +165,10 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 
 <h3 id="railsapi">Rails::API</h3>
 
-<p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don&#8217;t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don&#8217;t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
+<p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don’t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don’t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
 
 <h3 id="multitenancy-with-rails-and-subscriptions-too">Multitenancy with Rails And subscriptions too!</h3>
-<p>Parts of the code of <strong>Cadenero</strong> have been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">&#8220;Multitenancy with Rails And subscriptions too!&#8221;</a> but modified to be use in a RESTful API</p>
+<p>Parts of the code of <strong>Cadenero</strong> have been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">“Multitenancy with Rails And subscriptions too!”</a> but modified to be use in a RESTful API</p>
 
 <h3 id="maintainers">Maintainers</h3>
 
@@ -149,7 +186,7 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
 </div></div>
 
     <div id="footer">
-  Generated on Wed Jun 26 17:27:25 2013 by
+  Generated on Thu Jun 27 22:44:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

@@ -16,7 +16,7 @@ feature 'User sign in' do
   end
 
   def sign_in_user(url, user)
-    post "#{url}", user: user
+    post "#{url}", format: :json, user: user
     find_account_by_email
   end
 
@@ -33,7 +33,6 @@ feature 'User sign in' do
       expect(last_response.status).to eq 422
       sign_in_user sessions_url, account_user(account.owner)
       expect(last_response.status).to eq 201
-      puts "sign_in_user: #{last_response.body}"
       expect(JSON.parse(last_response.body)["user"]["account_ids"]).to eq [account.id]
       user_email = JSON.parse(last_response.body)["user"]["email"]
       get root_url

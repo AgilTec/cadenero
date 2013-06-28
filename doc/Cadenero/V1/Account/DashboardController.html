@@ -171,7 +171,7 @@
       <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/account/dashboard_controller.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span><span class='label'>message:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Welcome </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>201</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -183,7 +183,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jun 26 17:27:25 2013 by
+  Generated on Thu Jun 27 22:44:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

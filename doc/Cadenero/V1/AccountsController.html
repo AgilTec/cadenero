@@ -138,6 +138,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -163,10 +185,6 @@
       <pre class="lines">
 
 
-6
-7
-8
-9
 10
 11
 12
@@ -177,10 +195,14 @@
 17
 18
 19
-20</pre>
+20
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:account</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -202,12 +224,44 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>%Q{</span><span class='tstring_content'>Please sign up. posting the account json data as {account: { name: &quot;Testy&quot;, subdomain: &quot;test&quot;, owner_attributes: {email: &quot;testy@example.com&quot;, password: &quot;changeme&quot;, password_confirmation: &quot;changeme&quot;} }} to /v1/accounts/sign_up</span><span class='tstring_end'>}</span></span>
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='id identifier rubyid_errors'>errors</span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/accounts/sign_up</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>422</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Wed Jun 26 17:27:25 2013 by
+  Generated on Thu Jun 27 22:44:11 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>
