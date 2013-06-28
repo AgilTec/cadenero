@@ -18,7 +18,7 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
-### Inatalling **Cadenero**
+### Installing **Cadenero**
 Generate first your Rails.API app as usual using:
 ```
 > rails-api new your_app --skip-test-unit
@@ -41,7 +41,7 @@ test:
   min_messages: warning
 ```
 
-Then run bundle, create the databases and the generator:
+Then run bundle, create the databases and run the generator:
 ```
 > bundle install; rake db:create; rails-api g cadenero:install
 ```
@@ -49,10 +49,19 @@ Finally run the server:
 ```
 rails-api s
 ```
+Or much better for checking the multitenancy you can use [Pow](http://pow.cx/). To install or upgrade Pow, open a terminal and run this command:
+```
+$ curl get.pow.cx | sh (View Source)
+```
+To set up a Rack app, just symlink it into ~/.pow:
+```
+$ cd ~/.pow
+$ ln -s /path/to/myapp
+```
 
-Check that you can access the API using the default account `www` and user `testy@example.com` with password `changeme˜ for that you can use [cURL](http://curl.haxx.se/) or [RESTClient](http://restclient.net/)
+Check that you can access the API using the default account `www` and user `testy@example.com` with password `changeme˜ or those defined for you when the generator was run. Ror the client you can use [cURL](http://curl.haxx.se/) or [RESTClient](http://restclient.net/)
 
-Then have fun!
+Have fun!
 
 ### Access Points
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
@@ -82,7 +91,7 @@ rake routes
 
 If you discover a problem with **Cadenero**, we would like to know about it. However, we ask that you please review these guidelines before submitting a bug report:
 
-https://github.com/agiltec/cadenero/wiki/Bug-reports
+https://github.com/AgilTec/cadenero/wiki/Bug-reports
 
 If you found a security bug, do *NOT* use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.
 
@@ -90,7 +99,7 @@ If you found a security bug, do *NOT* use the GitHub issue tracker. Send an emai
 
 We hope that you will consider contributing to **Cadenero**. Please read this short overview for some information about how to get started:
 
-https://github.com/agiltec/devise/cadenero/Contributing
+https://github.com/AgilTec/cadenero/Contributing
 
 You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into **Cadenero**'s top-level directory and run "bundle install" and "rspec".  For the tests to pass, you will need to have a Postgresql server running on your system.
 
