@@ -25,7 +25,7 @@ Generate first your Rails.API app as usual using:
 ```
 In the `Gemfile` add the following lines:
 ```ruby
-gem 'cadenero', '~> 0.0.2.a1'
+gem 'cadenero', '~> 0.0.2.a2'
 gem 'pg'
 ```
 In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:

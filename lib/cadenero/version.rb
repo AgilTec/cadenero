@@ -1,3 +1,3 @@
 module Cadenero
-  VERSION = "0.0.2.a1"
+  VERSION = "0.0.2.a2"
 end

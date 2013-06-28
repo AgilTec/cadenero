@@ -81,7 +81,7 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <h3 id="why-cadenero">Why Cadenero?</h3>
 <p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
 
-<h3 id="inatalling-cadenero">Inatalling <strong>Cadenero</strong></h3>
+<h3 id="installing-cadenero">Installing <strong>Cadenero</strong></h3>
 <p>Generate first your Rails.API app as usual using:
 <code>
 &gt; rails-api new your_app --skip-test-unit
@@ -104,18 +104,27 @@ development:
   min_messages: warning
 ```</p>
 
-<p>Then run bundle, create the databases and the generator:
+<p>Then run bundle, create the databases and run the generator:
 <code>
 &gt; bundle install; rake db:create; rails-api g cadenero:install
 </code>
 Finally run the server:
 <code>
 rails-api s
+</code>
+Or much better for checking the multitenancy you can use <a href="http://pow.cx/">Pow</a>. To install or upgrade Pow, open a terminal and run this command:
+<code>
+$ curl get.pow.cx | sh (View Source)
+</code>
+To set up a Rack app, just symlink it into ~/.pow:
+<code>
+$ cd ~/.pow
+$ ln -s /path/to/myapp
 </code></p>
 
-<p>Check that you can access the API using the default account <code>www</code> and user <code>testy@example.com</code> with password `changeme˜ for that you can use <a href="http://curl.haxx.se/">cURL</a> or <a href="http://restclient.net/">RESTClient</a></p>
+<p>Check that you can access the API using the default account <code>www</code> and user <code>testy@example.com</code> with password `changeme˜ or those defined for you when the generator was run. Ror the client you can use <a href="http://curl.haxx.se/">cURL</a> or <a href="http://restclient.net/">RESTClient</a></p>
 
-<p>Then have fun!</p>
+<p>Have fun!</p>
 
 <h3 id="access-points">Access Points</h3>
 <p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
@@ -147,7 +156,7 @@ rake routes
 
 <p>If you discover a problem with <strong>Cadenero</strong>, we would like to know about it. However, we ask that you please review these guidelines before submitting a bug report:</p>
 
-<p>https://github.com/agiltec/cadenero/wiki/Bug-reports</p>
+<p>https://github.com/AgilTec/cadenero/wiki/Bug-reports</p>
 
 <p>If you found a security bug, do <em>NOT</em> use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.</p>
 
@@ -155,7 +164,7 @@ rake routes
 
 <p>We hope that you will consider contributing to <strong>Cadenero</strong>. Please read this short overview for some information about how to get started:</p>
 
-<p>https://github.com/agiltec/devise/cadenero/Contributing</p>
+<p>https://github.com/AgilTec/cadenero/Contributing</p>
 
 <p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>’s top-level directory and run “bundle install” and “rspec”.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
 
@@ -186,7 +195,7 @@ rake routes
 </div></div>
 
     <div id="footer">
-  Generated on Thu Jun 27 22:44:10 2013 by
+  Generated on Thu Jun 27 23:56:20 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

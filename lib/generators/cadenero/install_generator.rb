@@ -66,7 +66,7 @@ module Cadenero
       end
 
       def determine_default_user_password 
-        Cadenero.default_user_password  = options["default-user-password "].presence ||
+        Cadenero.default_user_password  = options["default-user-password"].presence ||
                       ask("What will be the password for the default user owner of the default account? [change-me]").presence ||
                       'change-me'
       end

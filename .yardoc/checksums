@@ -17,4 +17,4 @@ lib/cadenero/constraints/subdomain_required.rb 7d01b81b48b54bf2b0683aa0f9b363c3b
 lib/cadenero/engine.rb 66f42150a9973178f30631e5977303300c751d91
 lib/cadenero/version.rb ad240d4c7c71f891c0f01c90ed769b5a3fad0af3
 lib/generators/cadenero/install/templates/initializer.rb 0d325aa5fc7c4162baaefbd96dfe0f514cd56219
-lib/generators/cadenero/install_generator.rb 01cf2560901d02fda5bb6ff328592a2b679933f1
+lib/generators/cadenero/install_generator.rb 05135580e39f05173e671d1f6789d7e5c853b892

@@ -691,7 +691,7 @@
       <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_default_user_password'>determine_default_user_password</span> 
-  <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_user_password'>default_user_password</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-user-password </span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
+  <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_user_password'>default_user_password</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-user-password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
                 <span class='id identifier rubyid_ask'>ask</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>What will be the password for the default user owner of the default account? [change-me]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
                 <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>change-me</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
@@ -1085,7 +1085,7 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 27 22:44:11 2013 by
+  Generated on Thu Jun 27 23:56:21 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>
