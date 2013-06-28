@@ -23,7 +23,7 @@
     if user_signed_in?
       @current_user ||= begin
         user_id = env['warden'].user(:scope => :user)
-        Cadenero::User.find(user_id)
+        Cadenero::User.find_by_id(user_id)
       end
     end
   end
@@ -35,9 +35,10 @@
 
 # it the user is not authenticated returns a 422 and an informative error with the link for sign
   def authenticate_user!
+    Rails.logger.info "env['warden'].authenticated?(:user): #{env['warden'].authenticated?(:user)}"
     unless user_signed_in?
-      errors = "Please sign in. posting the user json credentials to /v1/sign_in"
-      render json: {errors: errors, links: "/v1/sign_in"}, status: 422
+      errors = %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}
+      render json: {errors: errors, links: "/v1/sessions"}, status: 422
     end
   end
 

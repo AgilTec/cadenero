@@ -26,6 +26,7 @@ module Cadenero::V1
 
     # Create a database schema using the subdomain
     def create_schema
+      puts "Creating Database Schema for subdomain: #{subdomain}"
       Apartment::Database.create(subdomain)
     end
 

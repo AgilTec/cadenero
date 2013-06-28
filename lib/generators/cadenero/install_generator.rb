@@ -1,8 +1,12 @@
 require 'rails/generators'
 module Cadenero
   module Generators
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::Base 
       class_option "user-class", :type => :string
+      class_option "default-account-name", :type => :string
+      class_option "default-account-subdomain", :type => :string
+      class_option "default-user-email", :type => :string
+      class_option "default-user-password", :type => :string
       class_option "no-migrate", :type => :boolean
       class_option "current-user-helper", :type => :string
 
@@ -18,13 +22,13 @@ module Cadenero
 
       def determine_user_class
         @user_class = options["user-class"].presence ||
-                      ask("What is your user class called? [User]").presence ||
+                      ask("What will be the name for your user class? [User]").presence ||
                       'User'
       end
 
       def determine_current_user_helper
         current_user_helper = options["current-user-helper"].presence ||
-                              ask("What is the current_user helper called in your app? [current_user]").presence ||
+                              ask("What will be the current_user helper called in your app? [current_user]").presence ||
                               :current_user
 
         puts "Defining cadenero_user method inside ApplicationController..."
@@ -41,6 +45,30 @@ module Cadenero
                          cadenero_user_method,
                          :after => "ActionController::API\n")
 
+      end
+
+      def determine_default_account_name
+        Cadenero.default_account_name = options["default-account-name"].presence ||
+                      ask("What will be the name for the default account? [Root Account]").presence ||
+                      'Root Account'
+      end
+
+      def determine_default_account_subdomain
+        Cadenero.default_account_subdomain = options["default-account-subdomain"].presence ||
+                      ask("What will be the subdomain for the default account? [www]").presence ||
+                      'www'
+      end
+
+      def determine_default_user_email
+        Cadenero.default_user_email = options["default-user-email"].presence ||
+                      ask("What will be the email for the default user owner of the default account? [testy@example.com]").presence ||
+                      'testy@example.com'
+      end
+
+      def determine_default_user_password 
+        Cadenero.default_user_password  = options["default-user-password "].presence ||
+                      ask("What will be the password for the default user owner of the default account? [change-me]").presence ||
+                      'change-me'
       end
 
       def add_cadenero_initializer
@@ -62,6 +90,11 @@ module Cadenero
       end
 
       def seed_database
+        puts "default_account_name: #{Cadenero.default_account_name}"
+        puts "default_account_subdomain: #{Cadenero.default_account_subdomain}"
+        puts "default_user_email: #{Cadenero.default_user_email}"
+        puts "default_user_password: #{Cadenero.default_user_password}"
+  
         load "#{Rails.root}/config/initializers/cadenero.rb"
         unless options["no-migrate"]
           puts "Creating default cadenero account and owner"
@@ -73,10 +106,11 @@ module Cadenero
         puts "Mounting Cadenero::Engine at \"/\" in config/routes.rb..."
         insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
           %Q{
-  # This line mounts Cadenero's routes at / by default.
+  mount Cadenero::Engine, :at => "/" # This line mounts Cadenero's routes at / by default.
   # This means, any requests to the / URL of your application will go to Cadenero::V1:Account::DashboardController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different
   # but that is discourage, the idea is to protect the whole site
+
 }
         end
       end
@@ -88,8 +122,6 @@ module Cadenero
 Here's what happened:\n\n}
 
         output += step("Cadenero's migrations were copied over into db/migrate.\n")
-        output += step("We created a new migration called AddCadeneroAdminToTable.
-   This creates a new field called \"cadenero_admin\" on your #{user_class} model's table.\n")
         output += step("A new method called `cadenero_user` was inserted into your ApplicationController.
    This lets Cadenero know what the current user of your application is.\n")
         output += step("A new file was created at config/initializers/cadenero.rb
@@ -97,25 +129,16 @@ Here's what happened:\n\n}
 
         unless options["no-migrate"]
 output += step("`rake db:migrate` was run, running all the migrations against your database.\n")
-        output += step("Seed forum and topic were loaded into your database.\n")
+        output += step("Seed account and user were loaded into your database.\n")
         end
         output += step("The engine was mounted in your config/routes.rb file using this line:
 
    mount Cadenero::Engine, :at => \"/\"
 
-   If you want to change where the forums are located, just change the \"/forums\" path at the end of this line to whatever you want.")
+   If you want to change where the forums are located, just change the \"/\" path at the end of this line to whatever you want.")
         output += %Q{\nAnd finally:
 
 #{step("We told you that Cadenero has been successfully installed and walked you through the steps.")}}
-        unless defined?(Devise)
-          output += %Q{We have detected you're not using Devise (which is OK with us, really!), so there's one extra step you'll need to do.
-
-   You'll need to define a "sign_in_path" method for Cadenero to use that points to the sign in path for your application. You can set Cadenero.sign_in_path to a String inside config/initializers/cadenero.rb to do this, or you can define it in your config/routes.rb file with a line like this:
-
-          get '/users/sign_in', :to => "users#sign_in"
-
-   Either way, Cadenero needs one of these two things in order to work properly. Please define them!}
-        end
         output += "\nIf you have any questions, comments or issues, please post them on our issues page: http://github.com/AgilTec/cadenero/issues.\n\n"
         output += "Thanks for using Cadenero!"
         puts output

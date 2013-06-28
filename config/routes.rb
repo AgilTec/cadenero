@@ -2,23 +2,18 @@ require 'cadenero/constraints/subdomain_required'
 
 Cadenero::Engine.routes.draw do
   namespace :v1 do
-    get "users/new"
-
     constraints(Cadenero::Constraints::SubdomainRequired) do
       scope :module => "account" do
-        root :to => "dashboard#index"
-        get '/sign_in', :to => "sessions#new"
-        post '/sign_in', :to => "sessions#create", :as => :sessions
-        get '/sign_up', :to => "users#new", :as => :user_sign_up
-        post '/sign_up', :to => "users#create", :as => :user_sign_up
+        root :to => "dashboard#index", default: :json
+        post '/sessions', :to => "sessions#create", default: :json
+        delete '/sessions', :to => "sessions#delete", default: :json
+        post '/users', :to => "users#create", default: :json
       end
     end
-    get '/sign_up', :to => "accounts#new", :as => :sign_up
-    post '/accounts', :to => "accounts#create", :as => :accounts
-
-    root :to => "dashboard#index"
+    post '/accounts', :to => "accounts#create", :as => :accounts, default: :json
 
   end
+  root :to => "v1/account/dashboard#index", default: :json
   # post '/v1/accounts', :to => "v1/accounts#create", :as => :accounts
 
 end

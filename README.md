@@ -18,6 +18,42 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
+### Inatalling **Cadenero**
+Generate first your Rails.API app as usual using:
+```
+> rails-api new your_app --skip-test-unit
+```
+In the `Gemfile` add the following lines:
+```ruby
+gem 'cadenero', '~> 0.0.2.a1'
+gem 'pg'
+```
+In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
+```
+development:
+  adapter: postgresql
+  database: your_app_development 
+  min_messages: warning
+
+test:
+  adapter: postgresql
+  database: your_app_test 
+  min_messages: warning
+```
+
+Then run bundle, create the databases and the generator:
+```
+> bundle install; rake db:create; rails-api g cadenero:install
+```
+Finally run the server:
+```
+rails-api s
+```
+
+Check that you can access the API using the default account `www` and user `testy@example.com` with password `changeme˜ for that you can use [cURL](http://curl.haxx.se/) or [RESTClient](http://restclient.net/)
+
+Then have fun!
+
 ### Access Points
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
@@ -31,6 +67,10 @@ v1_user_sign_up POST /v1/sign_up(.:format)   cadenero/v1/account/users#create
      v1_sign_up GET  /v1/sign_up(.:format)   cadenero/v1/accounts#new
     v1_accounts POST /v1/accounts(.:format)  cadenero/v1/accounts#create
         v1_root      /v1(.:format)           cadenero/v1/dashboard#index
+```
+You can check then running:
+```
+rake routes
 ```
 
 ### The Cadenero Task List

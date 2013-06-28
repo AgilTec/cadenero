@@ -1,5 +1,6 @@
 require 'warden'
 module Cadenero
+  
   class Engine < ::Rails::Engine
     isolate_namespace Cadenero
     config.middleware.use Warden::Manager do |manager|
