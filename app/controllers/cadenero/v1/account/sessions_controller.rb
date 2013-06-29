@@ -5,9 +5,9 @@ module Cadenero::V1
     def create
       Rails.logger.info "params: #{params}"
       if env['warden'].authenticate(:password, :scope => :user)
-        render json: current_user, status: 201
+        render json: current_user, status: :created
       else
-        render json: {errors: {user:["Invalid email or password"]}}, status: 422
+        render json: {errors: {user:["Invalid email or password"]}}, status: :unprocessable_entity
       end
     end
     def delete
@@ -18,9 +18,9 @@ module Cadenero::V1
       Rails.logger.info "user_signed_in?: #{user_signed_in?}"
       if user_signed_in? 
         env['warden'].logout(:user)
-        render json: {message: "Successful logout"}, status: 201
+        render json: {message: "Successful logout"}, status: :ok
       else
-        render json: {message: "Unsuccessful logout user with id"}, status: 401
+        render json: {message: "Unsuccessful logout user with id"}, status: :forbidden
       end
     end
   end

@@ -39,7 +39,7 @@ feature 'User sign in' do
       access_token = JSON.parse(last_response.body)["user"]["auth_token"]
       expect(JSON.parse(last_response.body)["user"]["auth_token"]).to eq account.authentication_token
       get root_url
-      expect(last_response.status).to eq 201
+      expect(last_response.status).to eq 200
       expect(JSON.parse(last_response.body)["message"]).to have_content user_email
     end
 
@@ -49,7 +49,7 @@ feature 'User sign in' do
       expect(JSON.parse(last_response.body)["user"]["account_ids"]).to eq [account.id]
       user_email = JSON.parse(last_response.body)["user"]["email"]
       delete sessions_url, id: account.owner.id
-      expect(last_response.status).to eq 201
+      expect(last_response.status).to eq 200
       expect(JSON.parse(last_response.body)["message"]).to have_content "Successful logout"
       get cadenero.v1_root_url(:subdomain => account.subdomain)
       expect(last_response.status).to eq 422

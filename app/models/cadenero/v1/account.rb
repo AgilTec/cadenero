@@ -7,7 +7,7 @@ module Cadenero::V1
     accepts_nested_attributes_for :owner
     attr_accessible :name, :subdomain, :owner_attributes, :owner
     validates :subdomain, :presence => true, :uniqueness => true
-    after_create :reset_authentication_token!
+    validates :owner, :presence => true
 
     # Creates an accout and assign the provided [Cadenero::User] as owner to the account
     # @param [Hash] params list 
@@ -30,28 +30,44 @@ module Cadenero::V1
       Apartment::Database.create(subdomain)
     end
 
+    # Generate authentication token unless already exists.
+    def ensure_authentication_token
+      reset_authentication_token if authentication_token.blank?
+    end
+
     # Generate authentication token unless already exists and save the record.
     def ensure_authentication_token!
       reset_authentication_token! if authentication_token.blank?
     end
 
     # Generate new authentication token (a.k.a. "single access token").
-    def reset_authentication_token!
-      authentication_token = generate_token(:authentication_token)
-      puts "authentication_token: #{authentication_token}"
-      save!
+    def reset_authentication_token
+      self.authentication_token = self.class.authentication_token
     end
 
-    # Generate a token by looping and ensuring does not already exist.
-    # @params [String] column is the name of the column that has the authentication token
-    # @return a unique generated authentication_token
-    def generate_token(column)
-      loop do
-        token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
-        break token unless Account.where({ column => token }).first
+    # Generate new authentication token and save the record.
+    def reset_authentication_token!
+      reset_authentication_token
+      save(:validate => false)
+    end
+
+    class << self
+      # Generate a token checking if one does not already exist in the database.
+      def authentication_token
+        generate_token(:authentication_token)
+      end
+
+      protected
+      # Generate a token by looping and ensuring does not already exist.
+      # @params [String] column is the name of the column that has the authentication token
+      # @return a unique generated authentication_token
+      def generate_token(column)
+        loop do
+          token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')
+          break token unless Account.where({ column => token }).first
+        end
       end
     end
-
 
   end
 end

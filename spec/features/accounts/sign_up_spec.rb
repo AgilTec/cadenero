@@ -20,12 +20,12 @@ feature 'Accounts' do
     sign_up
     expect(last_response.status).to eq 201
     expect(JSON.parse(last_response.body)).to have_content "authentication_token"
-    puts JSON.parse(last_response.body)
     expect(JSON.parse(last_response.body)["account"]["authentication_token"]).not_to eq nil
   end
 
   scenario "cannot create an account with an already used subdomain" do
-    Cadenero::V1::Account.create!(:subdomain => "test", :name => "Testy")
+    create_account
+    Cadenero::V1::Account.create!(@visitor)
     sign_up
     expect(last_response.status).to eq 422
     errors = { errors: {subdomain:["has already been taken"]} }

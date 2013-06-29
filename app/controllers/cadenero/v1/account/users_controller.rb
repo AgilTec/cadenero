@@ -20,7 +20,7 @@ module Cadenero
         account = Cadenero::V1::Account.where(subdomain: request.subdomain).first
         @user = account.users.create(params[:user])
         force_authentication!(@user)
-        render json: @user, status: 201
+        render json: @user, status: :created
       end
     end
   end

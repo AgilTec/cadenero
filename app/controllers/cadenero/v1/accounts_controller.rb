@@ -10,15 +10,15 @@ module Cadenero
       def create
         @account = Cadenero::V1::Account.create_with_owner(params[:account])
         if @account.valid?
-          force_authentication!(@account.owner)
           @account.create_schema
           @account.ensure_authentication_token!
-          render json: @account, status: 201
+          force_authentication!(@account.owner)
+          render json: @account, status: :created
         else
           @data = {
             errors: @account.errors
           }
-          render json: @data, status: 422
+          render json: @data, status: :unprocessable_entity
         end
       end
     end

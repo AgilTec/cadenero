@@ -12,7 +12,6 @@ feature Cadenero::V1::Account do
       }
     }
     account = Cadenero::V1::Account.create_with_owner(params)
-    account.should be_persisted
     account.users.first.should == account.owner
   end
 
