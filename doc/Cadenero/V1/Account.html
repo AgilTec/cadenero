@@ -129,41 +129,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_with_owner-class_method" title="create_with_owner (class method)">+ (Object) <strong>create_with_owner</strong>(params = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Creates an accout and assign the provided [Cadenero::User] as owner to the
-account.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#authentication_token-instance_method" title="#authentication_token (instance method)">- (Object) <strong>authentication_token</strong> </a>
+      <a href="#authentication_token-class_method" title="authentication_token (class method)">+ (Object) <strong>authentication_token</strong> </a>
     
 
     
@@ -187,6 +153,64 @@ account.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#create_with_owner-class_method" title="create_with_owner (class method)">+ (Object) <strong>create_with_owner</strong>(params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates an accout and assign the provided [Cadenero::User] as owner to the
+account.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#generate_token-class_method" title="generate_token (class method)">+ (Object) <strong>generate_token</strong>(column) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a token by looping and ensuring does not already exist.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#create_schema-instance_method" title="#create_schema (instance method)">- (Object) <strong>create_schema</strong> </a>
     
 
@@ -203,6 +227,30 @@ account.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Create a database schema using the subdomain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ensure_authentication_token-instance_method" title="#ensure_authentication_token (instance method)">- (Object) <strong>ensure_authentication_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate authentication token unless already exists.</p>
 </div></span>
   
 </li>
@@ -235,7 +283,7 @@ account.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate_token-instance_method" title="#generate_token (instance method)">- (Object) <strong>generate_token</strong>(column) </a>
+      <a href="#reset_authentication_token-instance_method" title="#reset_authentication_token (instance method)">- (Object) <strong>reset_authentication_token</strong> </a>
     
 
     
@@ -250,7 +298,7 @@ account.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generate a token by looping and ensuring does not already exist.</p>
+<p>Generate new authentication token (a.k.a. "single access token").</p>
 </div></span>
   
 </li>
@@ -274,7 +322,7 @@ account.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generate new authentication token (a.k.a. "single access token").</p>
+<p>Generate new authentication token and save the record.</p>
 </div></span>
   
 </li>
@@ -291,7 +339,48 @@ account.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="create_with_owner-class_method">
+  <h3 class="signature first" id="authentication_token-class_method">
+  
+    + (<tt>Object</tt>) <strong>authentication_token</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a token checking if one does not already exist in the database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span>
+  <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='symbol'>:authentication_token</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_with_owner-class_method">
   
     + (<tt>Object</tt>) <strong>create_with_owner</strong>(params = {}) 
   
@@ -358,16 +447,16 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-19
 20
 21
 22
 23
 24
-25</pre>
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
@@ -381,157 +470,10 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </table>
 </div>
     
-  </div>
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="authentication_token-instance_method">
-  
-    - (<tt>Object</tt>) <strong>authentication_token</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Generate a token checking if one does not already exist in the database.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>
-<p>the authentication_token</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-44
-45
-46</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 44</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span>
-  <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='symbol'>:authentication_token</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
       <div class="method_details ">
-  <h3 class="signature " id="create_schema-instance_method">
+  <h3 class="signature " id="generate_token-class_method">
   
-    - (<tt>Object</tt>) <strong>create_schema</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Create a database schema using the subdomain</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-28
-29
-30</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 28</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_create_schema'>create_schema</span>
-  <span class='const'>Apartment</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="ensure_authentication_token!-instance_method">
-  
-    - (<tt>Object</tt>) <strong>ensure_authentication_token!</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Generate authentication token unless already exists and save the record.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-33
-34
-35</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 33</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
-  <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="generate_token-instance_method">
-  
-    - (<tt>Object</tt>) <strong>generate_token</strong>(column) 
+    + (<tt>Object</tt>) <strong>generate_token</strong>(column)  <span class="extras">(protected)</span>
   
 
   
@@ -572,15 +514,15 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56</pre>
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
@@ -593,10 +535,139 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="reset_authentication_token!-instance_method">
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create_schema-instance_method">
   
-    - (<tt>Object</tt>) <strong>reset_authentication_token!</strong> 
+    - (<tt>Object</tt>) <strong>create_schema</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a database schema using the subdomain</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_schema'>create_schema</span>
+  <span class='const'>Apartment</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ensure_authentication_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ensure_authentication_token</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate authentication token unless already exists.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token'>ensure_authentication_token</span>
+  <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ensure_authentication_token!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ensure_authentication_token!</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate authentication token unless already exists and save the record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
+  <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_authentication_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>reset_authentication_token</strong> 
   
 
   
@@ -619,15 +690,58 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-38
-39
-40</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_authentication_token!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>reset_authentication_token!</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate new authentication token and save the record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span>
+  <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
+  <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='symbol'>:validate</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -639,7 +753,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 27 23:56:20 2013 by
+  Generated on Sat Jun 29 00:34:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

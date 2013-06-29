@@ -556,22 +556,22 @@
         1
       ]
     },
-    "timestamp": 1372479610
+    "timestamp": 1372483126
   },
   "Cucumber Features": {
     "coverage": {
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/factories/account_factory.rb": [
         1,
         1,
+        7,
+        7,
         1,
         1,
-        1,
-        1,
-        0,
+        6,
         null,
         1,
         1,
-        0,
+        5,
         null,
         null,
         null,
@@ -580,7 +580,7 @@
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/factories/user_factory.rb": [
         1,
         1,
-        1,
+        7,
         1,
         null,
         null
@@ -619,14 +619,61 @@
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/subdomain_helpers.rb": [
         1,
         1,
-        0,
-        0,
-        0,
-        0,
+        6,
+        6,
+        6,
+        1,
+        null,
+        null
+      ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/db/schema.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         null,
         null
       ]
     },
-    "timestamp": 1372479456
+    "timestamp": 1372482908
   }
 }

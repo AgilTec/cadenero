@@ -82,47 +82,77 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
 
 <h3 id="installing-cadenero">Installing <strong>Cadenero</strong></h3>
-<p>Generate first your Rails.API app as usual using:
-<code>
-&gt; rails-api new your_app --skip-test-unit
-</code>
-In the <code>Gemfile</code> add the following lines:
-<code>ruby
-gem 'cadenero', '~&gt; 0.0.2.a1'
-gem 'pg'
-</code>
-In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:
-```
-development:
-  adapter: postgresql
-  database: your_app_development 
-  min_messages: warning</p>
+<p>Generate first your Rails.API app as usual using:</p>
 
-<p>test:
+<p><code>
+    $ rails-api new your_app --skip-test-unit
+</code></p>
+
+<p>In the <code>Gemfile</code> add the following lines:
+```ruby
+    gem ‘cadenero’, ‘~&gt; 0.0.2.a3’</p>
+
+<pre class="code ruby"><code class="ruby">gem 'pg' ```
+</code></pre>
+
+<p>In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:</p>
+
+<p>```
+    development:
+      adapter: postgresql
+      database: your_app_development 
+      min_messages: warning</p>
+
+<pre class="code ruby"><code class="ruby">test:
   adapter: postgresql
   database: your_app_test 
-  min_messages: warning
-```</p>
+  min_messages: warning ```
+</code></pre>
 
-<p>Then run bundle, create the databases and run the generator:
-<code>
-&gt; bundle install; rake db:create; rails-api g cadenero:install
-</code>
-Finally run the server:
-<code>
-rails-api s
-</code>
-Or much better for checking the multitenancy you can use <a href="http://pow.cx/">Pow</a>. To install or upgrade Pow, open a terminal and run this command:
-<code>
-$ curl get.pow.cx | sh (View Source)
-</code>
-To set up a Rack app, just symlink it into ~/.pow:
-<code>
-$ cd ~/.pow
-$ ln -s /path/to/myapp
+<p>Then run bundle, create the databases and run the generator:</p>
+
+<p><code>
+    $ bundle install; rake db:create; rails-api g cadenero:install
+</code></p>
+
+<p>Finally run the server:</p>
+
+<p><code>
+    $ rails-api s
+</code></p>
+
+<p>Or much better for checking the multitenancy you can use <a href="http://pow.cx/">Pow</a>. To install or upgrade Pow, open a terminal and run this command:</p>
+
+<p><code>
+    $ curl get.pow.cx | sh (View Source)
+</code></p>
+
+<p>To set up a Rack app, just symlink it into ~/.pow:</p>
+
+<p><code>
+    $ cd ~/.pow
+    $ ln -s /path/to/myapp
 </code></p>
 
 <p>Check that you can access the API using the default account <code>www</code> and user <code>testy@example.com</code> with password `changeme˜ or those defined for you when the generator was run. Ror the client you can use <a href="http://curl.haxx.se/">cURL</a> or <a href="http://restclient.net/">RESTClient</a></p>
+
+<p>You can create a new account as follows:</p>
+
+<p><code>
+    $ curl -v -X POST http://www.cadenero.dev/v1/accounts -H 'Content-Type: application/json' -d '{"account": { "name": "Testy", "subdomain": "tested1", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}'
+</code>
+Or</p>
+
+<p>```
+    Request</p>
+
+<pre class="code ruby"><code class="ruby">POST http://www.cadenero.dev/v1/accounts
+
+    Content-Type: application/json
+
+Body
+{&quot;account&quot;: { &quot;name&quot;: &quot;Testy&quot;, &quot;subdomain&quot;: &quot;test2&quot;, &quot;owner_attributes&quot;: {&quot;email&quot;: &quot;testy2@example.com&quot;, &quot;password&quot;: &quot;changeme&quot;, &quot;password_confirmation&quot;: &quot;changeme&quot;}}} ```
+</code></pre>
 
 <p>Have fun!</p>
 
@@ -130,16 +160,18 @@ $ ln -s /path/to/myapp
 <p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
 
 <p><code>
-    v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=&gt;:json}
-v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=&gt;:json}
-            DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=&gt;:json}
-   v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=&gt;:json}
-v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=&gt;:json}
-       root        /                      cadenero/v1/account/dashboard#index {:default=&gt;:json}
-</code>
-You can check then running:
-<code>
-rake routes
+        v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=&gt;:json}
+    v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=&gt;:json}
+                DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=&gt;:json}
+       v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=&gt;:json}
+    v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=&gt;:json}
+           root        /                      cadenero/v1/account/dashboard#index {:default=&gt;:json}
+</code></p>
+
+<p>You can check then running:</p>
+
+<p><code>
+    rake routes
 </code></p>
 
 <h3 id="the-cadenero-task-list">The Cadenero Task List</h3>
@@ -195,7 +227,7 @@ rake routes
 </div></div>
 
     <div id="footer">
-  Generated on Thu Jun 27 23:56:20 2013 by
+  Generated on Sat Jun 29 00:34:45 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

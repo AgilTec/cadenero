@@ -108,13 +108,82 @@
 
 
 
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#auth_token-instance_method" title="#auth_token (instance method)">- (Object) <strong>auth_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
 
   
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="auth_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>auth_token</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/user.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_auth_token'>auth_token</span>      
+  <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
     <div id="footer">
-  Generated on Thu Jun 27 23:56:20 2013 by
+  Generated on Sat Jun 29 00:34:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

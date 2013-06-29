@@ -20,61 +20,74 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 
 ### Installing **Cadenero**
 Generate first your Rails.API app as usual using:
+
 ```
-> rails-api new your_app --skip-test-unit
+    $ rails-api new your_app --skip-test-unit
 ```
+
 In the `Gemfile` add the following lines:
 ```ruby
-gem 'cadenero', '~> 0.0.2.a3'
-gem 'pg'
+    gem 'cadenero', '~> 0.0.2.a3'
+    gem 'pg'
 ```
-In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
-```
-development:
-  adapter: postgresql
-  database: your_app_development 
-  min_messages: warning
 
-test:
-  adapter: postgresql
-  database: your_app_test 
-  min_messages: warning
+In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
+
+```
+    development:
+      adapter: postgresql
+      database: your_app_development 
+      min_messages: warning
+
+    test:
+      adapter: postgresql
+      database: your_app_test 
+      min_messages: warning
 ```
 
 Then run bundle, create the databases and run the generator:
+
 ```
-> bundle install; rake db:create; rails-api g cadenero:install
+    $ bundle install; rake db:create; rails-api g cadenero:install
 ```
+
 Finally run the server:
+
 ```
-rails-api s
+    $ rails-api s
 ```
+
 Or much better for checking the multitenancy you can use [Pow](http://pow.cx/). To install or upgrade Pow, open a terminal and run this command:
+
 ```
-$ curl get.pow.cx | sh (View Source)
+    $ curl get.pow.cx | sh (View Source)
 ```
+
 To set up a Rack app, just symlink it into ~/.pow:
+
 ```
-$ cd ~/.pow
-$ ln -s /path/to/myapp
+    $ cd ~/.pow
+    $ ln -s /path/to/myapp
 ```
 
 Check that you can access the API using the default account `www` and user `testy@example.com` with password `changeme˜ or those defined for you when the generator was run. Ror the client you can use [cURL](http://curl.haxx.se/) or [RESTClient](http://restclient.net/)
 
 You can create a new account as follows:
-```
-> curl -v -X POST http://www.cadenero.dev/v1/accounts -H 'Content-Type: application/json' -d '{"account": { "name": "Testy", "subdomain": "tested1", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}'
-```
 
 ```
-Request
+    $ curl -v -X POST http://www.cadenero.dev/v1/accounts -H 'Content-Type: application/json' -d '{"account": { "name": "Testy", "subdomain": "tested1", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}'
+```
+Or
 
-POST http://www.cadenero.dev/v1/accounts
+```
+    Request
 
-    Content-Type: application/json
+    POST http://www.cadenero.dev/v1/accounts
 
-Body
-{"account": { "name": "Testy", "subdomain": "test2", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}
+        Content-Type: application/json
+
+    Body
+    {"account": { "name": "Testy", "subdomain": "test2", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}
 ```
 
 Have fun!
@@ -83,16 +96,18 @@ Have fun!
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
 ```
-    v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=>:json}
-v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=>:json}
-            DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=>:json}
-   v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=>:json}
-v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=>:json}
-       root        /                      cadenero/v1/account/dashboard#index {:default=>:json}
+        v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=>:json}
+    v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=>:json}
+                DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=>:json}
+       v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=>:json}
+    v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=>:json}
+           root        /                      cadenero/v1/account/dashboard#index {:default=>:json}
 ```
+
 You can check then running:
+
 ```
-rake routes
+    rake routes
 ```
 
 ### The Cadenero Task List
