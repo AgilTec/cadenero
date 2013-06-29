@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cadenero (0.0.2.a1)
+    cadenero (0.0.2.a3)
       active_model_serializers (~> 0.8.1)
       apartment (~> 0.21.1)
       bcrypt-ruby (~> 3.0.1)

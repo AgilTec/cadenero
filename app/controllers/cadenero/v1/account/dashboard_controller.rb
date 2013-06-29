@@ -5,7 +5,7 @@ module Cadenero
     before_filter :authenticate_user!
 
     def index
-      render json: {message: "Welcome #{current_user.email}"}, status: 201
+      render json: {message: "Welcome #{current_user.email}"}, status: :ok
     end
   end
 end

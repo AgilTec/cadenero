@@ -25,7 +25,7 @@ Generate first your Rails.API app as usual using:
 ```
 In the `Gemfile` add the following lines:
 ```ruby
-gem 'cadenero', '~> 0.0.2.a2'
+gem 'cadenero', '~> 0.0.2.a3'
 gem 'pg'
 ```
 In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
@@ -60,6 +60,22 @@ $ ln -s /path/to/myapp
 ```
 
 Check that you can access the API using the default account `www` and user `testy@example.com` with password `changeme˜ or those defined for you when the generator was run. Ror the client you can use [cURL](http://curl.haxx.se/) or [RESTClient](http://restclient.net/)
+
+You can create a new account as follows:
+```
+> curl -v -X POST http://www.cadenero.dev/v1/accounts -H 'Content-Type: application/json' -d '{"account": { "name": "Testy", "subdomain": "tested1", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}'
+```
+
+```
+Request
+
+POST http://www.cadenero.dev/v1/accounts
+
+    Content-Type: application/json
+
+Body
+{"account": { "name": "Testy", "subdomain": "test2", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}
+```
 
 Have fun!
 

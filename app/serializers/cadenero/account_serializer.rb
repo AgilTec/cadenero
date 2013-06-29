@@ -1,9 +1,8 @@
 module Cadenero
   class AccountSerializer < ActiveModel::Serializer
     embed :ids
-    attributes :id, :name, :subdomain
-    has_one :owner,  :class_name => "Cadenero::User"
-    has_many :members, :class_name => "Cadenero::Member"
-    has_many :users, :through => :members
+    attributes :id, :name, :subdomain, :authentication_token
+    has_one :owner
+    has_many :users
   end
 end

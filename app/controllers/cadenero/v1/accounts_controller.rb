@@ -13,13 +13,12 @@ module Cadenero
           force_authentication!(@account.owner)
           @account.create_schema
           @account.ensure_authentication_token!
-          data = {
-            account_id: @account.id,
-            auth_token: @account.authentication_token
-          }
-          render json: data, status: 201
+          render json: @account, status: 201
         else
-          render json: {errors: @account.errors}, status: 422
+          @data = {
+            errors: @account.errors
+          }
+          render json: @data, status: 422
         end
       end
     end

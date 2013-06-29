@@ -2,11 +2,12 @@ module Cadenero::V1
   class Account < ActiveRecord::Base
     belongs_to :owner,  :class_name => "Cadenero::User"
     has_many :members, :class_name => "Cadenero::Member"
-    has_many :users, :through => :members
+    has_many :users, :through => :members,  :class_name => "Cadenero::User"
     
     accepts_nested_attributes_for :owner
     attr_accessible :name, :subdomain, :owner_attributes, :owner
     validates :subdomain, :presence => true, :uniqueness => true
+    after_create :reset_authentication_token!
 
     # Creates an accout and assign the provided [Cadenero::User] as owner to the account
     # @param [Hash] params list 
@@ -36,13 +37,9 @@ module Cadenero::V1
 
     # Generate new authentication token (a.k.a. "single access token").
     def reset_authentication_token!
-      self.authentication_token = self.class.authentication_token
-    end
-
-    # Generate a token checking if one does not already exist in the database.
-    # @return the authentication_token
-    def authentication_token
-      generate_token(:authentication_token)
+      authentication_token = generate_token(:authentication_token)
+      puts "authentication_token: #{authentication_token}"
+      save!
     end
 
     # Generate a token by looping and ensuring does not already exist.

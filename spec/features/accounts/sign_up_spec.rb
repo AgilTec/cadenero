@@ -11,7 +11,7 @@ end
 
 def sign_up
   create_account
-  post "/v1/accounts", account: @visitor
+  post "/v1/accounts", format: :json, account: @visitor
   find_account_by_name
 end
 
@@ -19,7 +19,9 @@ feature 'Accounts' do
   scenario "creating an account" do
     sign_up
     expect(last_response.status).to eq 201
-    expect(JSON.parse(last_response.body)).to have_content "auth_token"
+    expect(JSON.parse(last_response.body)).to have_content "authentication_token"
+    puts JSON.parse(last_response.body)
+    expect(JSON.parse(last_response.body)["account"]["authentication_token"]).not_to eq nil
   end
 
   scenario "cannot create an account with an already used subdomain" do

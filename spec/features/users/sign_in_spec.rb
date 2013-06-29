@@ -35,12 +35,14 @@ feature 'User sign in' do
       expect(last_response.status).to eq 201
       expect(JSON.parse(last_response.body)["user"]["account_ids"]).to eq [account.id]
       user_email = JSON.parse(last_response.body)["user"]["email"]
+      expect(JSON.parse(last_response.body)).to have_content "auth_token"
+      access_token = JSON.parse(last_response.body)["user"]["auth_token"]
+      expect(JSON.parse(last_response.body)["user"]["auth_token"]).to eq account.authentication_token
       get root_url
+      expect(last_response.status).to eq 201
       expect(JSON.parse(last_response.body)["message"]).to have_content user_email
     end
-  end
 
-  within_account_subdomain do
     scenario "signout as an account owner successfully" do
       sign_in_user sessions_url, account_user(account.owner)
       expect(last_response.status).to eq 201
@@ -50,9 +52,10 @@ feature 'User sign in' do
       expect(last_response.status).to eq 201
       expect(JSON.parse(last_response.body)["message"]).to have_content "Successful logout"
       get cadenero.v1_root_url(:subdomain => account.subdomain)
-      expect(last_response.body).to eql(errors_redirect_ro_sign_in)
       expect(last_response.status).to eq 422
+      expect(last_response.body).to eql(errors_redirect_ro_sign_in)
     end
+
   end
 
   it "attempts sign in with an invalid password and fails" do
