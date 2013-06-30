@@ -1,6 +1,6 @@
 app/controllers/cadenero/v1/account/dashboard_controller.rb 26699dd700373e8dd299f6fbdcd176fa23e196ed
 app/controllers/cadenero/v1/account/sessions_controller.rb c875c836957185f2a7614e492c42b9c00394790d
-app/controllers/cadenero/v1/account/users_controller.rb c1c30c7efb8d234062a730b5d618fe70cfa1aded
+app/controllers/cadenero/v1/account/users_controller.rb 4cfa2ce585664e96c6ee22d3e9bac8843e9e0ed1
 app/controllers/cadenero/v1/accounts_controller.rb 4a6a1efd95a34fa56a6a962528b4c769a5a9b026
 app/extenders/controllers/application_controller_decorator.rb 44a63f43ba734b227b97fd83c7f5265660ee52a9
 app/helpers/cadenero/application_helper.rb e29654a849223c8359aaa9443f434d9f43aead65
@@ -8,7 +8,7 @@ app/helpers/cadenero/v1/accounts_helper.rb 820f96de46b9278e75900b6cf55c92dde65f6
 app/helpers/cadenero/v1/users_helper.rb 1201b558ea4866a653f88e563541495cb2291a67
 app/models/cadenero/member.rb 0b876460774392620d0500a76d15612b90b71ef2
 app/models/cadenero/user.rb 6ab87b5cfe59f57cbb39ffcdf9a51bc6e8f6d86f
-app/models/cadenero/v1/account.rb c1c589cd68b6564fd8de34d457f6b66cd6ba424e
+app/models/cadenero/v1/account.rb 39e8862e4142e3e919e1fb83fb6bf5c24a751d2e
 app/serializers/cadenero/account_serializer.rb 69588521f39e1f9b11ee0ebe9d80b8a678f230eb
 app/serializers/cadenero/user_serializer.rb 4963b37d09c8711c75d0e5bc48871be684e75039
 lib/cadenero.rb 2a562a432f969517ea98dc767ec6cc55574ff469

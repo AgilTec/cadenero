@@ -68,7 +68,8 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <a href="https://travis-ci.org/AgilTec/cadenero"><img src="https://travis-ci.org/AgilTec/cadenero.png?branch=master" alt="Build Status" /></a>
 <a href="https://codeclimate.com/github/AgilTec/cadenero"><img src="https://codeclimate.com/github/AgilTec/cadenero.png" alt="Code Climate" /></a>
 <a href="https://coveralls.io/r/AgilTec/cadenero?branch=master"><img src="https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master" alt="Coverage Status" /></a>
-<a href="https://gemnasium.com/AgilTec/cadenero"><img src="https://gemnasium.com/AgilTec/cadenero.png" alt="Dependency Status" /></a></p>
+<a href="https://gemnasium.com/AgilTec/cadenero"><img src="https://gemnasium.com/AgilTec/cadenero.png" alt="Dependency Status" /></a>
+<a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/AgilTec/cadenero/trend.png" alt="Bitdeli Badge" /></a></p>
 
 <p>Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
@@ -89,11 +90,10 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 </code></p>
 
 <p>In the <code>Gemfile</code> add the following lines:
-```ruby
-    gem ‘cadenero’, ‘~&gt; 0.0.2.a3’</p>
-
-<pre class="code ruby"><code class="ruby">gem 'pg' ```
-</code></pre>
+<code>ruby
+    gem 'cadenero', '~&gt; 0.0.2.a3'
+    gem 'pg'
+</code></p>
 
 <p>In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:</p>
 
@@ -168,7 +168,7 @@ Body
            root        /                      cadenero/v1/account/dashboard#index {:default=&gt;:json}
 </code></p>
 
-<p>You can check then running:</p>
+<p>You can check them running:</p>
 
 <p><code>
     rake routes
@@ -227,7 +227,7 @@ Body
 </div></div>
 
     <div id="footer">
-  Generated on Sat Jun 29 00:34:45 2013 by
+  Generated on Sun Jun 30 10:54:54 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.1 (ruby-1.9.3).
 </div>

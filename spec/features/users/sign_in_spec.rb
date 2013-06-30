@@ -24,6 +24,7 @@ feature 'User sign in' do
   let(:errors_redirect_ro_sign_in) {{errors: %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}, links: "/v1/sessions"}.to_json}
   let(:errors_invalid_email_or_password)  {{ errors: {user:["Invalid email or password"]} }.to_json} 
   let(:sessions_url) { "http://#{account.subdomain}.example.com/v1/sessions" }
+  let(:error_url) { "http://error.example.com/v1/sessions" }
   let(:root_url) { "http://#{account.subdomain}.example.com/v1" }
 
   within_account_subdomain do
@@ -74,12 +75,21 @@ feature 'User sign in' do
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end
 
-  it "cannot sign in if not a part of this subdomain" do
+  it "cannot sign in if not a part of an existing subdomain" do
     other_account = FactoryGirl.create(:account)
     get cadenero.v1_root_url(:subdomain => account.subdomain)
     expect(last_response.body).to eql(errors_redirect_ro_sign_in)
     sign_in_user sessions_url, { email: other_account.owner.email, password: "", password_confirmation: "" }
     expect(last_response.status).to eq 422
     expect(last_response.body).to eql(errors_invalid_email_or_password)
-  end  
+  end
+
+  it "cannot sign in if the subdomain does not exist" do   
+    expect{sign_in_user error_url, account_user(account.owner)}.to raise_error(
+      Apartment::SchemaNotFound
+    )
+    puts "last_response: #{last_response.to_json}"
+    expect(last_response.status).to eq 422
+    expect(last_response.body).to eql(errors_invalid_email_or_password)
+  end   
 end

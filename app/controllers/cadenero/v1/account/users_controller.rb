@@ -22,6 +22,10 @@ module Cadenero
         force_authentication!(@user)
         render json: @user, status: :created
       end
+      def show
+        @user = account.users.where(params[:user]).first
+        render json: @user, status: :ok
+      end
     end
   end
 end

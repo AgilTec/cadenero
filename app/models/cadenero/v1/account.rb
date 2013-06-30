@@ -9,7 +9,7 @@ module Cadenero::V1
     validates :subdomain, :presence => true, :uniqueness => true
     validates :owner, :presence => true
 
-    # Creates an accout and assign the provided [Cadenero::User] as owner to the account
+    # Creates an account and assign the provided [Cadenero::User] as owner to the account
     # @param [Hash] params list 
     # @example
     #    Example for the params JSON: {name: "Testy", subdomain: "test", 
@@ -23,6 +23,20 @@ module Cadenero::V1
         account.users << account.owner
       end
       account
+    end
+
+    # Gets the account for the specified subdomain and guards errors 
+    # @param [String] params subdomain 
+    # @example
+    #    get_by_subdomain("www")
+    # @return the [Cadenero::V1::Account] for that subdomain  
+    def self.get_by_subdomain(subdomain)
+      account = find_by_subdomain(subdomain)
+      if account
+        account
+      else
+        raise Apartment::SchemaNotFound, "Subdomain is not valid"
+      end
     end
 
     # Create a database schema using the subdomain
