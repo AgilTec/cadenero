@@ -1,4 +1,7 @@
-Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
+require File.expand_path('../../../app/extenders/middleware/robustness', __FILE__)
+
+Rails.application.config.middleware.use(Robustness)
+Rails.application.config.middleware.use(Apartment::Elevators::Subdomain)
 
 
 Apartment.configure do |config|

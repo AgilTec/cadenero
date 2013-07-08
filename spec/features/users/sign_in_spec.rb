@@ -25,6 +25,7 @@ feature 'User sign in' do
   let(:account) { FactoryGirl.create(:account_with_schema) }
   let(:errors_redirect_ro_sign_in) {{errors: %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}, links: "/v1/sessions"}.to_json}
   let(:errors_invalid_email_or_password)  {{ errors: {user:["Invalid email or password"]} }.to_json} 
+  let(:errors_invalid_subdomain)  {{ errors: {subdomain:["Invalid subdomain"]} }.to_json} 
   let(:sessions_url) { "http://#{account.subdomain}.example.com/v1/sessions" }
   let(:error_url) { "http://error.example.com/v1/sessions" }
   let(:root_url) { "http://#{account.subdomain}.example.com/v1" }
@@ -87,11 +88,8 @@ feature 'User sign in' do
   end
 
   it "cannot sign in if the subdomain does not exist" do 
-    sign_in_user error_url, account_user(account.owner)  
-    expect{sign_in_user error_url, account_user(account.owner)}.to raise_error(
-      Apartment::SchemaNotFound
-    )
+    sign_in_user error_url, account_user(account.owner)
     expect(last_response.status).to eq 422
-    expect(last_response.body).to eql(errors_invalid_email_or_password)
+    expect(last_response.body).to eql(errors_invalid_subdomain)
   end   
 end
