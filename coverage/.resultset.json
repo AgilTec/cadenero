@@ -57,16 +57,6 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/subdomain_helpers.rb": [
-        1,
-        1,
-        7,
-        7,
-        7,
-        1,
-        null,
-        null
-      ],
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/features/accounts/sign_up_spec.rb": [
         1,
         null,
@@ -105,6 +95,8 @@
       ],
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/features/users/sign_in_spec.rb": [
         1,
+        1,
+        null,
         1,
         1,
         null,
@@ -191,12 +183,26 @@
         null,
         null,
         1,
-        2,
-        null,
-        null,
         1,
         0,
+        null,
+        null,
         0,
+        0,
+        null,
+        null
+      ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/lib/cadenero/testing_support/subdomain_helpers.rb": [
+        1,
+        1,
+        1,
+        1,
+        7,
+        7,
+        7,
+        1,
+        null,
+        null,
         null,
         null
       ],
@@ -510,6 +516,19 @@
         null,
         null
       ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/config/initializers/cadenero.rb": [
+
+      ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/db/seeds.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1
+      ],
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/db/schema.rb": [
         null,
         null,
@@ -556,22 +575,9 @@
         null,
         null,
         null
-      ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/config/initializers/cadenero.rb": [
-
-      ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/db/seeds.rb": [
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1
       ]
     },
-    "timestamp": 1372607684
+    "timestamp": 1373324718
   },
   "Cucumber Features": {
     "coverage": {
@@ -631,13 +637,17 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/subdomain_helpers.rb": [
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/lib/cadenero/testing_support/subdomain_helpers.rb": [
+        1,
+        1,
         1,
         1,
         7,
         7,
         7,
         1,
+        null,
+        null,
         null,
         null
       ],
@@ -689,6 +699,6 @@
         null
       ]
     },
-    "timestamp": 1372604377
+    "timestamp": 1373325118
   }
 }

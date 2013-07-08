@@ -54,6 +54,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
+    header "Content-Type", "application/json"
   end
   config.before(:each) do
     DatabaseCleaner.start

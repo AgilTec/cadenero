@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'cadenero/testing_support/subdomain_helpers'
+
 feature 'User sign in' do
-  extend SubdomainHelpers
+  extend Cadenero::TestingSupport::SubdomainHelpers
 
   def create_account_user
     @user ||= { email: "user@example.com", password: "password", password_confirmation: "password" }
@@ -84,11 +86,11 @@ feature 'User sign in' do
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end
 
-  it "cannot sign in if the subdomain does not exist" do   
+  it "cannot sign in if the subdomain does not exist" do 
+    sign_in_user error_url, account_user(account.owner)  
     expect{sign_in_user error_url, account_user(account.owner)}.to raise_error(
       Apartment::SchemaNotFound
     )
-    puts "last_response: #{last_response.to_json}"
     expect(last_response.status).to eq 422
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end   

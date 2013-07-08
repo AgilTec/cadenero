@@ -6,7 +6,7 @@
 <title>
   Class: Cadenero::V1::AccountsController
   
-    &mdash; Documentation by YARD 0.8.6.1
+    &mdash; Documentation by YARD 0.8.6.2
   
 </title>
 
@@ -247,7 +247,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>%Q{</span><span class='tstring_content'>Please sign up. posting the account json data as {account: { name: &quot;Testy&quot;, subdomain: &quot;test&quot;, owner_attributes: {email: &quot;testy@example.com&quot;, password: &quot;changeme&quot;, password_confirmation: &quot;changeme&quot;} }} to /v1/accounts/sign_up</span><span class='tstring_end'>}</span></span>
-  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='id identifier rubyid_errors'>errors</span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/accounts/sign_up</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='int'>422</span>
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='id identifier rubyid_errors'>errors</span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/accounts/sign_up</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unprocessable_entity</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -259,9 +259,9 @@
 </div>
 
     <div id="footer">
-  Generated on Sun Jun 30 10:54:55 2013 by
+  Generated on Mon Jul  8 18:14:14 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.6.1 (ruby-1.9.3).
+  0.8.6.2 (ruby-1.9.3).
 </div>
 
   </body>

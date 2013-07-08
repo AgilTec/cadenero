@@ -4,12 +4,17 @@ module Cadenero::V1
   class Account::SessionsController < Cadenero::ApplicationController
     # create the session for the user using the password strategy and returning the user JSON
     def create
-      if env['warden'].authenticate(:password, :scope => :user)
-        #return the user JSON on success
-        render json: current_user, status: :created
-      else
-        #return error mesage in a JSON on error
-        render json: {errors: {user:["Invalid email or password"]}}, status: :unprocessable_entity
+      begin
+        if env['warden'].authenticate(:password, :scope => :user)
+          #return the user JSON on success
+          render json: current_user, status: :created
+        else
+          #return error mesage in a JSON on error
+          render json: {errors: {user:["Invalid email or password"]}}, status: :unprocessable_entity
+        end
+      rescue Apartment::SchemaNotFound
+        env[:apartment_schema_not_found]
+        render json: {errors: {subdomaim:["Invalid subdomain"]}}, status: :unprocessable_entity
       end
     end
 
