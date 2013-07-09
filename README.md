@@ -6,7 +6,6 @@ By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/Gpujzv
 [![Code Climate](https://codeclimate.com/github/AgilTec/cadenero.png)](https://codeclimate.com/github/AgilTec/cadenero)
 [![Coverage Status](https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master)](https://coveralls.io/r/AgilTec/cadenero?branch=master)
 [![Dependency Status](https://gemnasium.com/AgilTec/cadenero.png)](https://gemnasium.com/AgilTec/cadenero)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AgilTec/cadenero/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
@@ -28,7 +27,7 @@ Generate first your Rails.API app as usual using:
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.a3'
+    gem 'cadenero', '~> 0.0.2.b1'
     gem 'pg'
 ```
 
@@ -110,10 +109,12 @@ You can check them running:
 ```
     rake routes
 ```
+### Documentation
+You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/frames
 
 ### The Cadenero Task List
 - [x] Specs for the code 100% Coverage using BDD with [Rspec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara)
-- [ ] Documatation for all the code
+- [x] Documatation for all the code
 - [ ] Examples of use and demo
 
 ### Versions
