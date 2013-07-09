@@ -101,7 +101,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines a user of one or more accounts for the multitenant  Rails App</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -133,7 +144,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Obtain the authentication_token from the account to be use for the User.</p>
+</div></span>
   
 </li>
 
@@ -157,18 +170,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Obtain the authentication_token from the account to be use for the User</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
-11</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/user.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/user.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auth_token'>auth_token</span>      
   <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
@@ -183,7 +207,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Jul  8 18:14:14 2013 by
+  Generated on Mon Jul  8 20:22:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

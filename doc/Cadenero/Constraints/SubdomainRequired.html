@@ -99,7 +99,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>For the routes require that a subdomain is defined</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -182,12 +193,12 @@
       <pre class="lines">
 
 
-4
-5
-6</pre>
+6
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/constraints/subdomain_required.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/constraints/subdomain_required.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_matches?'>matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>www</span><span class='tstring_end'>&quot;</span></span>
@@ -202,7 +213,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Jul  8 18:14:15 2013 by
+  Generated on Mon Jul  8 20:22:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

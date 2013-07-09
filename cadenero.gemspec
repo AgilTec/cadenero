@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails-api", "~> 0.1.0"
-  s.add_dependency "bcrypt-ruby", "~> 3.0.1"
+  s.add_dependency "bcrypt-ruby", "~> 3.0.0"
   s.add_dependency "warden", "~> 1.2.1"
   s.add_dependency "apartment", "~> 0.21.1"
   s.add_dependency "strong_parameters", "~> 0.2.1"
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "pg"
-  s.add_development_dependency "rspec-rails", "~> 2.13.2"
+  s.add_development_dependency "rspec-rails", "~> 2.14"
   s.add_development_dependency 'coveralls'
   s.add_development_dependency "capybara", "~> 2.1.0"
   s.add_development_dependency "launchy", "~> 2.3.0"

@@ -5,13 +5,14 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 gem 'rails-api'
+gem "bcrypt-ruby", "~> 3.0.0"
 
 # gems used by the dummy application
 gem "jquery-rails"
 gem "ember-rails", "~> 0.13.0"
 gem "coffee-rails"
-gem 'ember-source', '~> 1.0.0.rc5' # or the version you need
-gem 'handlebars-source', '~> 1.0.0.rc4' # or the version you need
+gem 'ember-source', '~> 1.0.0.rc6' # or the version you need
+gem 'handlebars-source', '~> 1.0.12' # or the version you need
 
 
 group :test do

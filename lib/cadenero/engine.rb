@@ -1,6 +1,6 @@
 require 'warden'
 module Cadenero
-  
+  # Defines Cadenero as a Rails Engine using the passworf strategy as default for Warden
   class Engine < ::Rails::Engine
     isolate_namespace Cadenero
     config.middleware.use Warden::Manager do |manager|

@@ -101,7 +101,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Cadenero generator to be used as `rails-api g cadenero:install`</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -133,7 +144,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Create the Cadenero initilizar based on the Template.</p>
+</div></span>
   
 </li>
 
@@ -155,7 +168,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Defines which helper will be used as User Class Helper for Cadenero and
+inject that in the application_controller.rb.</p>
+</div></span>
   
 </li>
 
@@ -177,7 +193,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Define which will be the Root Account for the Multitnant Rails App.</p>
+</div></span>
   
 </li>
 
@@ -199,7 +217,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Define which will be the root subdomain for the Multitnant Rails App.</p>
+</div></span>
   
 </li>
 
@@ -221,7 +241,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Define which will be the root owner for the defaul accout Multitnant Rails
+App.</p>
+</div></span>
   
 </li>
 
@@ -243,7 +266,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Define which will be the password for the root owner for the defaul accout
+Multitnant Rails App.</p>
+</div></span>
   
 </li>
 
@@ -265,7 +291,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Defines which class will be used as User Class for Cadenero.</p>
+</div></span>
   
 </li>
 
@@ -287,7 +315,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Wrap-ups the installation giving appropiate messages.</p>
+</div></span>
   
 </li>
 
@@ -309,7 +339,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Copy the Cadenero Migrations in the New App.</p>
+</div></span>
   
 </li>
 
@@ -331,7 +363,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Injects the code in the `routes.rb` for mounting the Cadenero Engine.</p>
+</div></span>
   
 </li>
 
@@ -353,7 +387,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>keep track of the migration numbers.</p>
+</div></span>
   
 </li>
 
@@ -375,7 +411,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Run the Cadenero Migrations in the New App.</p>
+</div></span>
   
 </li>
 
@@ -397,7 +435,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Seed the databas using the options selected as defaults.</p>
+</div></span>
   
 </li>
 
@@ -419,7 +459,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Keep track of the step number for the installation process.</p>
+</div></span>
   
 </li>
 
@@ -441,7 +483,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>The user_class.</p>
+</div></span>
   
 </li>
 
@@ -465,25 +509,36 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create the Cadenero initilizar based on the Template.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83</pre>
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_cadenero_initializer'>add_cadenero_initializer</span>
   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='rbrace'>}</span><span class='tstring_content'>/config/initializers/cadenero.rb</span><span class='tstring_end'>&quot;</span></span>
@@ -509,17 +564,24 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines which helper will be used as User Class Helper for Cadenero and
+inject that in the application_controller.rb</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-29
-30
-31
-32
-33
 34
 35
 36
@@ -534,10 +596,15 @@
 45
 46
 47
-48</pre>
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_current_user_helper'>determine_current_user_helper</span>
   <span class='id identifier rubyid_current_user_helper'>current_user_helper</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>current-user-helper</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -573,20 +640,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Define which will be the Root Account for the Multitnant Rails App</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-50
-51
-52
-53
-54</pre>
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_default_account_name'>determine_default_account_name</span>
   <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_account_name'>default_account_name</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-account-name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -607,20 +685,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Define which will be the root subdomain for the Multitnant Rails App.
+(Default: www)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-56
-57
-58
-59
-60</pre>
+63
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_default_account_subdomain'>determine_default_account_subdomain</span>
   <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_account_subdomain'>default_account_subdomain</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-account-subdomain</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -641,20 +731,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Define which will be the root owner for the defaul accout Multitnant Rails
+App.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-62
-63
-64
-65
-66</pre>
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_default_user_email'>determine_default_user_email</span>
   <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_user_email'>default_user_email</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-user-email</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -675,20 +777,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Define which will be the password for the root owner for the defaul accout
+Multitnant Rails App.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-68
-69
-70
-71
-72</pre>
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_default_user_password'>determine_default_user_password</span> 
   <span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_user_password'>default_user_password</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default-user-password</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -709,20 +823,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines which class will be used as User Class for Cadenero</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-23
-24
-25
-26
-27</pre>
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_determine_user_class'>determine_user_class</span>
   <span class='ivar'>@user_class</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user-class</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span> <span class='op'>||</span>
@@ -743,26 +868,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wrap-ups the installation giving appropiate messages</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
 132
 133
 134
@@ -776,10 +898,24 @@
 142
 143
 144
-145</pre>
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finished'>finished</span>
   <span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\n</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>53</span><span class='rparen'>)</span>
@@ -823,21 +959,32 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Copy the Cadenero Migrations in the New App</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-16
-17
-18
 19
 20
-21</pre>
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_install_migrations'>install_migrations</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Copying over Cadenero migrations...</span><span class='tstring_end'>&quot;</span></span>
@@ -859,27 +1006,38 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Injects the code in the `routes.rb` for mounting the Cadenero Engine</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116</pre>
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mount_engine'>mount_engine</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mounting Cadenero::Engine at \&quot;/\&quot; in config/routes.rb...</span><span class='tstring_end'>&quot;</span></span>
@@ -907,20 +1065,31 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>keep track of the migration numbers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-159
-160
-161
-162
-163</pre>
+176
+177
+178
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 176</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_migration_number'>next_migration_number</span>
   <span class='id identifier rubyid_last_migration'>last_migration</span> <span class='op'>=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db/migrate/*.rb</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -941,21 +1110,32 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Run the Cadenero Migrations in the New App</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-85
-86
-87
-88
-89
-90</pre>
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run_migrations'>run_migrations</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no-migrate</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
@@ -977,27 +1157,38 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Seed the databas using the options selected as defaults</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_seed_database'>seed_database</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>default_account_name: </span><span class='embexpr_beg'>#{</span><span class='const'>Cadenero</span><span class='period'>.</span><span class='id identifier rubyid_default_account_name'>default_account_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1025,20 +1216,31 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Keep track of the step number for the installation process</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-149
-150
-151
-152
-153</pre>
+164
+165
+166
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='id identifier rubyid_words'>words</span><span class='rparen'>)</span>
   <span class='ivar'>@step</span> <span class='op'>||=</span> <span class='int'>0</span>
@@ -1059,18 +1261,47 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The user_class</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the user_class</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-155
-156
-157</pre>
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/generators/cadenero/install_generator.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_class'>user_class</span>
   <span class='ivar'>@user_class</span>
@@ -1085,7 +1316,7 @@ Here's what happened:\n\n</span><span class='tstring_end'>}</span></span>
 </div>
 
     <div id="footer">
-  Generated on Mon Jul  8 18:14:15 2013 by
+  Generated on Mon Jul  8 20:22:46 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

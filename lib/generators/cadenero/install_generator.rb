@@ -1,6 +1,8 @@
 require 'rails/generators'
 module Cadenero
+  # Bootstrap Cadenero in a new Rails App
   module Generators
+    # Cadenero generator to be used as `rails-api g cadenero:install`
     class InstallGenerator < Rails::Generators::Base 
       class_option "user-class", :type => :string
       class_option "default-account-name", :type => :string
@@ -13,6 +15,7 @@ module Cadenero
       source_root File.expand_path("../install/templates", __FILE__)
       desc "Used to install Cadenero"
 
+      # Copy the Cadenero Migrations in the New App
       def install_migrations
         puts "Copying over Cadenero migrations..."
         Dir.chdir(Rails.root) do
@@ -20,12 +23,14 @@ module Cadenero
         end
       end
 
+      # Defines which class will be used as User Class for Cadenero
       def determine_user_class
         @user_class = options["user-class"].presence ||
                       ask("What will be the name for your user class? [User]").presence ||
                       'User'
       end
 
+      # Defines which helper will be used as User Class Helper for Cadenero and inject that in the application_controller.rb
       def determine_current_user_helper
         current_user_helper = options["current-user-helper"].presence ||
                               ask("What will be the current_user helper called in your app? [current_user]").presence ||
@@ -47,30 +52,35 @@ module Cadenero
 
       end
 
+      # Define which will be the Root Account for the Multitnant Rails App
       def determine_default_account_name
         Cadenero.default_account_name = options["default-account-name"].presence ||
                       ask("What will be the name for the default account? [Root Account]").presence ||
                       'Root Account'
       end
 
+      # Define which will be the root subdomain for the Multitnant Rails App. (Default: www)
       def determine_default_account_subdomain
         Cadenero.default_account_subdomain = options["default-account-subdomain"].presence ||
                       ask("What will be the subdomain for the default account? [www]").presence ||
                       'www'
       end
 
+      # Define which will be the root owner for the defaul accout Multitnant Rails App.
       def determine_default_user_email
         Cadenero.default_user_email = options["default-user-email"].presence ||
                       ask("What will be the email for the default user owner of the default account? [testy@example.com]").presence ||
                       'testy@example.com'
       end
 
+      # Define which will be the password for the root owner for the defaul accout Multitnant Rails App.
       def determine_default_user_password 
         Cadenero.default_user_password  = options["default-user-password"].presence ||
                       ask("What will be the password for the default user owner of the default account? [change-me]").presence ||
                       'change-me'
       end
 
+      # Create the Cadenero initilizar based on the Template.
       def add_cadenero_initializer
         path = "#{Rails.root}/config/initializers/cadenero.rb"
         if File.exists?(path)
@@ -82,6 +92,7 @@ module Cadenero
         end
       end
 
+      # Run the Cadenero Migrations in the New App
       def run_migrations
         unless options["no-migrate"]
           puts "Running rake db:migrate"
@@ -89,6 +100,7 @@ module Cadenero
         end
       end
 
+      # Seed the databas using the options selected as defaults
       def seed_database
         puts "default_account_name: #{Cadenero.default_account_name}"
         puts "default_account_subdomain: #{Cadenero.default_account_subdomain}"
@@ -102,6 +114,7 @@ module Cadenero
         end
       end
 
+      # Injects the code in the `routes.rb` for mounting the Cadenero Engine
       def mount_engine
         puts "Mounting Cadenero::Engine at \"/\" in config/routes.rb..."
         insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
@@ -115,6 +128,7 @@ module Cadenero
         end
       end
 
+      # Wrap-ups the installation giving appropiate messages
       def finished
         output = "\n\n" + ("*" * 53)
         output += %Q{\nDone! Cadenero has been successfully installed. Yaaaaay! He will keep the intoxicated JSON's out
@@ -146,16 +160,19 @@ output += step("`rake db:migrate` was run, running all the migrations against yo
 
       private
 
+      # Keep track of the step number for the installation process
       def step(words)
         @step ||= 0
         @step += 1
         "#{@step}) #{words}\n"
       end
 
+      # @return the user_class
       def user_class
         @user_class
       end
 
+      # keep track of the migration numbers
       def next_migration_number
         last_migration = Dir[Rails.root + "db/migrate/*.rb"].sort.last.split("/").last
         current_migration_number = /^(\d+)_/.match(last_migration)[1]

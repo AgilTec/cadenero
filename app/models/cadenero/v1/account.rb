@@ -1,4 +1,5 @@
 module Cadenero::V1
+  # Defines a subdomain with a default admin (owner) as a tenant in the Rails App
   class Account < ActiveRecord::Base
     belongs_to :owner,  :class_name => "Cadenero::User"
     has_many :members, :class_name => "Cadenero::Member"

@@ -80,7 +80,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">app/controllers/cadenero/v1/account/dashboard_controller.rb<span class="defines">,<br />
-  app/controllers/cadenero/v1/account/users_controller.rb,<br /> app/controllers/cadenero/v1/accounts_controller.rb,<br /> app/helpers/cadenero/application_helper.rb,<br /> app/helpers/cadenero/v1/accounts_helper.rb,<br /> app/helpers/cadenero/v1/users_helper.rb,<br /> app/models/cadenero/member.rb,<br /> app/models/cadenero/user.rb,<br /> app/serializers/cadenero/account_serializer.rb,<br /> app/serializers/cadenero/user_serializer.rb,<br /> lib/cadenero.rb,<br /> lib/cadenero/constraints/subdomain_required.rb,<br /> lib/cadenero/engine.rb,<br /> lib/cadenero/testing_support/subdomain_helpers.rb,<br /> lib/cadenero/version.rb,<br /> lib/generators/cadenero/install_generator.rb</span>
+  app/controllers/cadenero/v1/account/users_controller.rb,<br /> app/controllers/cadenero/v1/accounts_controller.rb,<br /> app/models/cadenero/member.rb,<br /> app/models/cadenero/user.rb,<br /> app/serializers/cadenero/account_serializer.rb,<br /> app/serializers/cadenero/user_serializer.rb,<br /> lib/cadenero.rb,<br /> lib/cadenero/constraints/subdomain_required.rb,<br /> lib/cadenero/engine.rb,<br /> lib/cadenero/testing_support/subdomain_helpers.rb,<br /> lib/cadenero/version.rb,<br /> lib/generators/cadenero/install_generator.rb</span>
 </dd>
   
 </dl>
@@ -102,7 +102,7 @@ your API app</p>
 <p class="children">
   
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Cadenero/ApplicationHelper.html" title="Cadenero::ApplicationHelper (module)">ApplicationHelper</a></span>, <span class='object_link'><a href="Cadenero/Constraints.html" title="Cadenero::Constraints (module)">Constraints</a></span>, <span class='object_link'><a href="Cadenero/Generators.html" title="Cadenero::Generators (module)">Generators</a></span>, <span class='object_link'><a href="Cadenero/TestingSupport.html" title="Cadenero::TestingSupport (module)">TestingSupport</a></span>, <span class='object_link'><a href="Cadenero/V1.html" title="Cadenero::V1 (module)">V1</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Cadenero/Constraints.html" title="Cadenero::Constraints (module)">Constraints</a></span>, <span class='object_link'><a href="Cadenero/Generators.html" title="Cadenero::Generators (module)">Generators</a></span>, <span class='object_link'><a href="Cadenero/TestingSupport.html" title="Cadenero::TestingSupport (module)">TestingSupport</a></span>, <span class='object_link'><a href="Cadenero/V1.html" title="Cadenero::V1 (module)">V1</a></span>
     
   
     
@@ -116,9 +116,20 @@ your API app</p>
     <dl class="constants">
       
         <dt id="VERSION-constant" class="">VERSION =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Current VERSION of Cadenero</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0.2.a3</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.0.2.b1</span><span class='tstring_end'>&quot;</span></span></pre></dd>
       
     </dl>
   
@@ -154,7 +165,9 @@ your API app</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>The base path for the Cadenero named routes.</p>
+</div></span>
   
 </li>
 
@@ -176,7 +189,9 @@ your API app</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>defines which class will be used as User Class in Cadenero.</p>
+</div></span>
   
 </li>
 
@@ -199,18 +214,47 @@ your API app</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The base path for the Cadenero named routes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>the base path for the Cadenero named routes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
 38
-39</pre>
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_base_path'>base_path</span>
   <span class='cvar'>@@base_path</span> <span class='op'>||=</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_application'>application</span><span class='period'>.</span><span class='id identifier rubyid_routes'>routes</span><span class='period'>.</span><span class='id identifier rubyid_named_routes'>named_routes</span><span class='lbracket'>[</span><span class='symbol'>:cadenero</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
@@ -229,14 +273,23 @@ your API app</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>defines which class will be used as User Class in Cadenero</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-41
-42
 43
 44
 45
@@ -245,10 +298,12 @@ your API app</p>
 48
 49
 50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_class'>user_class</span>
   <span class='kw'>if</span> <span class='cvar'>@@user_class</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Class</span><span class='rparen'>)</span>
@@ -271,7 +326,7 @@ your API app</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Jul  8 18:14:14 2013 by
+  Generated on Mon Jul  8 20:22:45 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

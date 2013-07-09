@@ -514,6 +514,19 @@
         null,
         null
       ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/config/initializers/cadenero.rb": [
+
+      ],
+      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/db/seeds.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1
+      ],
       "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/db/schema.rb": [
         null,
         null,
@@ -560,22 +573,9 @@
         null,
         null,
         null
-      ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/config/initializers/cadenero.rb": [
-
-      ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/db/seeds.rb": [
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1
       ]
     },
-    "timestamp": 1373327480
+    "timestamp": 1373329261
   },
   "Cucumber Features": {
     "coverage": {

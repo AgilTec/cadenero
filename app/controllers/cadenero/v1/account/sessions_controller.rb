@@ -1,6 +1,7 @@
 require_dependency "cadenero/application_controller"
-# COntroller for managing sessions for the API if you are using the :password Strategy
+#NameSpace for the V1 API in Cadenero
 module Cadenero::V1
+  # Controller for managing sessions for the API if you are using the :password Strategy
   class Account::SessionsController < Cadenero::ApplicationController
     # create the session for the user using the password strategy and returning the user JSON
     def create
@@ -13,6 +14,7 @@ module Cadenero::V1
       end
     end
 
+    # destroy the session for the user using params id
     def delete
       user = Cadenero::User.find_by_id(params[:id])
       if user_signed_in?

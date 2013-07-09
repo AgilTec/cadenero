@@ -34,10 +34,12 @@ module Cadenero
                   :default_user_password 
 
   class << self
+    # @return the base path for the Cadenero named routes
     def base_path
       @@base_path ||= Rails.application.routes.named_routes[:cadenero].path
     end
 
+    # defines which class will be used as User Class in Cadenero
     def user_class
       if @@user_class.is_a?(Class)
         raise "You can no longer set Cadenero.user_class to be a class. Please use a string instead."
