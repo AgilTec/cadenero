@@ -19,15 +19,18 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
 ### Installing **Cadenero**
-Generate first your Rails.API app as usual using:
+
+Rails 3.2.13 is the master version used now by **Cadenero**, if you want to use Rails 4 goodness please use the branch "rails4"
+
+Generate first your Rails app as usual using:
 
 ```
-    $ rails-api new your_app --skip-test-unit
+    $ rails _3.2.13_ new your_app --skip-test-unit
 ```
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b2'
+    gem 'cadenero', '~> 0.0.2.b3'
     gem 'pg'
 ```
 
