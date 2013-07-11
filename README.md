@@ -27,7 +27,7 @@ Generate first your Rails.API app as usual using:
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b1'
+    gem 'cadenero', '~> 0.0.2.b2'
     gem 'pg'
 ```
 
@@ -114,7 +114,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 
 ### The Cadenero Task List
 - [x] Specs for the code 100% Coverage using BDD with [Rspec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara)
-- [x] Documatation for all the code
+- [x] Documentation for all the code
 - [ ] Examples of use and demo
 
 ### Versions
