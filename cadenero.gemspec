@@ -10,6 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Manuel Vidaurre"]
   s.email       = ["manuel.vidaurre@agiltec.com.mx"]
   s.homepage    = "http://www.agiltec.com.mx/ruby/gems/cadenero"
+  s.license     = 'MIT'
+  s.platform    = Gem::Platform::RUBY
   s.summary     = "Rails.API Engine for manage multitenant authentication"
   s.description = "A Rails.API Engine that use Warden for authenticate users using a RESTful API in a multitenant way"
 
