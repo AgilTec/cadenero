@@ -20,18 +20,25 @@ module Cadenero
       # @return render JSON of [Cadenero::V1::Account] created and the status 201 Created: The request has been 
       #   fulfilled and resulted in a new resource being created.
       def create
-        @account = Cadenero::V1::Account.create_with_owner(params[:account])
+        @account = Cadenero::V1::Account.create_with_owner(account_params)
         if @account.valid?
           @account.create_schema
           @account.ensure_authentication_token!
           force_authentication!(@account.owner)
-          render json: @account, status: :created
+          render json: @account, serializer: AccountSerializer, status: :created
         else
           @data = {
             errors: @account.errors
           }
           render json: @data, status: :unprocessable_entity
         end
+      end
+
+      private
+      
+      # Permited parameters using strong parameters format
+      def account_params
+        params.require(:account).permit(:name, :subdomain, owner_attributes: [:email, :password, :password_confirmation])
       end
     end
   end

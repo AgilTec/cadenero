@@ -264,7 +264,9 @@ responses</p>
 14
 15
 16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/extenders/middleware/robustness.rb', line 9</span>
@@ -272,6 +274,8 @@ responses</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
   <span class='ivar'>@app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span> <span class='const'>Apartment</span><span class='op'>::</span><span class='const'>SchemaNotFound</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
+  <span class='lbracket'>[</span><span class='int'>422</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Content-Type</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>application/json</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='lbrace'>{</span><span class='label'>subdomain:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid subdomain</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span> <span class='rbracket'>]</span> <span class='rbracket'>]</span>  <span class='comment'># suppose the message can be safely used
+</span><span class='kw'>rescue</span> <span class='const'>ArgumentError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
   <span class='lbracket'>[</span><span class='int'>422</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Content-Type</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>application/json</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='lbrace'>{</span><span class='label'>subdomain:</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid subdomain</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span> <span class='rbracket'>]</span> <span class='rbracket'>]</span>  <span class='comment'># suppose the message can be safely used
 </span><span class='kw'>rescue</span> <span class='const'>SecurityError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ex'>ex</span>
   <span class='lbracket'>[</span><span class='int'>403</span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Content-Type</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>application/json</span><span class='tstring_end'>'</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_ex'>ex</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span> <span class='rbracket'>]</span> <span class='rbracket'>]</span>
@@ -288,7 +292,7 @@ responses</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 11 12:10:41 2013 by
+  Generated on Thu Jul 11 17:56:33 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

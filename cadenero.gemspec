@@ -18,11 +18,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
+  s.add_dependency "actionpack", "~> 4.0.0"
   s.add_dependency "rails-api", "~> 0.1.0"
   s.add_dependency "bcrypt-ruby", "~> 3.0.0"
   s.add_dependency "warden", "~> 1.2.1"
   s.add_dependency "apartment", "~> 0.22"
-  s.add_dependency "strong_parameters", "~> 0.2.1"
   s.add_dependency "active_model_serializers", "~> 0.8.1"
   # s.add_dependency "jquery-rails"
 
@@ -33,4 +33,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "launchy", "~> 2.3.0"
   s.add_development_dependency "factory_girl", "~> 4.2.0"
   s.add_development_dependency "database_cleaner", "~> 1.0.1"
+  s.add_development_dependency("yard")
 end

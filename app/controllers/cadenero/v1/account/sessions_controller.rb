@@ -7,7 +7,7 @@ module Cadenero::V1
     def create
       if env['warden'].authenticate(:password, :scope => :user)
         #return the user JSON on success
-        render json: current_user, status: :created
+        render json: current_user, serializer: Cadenero::UserSerializer, status: :created
       else
         #return error mesage in a JSON on error
         render json: {errors: {user:["Invalid email or password"]}}, status: :unprocessable_entity

@@ -30,7 +30,7 @@
 
 # Check to see if there is an authenticated user  
   def user_signed_in?
-    env['warden'].authenticated?(:user)
+    env['warden'].authenticated?(:user) unless env['warden'].nil?
   end
 
 # it the user is not authenticated returns a 422 and an informative error with the link for sign

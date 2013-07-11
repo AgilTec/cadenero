@@ -5,7 +5,7 @@ feature 'User sign in' do
   extend Cadenero::TestingSupport::SubdomainHelpers
 
   def create_account_user
-    @user ||= { email: "user@example.com", password: "password", password_confirmation: "password" }
+    @user ||= { email: "user@example.com", password: "password" }
   end
 
   def account_user(user)
@@ -65,7 +65,7 @@ feature 'User sign in' do
   it "attempts sign in with an invalid password and fails" do
     get cadenero.v1_root_url(:subdomain => account.subdomain)
     expect(last_response.body).to eql(errors_redirect_ro_sign_in)
-    sign_in_user sessions_url, { email: "user@example.com", password: "", password_confirmation: "" }
+    sign_in_user sessions_url, { email: "user@example.com", password: "" }
     expect(last_response.status).to eq 422
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end
@@ -73,7 +73,7 @@ feature 'User sign in' do
   it "attempts sign in with an invalid email address and fails" do
     get cadenero.v1_root_url(:subdomain => account.subdomain)
     expect(last_response.body).to eql(errors_redirect_ro_sign_in)
-    sign_in_user sessions_url, { email: "foo@example.com", password: "password", password_confirmation: "password" }
+    sign_in_user sessions_url, { email: "foo@example.com", password: "password"}
     expect(last_response.status).to eq 422
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end
@@ -82,7 +82,7 @@ feature 'User sign in' do
     other_account = FactoryGirl.create(:account)
     get cadenero.v1_root_url(:subdomain => account.subdomain)
     expect(last_response.body).to eql(errors_redirect_ro_sign_in)
-    sign_in_user sessions_url, { email: other_account.owner.email, password: "", password_confirmation: "" }
+    sign_in_user sessions_url, { email: other_account.owner.email, password: "" }
     expect(last_response.status).to eq 422
     expect(last_response.body).to eql(errors_invalid_email_or_password)
   end

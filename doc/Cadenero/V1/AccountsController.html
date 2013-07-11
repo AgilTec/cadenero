@@ -129,6 +129,30 @@ for that account</p>
 
     <ul class="summary">
       
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#account_params-instance_method" title="#account_params (instance method)">- (Object) <strong>account_params</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Permited parameters using strong parameters format.</p>
+</div></span>
+  
+</li>
+
+      
         <li class="public ">
   <span class="summary_signature">
     
@@ -189,7 +213,48 @@ as a JSON with the account inrormation.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="create-instance_method">
+  <h3 class="signature first" id="account_params-instance_method">
+  
+    - (<tt>Object</tt>) <strong>account_params</strong>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Permited parameters using strong parameters format</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_account_params'>account_params</span>
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:account</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:subdomain</span><span class='comma'>,</span> <span class='label'>owner_attributes:</span> <span class='lbracket'>[</span><span class='symbol'>:email</span><span class='comma'>,</span> <span class='symbol'>:password</span><span class='comma'>,</span> <span class='symbol'>:password_confirmation</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create-instance_method">
   
     - (<tt>Object</tt>) <strong>create</strong> 
   
@@ -268,12 +333,12 @@ created.</p>
       <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
-  <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:account</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_account_params'>account_params</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
     <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_create_schema'>create_schema</span>
     <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
     <span class='id identifier rubyid_force_authentication!'>force_authentication!</span><span class='lparen'>(</span><span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@account</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:created</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@account</span><span class='comma'>,</span> <span class='label'>serializer:</span> <span class='const'>AccountSerializer</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:created</span>
   <span class='kw'>else</span>
     <span class='ivar'>@data</span> <span class='op'>=</span> <span class='lbrace'>{</span>
       <span class='label'>errors:</span> <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span>
@@ -334,7 +399,7 @@ created.</p>
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 11 12:10:40 2013 by
+  Generated on Thu Jul 11 17:56:33 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
