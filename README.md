@@ -30,7 +30,7 @@ Generate first your Rails app as usual using:
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b3'
+    gem 'cadenero', '~> 0.0.2.b4'
     gem 'pg'
 ```
 
@@ -99,12 +99,13 @@ Have fun!
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
 ```
-        v1_root        /v1(.:format)          cadenero/v1/account/dashboard#index {:default=>:json}
-    v1_sessions POST   /v1/sessions(.:format) cadenero/v1/account/sessions#create {:default=>:json}
-                DELETE /v1/sessions(.:format) cadenero/v1/account/sessions#delete {:default=>:json}
-       v1_users POST   /v1/users(.:format)    cadenero/v1/account/users#create {:default=>:json}
-    v1_accounts POST   /v1/accounts(.:format) cadenero/v1/accounts#create {:default=>:json}
-           root        /                      cadenero/v1/account/dashboard#index {:default=>:json}
+            v1_root        /v1(.:format)           cadenero/v1/account/dashboard#index {:default=>:json}
+        v1_sessions POST   /v1/sessions(.:format)  cadenero/v1/account/sessions#create {:default=>:json}
+                    DELETE /v1/sessions(.:format)  cadenero/v1/account/sessions#delete {:default=>:json}
+           v1_users POST   /v1/users(.:format)     cadenero/v1/account/users#create {:default=>:json}
+                 v1 GET    /v1/users/:id(.:format) cadenero/v1/account/users#show {:default=>:json}
+        v1_accounts POST   /v1/accounts(.:format)  cadenero/v1/accounts#create {:default=>:json}
+               root        /                       cadenero/v1/account/dashboard#index {:default=>:json}
 ```
 
 You can check them running:

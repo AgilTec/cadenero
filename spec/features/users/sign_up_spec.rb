@@ -25,6 +25,8 @@ feature "User signup" do
     expect(json_last_response_body["user"]["membership_ids"]).to eq [second_account.id]
     get "#{root_url}v1/users/#{user_id}"
     expect(json_last_response_body["user"]["membership_ids"]).to eq [account.id, second_account.id]
+    get "#{root_url}v1/users"
+    expect(json_last_response_body["users"].length).to eq 2
   end
 
 end
