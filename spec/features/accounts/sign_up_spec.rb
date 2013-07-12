@@ -16,6 +16,8 @@ def sign_up
 end
 
 feature 'Accounts' do
+  let(:errors_already_taken_subdomain)  {{ errors: {subdomain:["has already been taken"]} }.to_json} 
+  
   scenario "creating an account" do
     sign_up
     expect(last_response.status).to eq 201
@@ -28,7 +30,6 @@ feature 'Accounts' do
     Cadenero::V1::Account.create!(@visitor)
     sign_up
     expect(last_response.status).to eq 422
-    errors = { errors: {subdomain:["has already been taken"]} }
-    expect(last_response.body).to eql(errors.to_json)
+    expect(last_response.body).to eql(errors_already_taken_subdomain)
   end
 end
