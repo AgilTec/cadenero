@@ -23,10 +23,17 @@ module Cadenero
         force_authentication!(@user)
         render json: @user, status: :created
       end
+      
       # Send as JSON the user that match the params[:user]
       def show
-        @user = account.users.where(params[:user]).first
+        @user = current_account.users.where(id: params[:id]).first
         render json: @user, status: :ok
+      end
+
+      # Send as JSON the users for the current_account
+      def index
+        @users = current_account.users
+        render json: @users, status: :ok
       end
     end
   end

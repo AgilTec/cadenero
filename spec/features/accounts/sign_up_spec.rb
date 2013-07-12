@@ -9,8 +9,8 @@ feature 'Accounts' do
   scenario "creating an account" do
     sign_up_account
     expect(last_response.status).to eq 201
-    expect(JSON.parse(last_response.body)).to have_content "authentication_token"
-    expect(JSON.parse(last_response.body)["account"]["authentication_token"]).not_to eq nil
+    expect(json_last_response_body).to have_content "authentication_token"
+    expect(json_last_response_body["account"]["authentication_token"]).not_to eq nil
   end
 
   scenario "cannot create an account with an already used subdomain" do

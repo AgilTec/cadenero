@@ -9,7 +9,7 @@ module Cadenero
 
     # Obtain the authentication_token from the account to be use for the User
     def auth_token      
-      accounts[0].authentication_token if accounts[0]
+      accounts.map{|acc| acc.authentication_token}
     end
   
   end
