@@ -23,7 +23,7 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 Generate first your Rails.API app as usual using:
 
 ```
-    $ rails-api new your_app --skip-test-unit
+    $ rails _3.2.13_ new your_app --skip-test-unit
 ```
 
 In the `Gemfile` add the following lines:

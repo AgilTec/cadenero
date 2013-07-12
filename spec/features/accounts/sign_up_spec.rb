@@ -1,34 +1,21 @@
 require 'spec_helper'
-
-def create_account
-  @visitor ||= { name: "Testy", subdomain: "test", owner_attributes:
-    {email: "testy@example.com", password: "changeme", password_confirmation: "changeme"} }
-end
-
-def find_account_by_name
-  @account = Cadenero::V1::Account.where(name: @visitor[:name]).first
-end
-
-def sign_up
-  create_account
-  post "/v1/accounts", format: :json, account: @visitor
-  find_account_by_name
-end
+require 'cadenero/testing_support/authentication_helpers'
 
 feature 'Accounts' do
+  include Cadenero::TestingSupport::AuthenticationHelpers
+
+  let(:errors_already_taken_subdomain)  {{ errors: {subdomain:["has already been taken"]} }.to_json} 
+
   scenario "creating an account" do
-    sign_up
+    sign_up_account
     expect(last_response.status).to eq 201
     expect(JSON.parse(last_response.body)).to have_content "authentication_token"
     expect(JSON.parse(last_response.body)["account"]["authentication_token"]).not_to eq nil
   end
 
   scenario "cannot create an account with an already used subdomain" do
-    create_account
-    Cadenero::V1::Account.create!(@visitor)
-    sign_up
-    expect(last_response.status).to eq 422
-    errors = { errors: {subdomain:["has already been taken"]} }
-    expect(last_response.body).to eql(errors.to_json)
+    Cadenero::V1::Account.create!(create_account)
+    sign_up_account
+    expected_json_errors(errors_already_taken_subdomain)
   end
 end
