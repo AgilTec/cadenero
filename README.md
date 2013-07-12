@@ -30,6 +30,7 @@ In the `Gemfile` add the following lines:
 ```ruby
     gem 'cadenero', github: 'AgilTec/cadenero', branch: 'rails4'
     gem 'pg'
+    gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 ```
 
 In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
