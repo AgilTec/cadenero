@@ -16,7 +16,12 @@ module Cadenero
         get :show, format: :json, id:101, use_route: :cadenero
         expect(response.status).to eq(422)
         expect(assigns(:errors)).to eq(errors_redirect_ro_sign_in)
-      end 
+      end
+      it "should show an error message if the users are requested" do
+        get :index, format: :json, use_route: :cadenero
+        expect(response.status).to eq(422)
+        expect(assigns(:errors)).to eq(errors_redirect_ro_sign_in)
+      end  
     end
 
     context "User signed in" do  
@@ -24,6 +29,7 @@ module Cadenero
         controller.stub :user_signed_in? => true
         controller.stub :current_account => account
         controller.stub :current_user => user
+        account.stub users: [user]
         account.stub_chain(:users, where: user)
         user.stub first: user
       end
@@ -32,6 +38,13 @@ module Cadenero
         get :show, format: :json, id:101, use_route: :cadenero
         expect(response.status).to eq(200)
         expect(assigns(:user)).to eq(user)
+        expect(response.body).to eq('{"user":{"id":101,"email":"testy@example.com","auth_token":[],"account_ids":[],"membership_ids":[]}}')
+      end
+      it "should provide the users JSON list" do
+        get :index, format: :json, use_route: :cadenero
+        expect(response.status).to eq(200)
+        expect(assigns(:users)).to eq([user])
+        expect(response.body).to eq('{"users":[{"id":101,"email":"testy@example.com","auth_token":[],"account_ids":[],"membership_ids":[]}]}')
       end 
     end
 

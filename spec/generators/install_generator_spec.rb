@@ -19,7 +19,7 @@ describe Cadenero::Generators::InstallGenerator do
     Dir["#{Rails.root}/db/migrate/*.rb"].sort
   end
 
-  it "copies over the migrations" do
+  it "runs the installer correctly" do
     migrations.should be_empty
     capture(:stdout) do
       described_class.start(["--user-class=User", "--no-migrate", "--current-user-helper=current_user", 
@@ -43,16 +43,33 @@ describe Cadenero::Generators::InstallGenerator do
   helper_method :cadenero_user
 
 }
-    application_controller.should include(expected_cadenero_user_method)
-    Cadenero::V1::Account.count.should == 0
-    Cadenero::User.count.should == 0
+    expect(application_controller).to include(expected_cadenero_user_method)
+    expect(Cadenero::V1::Account.count).to eq 0
+    expect(Cadenero::User.count).to eq 0
 
     FactoryGirl.create(:account)
     FactoryGirl.create(:user)
     Cadenero::Engine.load_seed
 
-    Cadenero::V1::Account.count.should == 2
-    Cadenero::User.count.should == 3
+    expect(Cadenero::V1::Account.count).to eq 2
+    expect(Cadenero::User.count).to eq  3
+  end
+
+  it "should add /config/initializers/cadenero.rb with Template if doesn't exist" do
+    FileUtils.rm("#{Rails.root}/config/initializers/cadenero.rb")
+    subject.add_cadenero_initializer
+    expect(File.exist?("#{Rails.root}/config/initializers/cadenero.rb")).to be_true 
+    cadenero_initializer = File.read("#{Rails.root}/config/initializers/cadenero.rb")
+    expect(cadenero_initializer).to include("Cadenero.user_class =")
+  end
+
+  it "should run the Cadenero migrations" do
+    subject.run_migrations
+    expect(Cadenero::User.columns.map{|column| {name: column.name}}).to eq [{:name=>"id"}, 
+                                                                            {:name=>"email"}, 
+                                                                            {:name=>"password_digest"}, 
+                                                                            {:name=>"created_at"}, 
+                                                                            {:name=>"updated_at"}]
   end
 
 end
