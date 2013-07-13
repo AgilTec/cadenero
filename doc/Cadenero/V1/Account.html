@@ -165,7 +165,7 @@ App</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_with_owner-class_method" title="create_with_owner (class method)">+ (Object) <strong>create_with_owner</strong>(params = {}) </a>
+      <a href="#create_with_owner-class_method" title="create_with_owner (class method)">+ (Cadenero::V1::Account) <strong>create_with_owner</strong>(params = {}) </a>
     
 
     
@@ -214,7 +214,7 @@ account.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_by_subdomain-class_method" title="get_by_subdomain (class method)">+ (Object) <strong>get_by_subdomain</strong>(subdomain) </a>
+      <a href="#get_by_subdomain-class_method" title="get_by_subdomain (class method)">+ (Cadenero::V1::Account) <strong>get_by_subdomain</strong>(subdomain) </a>
     
 
     
@@ -418,7 +418,7 @@ account.</p>
       <div class="method_details ">
   <h3 class="signature " id="create_with_owner-class_method">
   
-    + (<tt>Object</tt>) <strong>create_with_owner</strong>(params = {}) 
+    + (<tt><span class='object_link'><a href="" title="Cadenero::V1::Account (class)">Cadenero::V1::Account</a></span></tt>) <strong>create_with_owner</strong>(params = {}) 
   
 
   
@@ -430,7 +430,7 @@ account.</p>
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
-<p>because this model uses accepts_nested_attributes_for :owner the JSOB
+<p>because this model uses accepts_nested_attributes_for :owner the JSON
 should have owner_attributes</p>
 </div>
   </div>
@@ -476,6 +476,24 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
   
 </ul>
 
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Cadenero::V1::Account (class)">Cadenero::V1::Account</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>created</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -524,7 +542,27 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>column</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>is the name of the column that has the authentication token</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -574,7 +612,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="get_by_subdomain-class_method">
   
-    + (<tt>Object</tt>) <strong>get_by_subdomain</strong>(subdomain) 
+    + (<tt><span class='object_link'><a href="" title="Cadenero::V1::Account (class)">Cadenero::V1::Account</a></span></tt>) <strong>get_by_subdomain</strong>(subdomain) 
   
 
   
@@ -602,22 +640,35 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
   
     <li>
       
-        <span class='name'>params</span>
+        <span class='name'>subdomain</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
       
       
       
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Cadenero::V1::Account (class)">Cadenero::V1::Account</a></span></tt>)</span>
+      
+      
+      
         &mdash;
         <div class='inline'>
-<p>subdomain</p>
+<p>for that subdomain</p>
 </div>
       
     </li>
   
 </ul>
-
 
 </div><table class="source_code">
   <tr>
@@ -868,7 +919,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Fri Jul 12 19:02:57 2013 by
+  Generated on Sat Jul 13 10:47:02 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

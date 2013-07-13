@@ -16,8 +16,8 @@ module Cadenero::V1
     #    Example for the params JSON: {name: "Testy", subdomain: "test", 
     #    owner_attributes: {email: "testy@example.com", password: "changeme", 
     #    password_confirmation: "changeme"} }
-    # @return the [Cadenero::V1::Account] created
-    # @note because this model uses accepts_nested_attributes_for :owner the JSOB should have owner_attributes
+    # @return [Cadenero::V1::Account] created
+    # @note because this model uses accepts_nested_attributes_for :owner the JSON should have owner_attributes
     def self.create_with_owner(params={})
       account = new(params)
       if account.save
@@ -27,10 +27,10 @@ module Cadenero::V1
     end
 
     # Gets the account for the specified subdomain and guards errors 
-    # @param [String] params subdomain 
+    # @param [String] subdomain 
     # @example
     #    get_by_subdomain("www")
-    # @return the [Cadenero::V1::Account] for that subdomain  
+    # @return [Cadenero::V1::Account] for that subdomain  
     def self.get_by_subdomain(subdomain)
       account = find_by_subdomain(subdomain)
       if account
@@ -74,7 +74,7 @@ module Cadenero::V1
 
       protected
       # Generate a token by looping and ensuring does not already exist.
-      # @params [String] column is the name of the column that has the authentication token
+      # @param [String] column is the name of the column that has the authentication token
       # @return a unique generated authentication_token
       def generate_token(column)
         loop do
