@@ -8,10 +8,13 @@ describe Cadenero::Generators::InstallGenerator do
   # So we can know whether to backup or restore in cleanup!
   # Wish RSpec had a setting for this already
   before { flag_example! }
+
+  # For the example flag its run metadata to true
   def flag_example!
     example.metadata[:run] = true
   end
 
+  # Sort the migrations
   def migrations
     Dir["#{Rails.root}/db/migrate/*.rb"].sort
   end

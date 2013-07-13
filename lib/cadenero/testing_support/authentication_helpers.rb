@@ -59,7 +59,7 @@ module Cadenero
 
       # Expect that a owner sign in successfuly to an account
       # @param account [Cadenero::V1::Account]
-      # @return email [String] for the last response user
+      # @return [String] email for the last response user
       def successful_sign_in_owner(account)
         sign_in_user sessions_url, account_user(account.owner)
         expect(last_response.status).to eq 201
