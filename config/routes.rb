@@ -8,10 +8,11 @@ Cadenero::Engine.routes.draw do
         post '/sessions', :to => "sessions#create", default: :json
         delete '/sessions', :to => "sessions#delete", default: :json
         post '/users', :to => "users#create", default: :json
-        get '/users', :to => "users#show", default: :json
+        get '/users', :to => "users#index", default: :json
+        get '/users/:id', :to => "users#show", as: :user, default: :json
       end
     end
-    post '/accounts', :to => "accounts#create", :as => :accounts, default: :json
+    post '/accounts', :to => "accounts#create", as: :accounts, default: :json
 
   end
   root :to => "v1/account/dashboard#index", default: :json

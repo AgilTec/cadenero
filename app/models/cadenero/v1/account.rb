@@ -8,6 +8,7 @@ module Cadenero::V1
     accepts_nested_attributes_for :owner
     validates :subdomain, :presence => true, :uniqueness => true
     validates :owner, :presence => true
+    after_create :ensure_authentication_token!
 
     # Creates an account and assign the provided [Cadenero::User] as owner to the account
     # @param [Hash] params list 

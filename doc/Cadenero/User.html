@@ -195,7 +195,7 @@
       <pre class="code"><span class="info file"># File 'app/models/cadenero/user.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auth_token'>auth_token</span>      
-  <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_accounts'>accounts</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_accounts'>accounts</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_acc'>acc</span><span class='op'>|</span> <span class='id identifier rubyid_acc'>acc</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -207,7 +207,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 11 17:56:33 2013 by
+  Generated on Fri Jul 12 19:02:57 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
