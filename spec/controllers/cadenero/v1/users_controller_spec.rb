@@ -23,14 +23,15 @@ module Cadenero
       before do
         controller.stub :user_signed_in? => true
         controller.stub :current_account => account
-        account.stub :users => user
-        user.stub :wbere => user
+        controller.stub :current_user => user
+        account.stub_chain(:users, where: user)
+        user.stub first: user
       end
 
       it "should show the user JSON" do
         get :show, format: :json, id:101, use_route: :cadenero
         expect(response.status).to eq(200)
-        expect(assigns(:user)).to eq(errors_redirect_ro_sign_in)
+        expect(assigns(:user)).to eq(user)
       end 
     end
 
