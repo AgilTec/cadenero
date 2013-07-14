@@ -13,10 +13,10 @@ module Cadenero
       # Create a [Cadenero::User] based on the params sended by the client as a JSON with the user inrormation
       #
       # @example Posting the user data to be created in an account via the subdomain
-      #   post "http://#{account.subdomain}.example.com/v1/users", 
+      #   post "http://#{account.subdomain}.example.com/v1/users",
       #   user: { email: "user@example.com", password: "password", password_confirmation: "password" }
       #
-      # @return render JSON of [Cadenero::User] created and the status 201 Created: The request has been 
+      # @return render JSON of [Cadenero::User] created and the status 201 Created: The request has been
       #   fulfilled and resulted in a new resource being created.
       def create
         account = Cadenero::V1::Account.where(subdomain: request.subdomain).first
@@ -24,7 +24,7 @@ module Cadenero
         force_authentication!(@user)
         render json: @user, status: :created
       end
-      
+
       # Send as JSON the user that match the params[:user]
       def show
         @user = current_account.users.where(id: params[:id]).first

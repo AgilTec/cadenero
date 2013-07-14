@@ -3,7 +3,6 @@ require File.expand_path('../../../app/extenders/middleware/robustness', __FILE_
 Rails.application.config.middleware.use(Robustness)
 Rails.application.config.middleware.use(Apartment::Elevators::Subdomain)
 
-
 Apartment.configure do |config|
   config.excluded_models = ["Cadenero::V1::Account",
                              "Cadenero::Member",

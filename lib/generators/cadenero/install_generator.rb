@@ -3,7 +3,7 @@ module Cadenero
   # Bootstrap Cadenero in a new Rails App
   module Generators
     # Cadenero generator to be used as `rails-api g cadenero:install`
-    class InstallGenerator < Rails::Generators::Base 
+    class InstallGenerator < Rails::Generators::Base
       class_option "user-class", :type => :string
       class_option "default-account-name", :type => :string
       class_option "default-account-subdomain", :type => :string
@@ -74,7 +74,7 @@ module Cadenero
       end
 
       # Define which will be the password for the root owner for the defaul accout Multitnant Rails App.
-      def determine_default_user_password 
+      def determine_default_user_password
         Cadenero.default_user_password  = options["default-user-password"].presence ||
                       ask("What will be the password for the default user owner of the default account? [change-me]").presence ||
                       'change-me'
@@ -106,7 +106,7 @@ module Cadenero
         puts "default_account_subdomain: #{Cadenero.default_account_subdomain}"
         puts "default_user_email: #{Cadenero.default_user_email}"
         puts "default_user_password: #{Cadenero.default_user_password}"
-  
+
         load "#{Rails.root}/config/initializers/cadenero.rb"
         unless options["no-migrate"]
           puts "Creating default cadenero account and owner"

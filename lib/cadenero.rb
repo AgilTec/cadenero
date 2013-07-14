@@ -26,12 +26,12 @@ require 'warden'
 require 'apartment'
 
 module Cadenero
-  mattr_accessor  :base_path, 
-                  :user_class, 
-                  :default_account_name, 
-                  :default_account_subdomain, 
-                  :default_user_email, 
-                  :default_user_password 
+  mattr_accessor  :base_path,
+                  :user_class,
+                  :default_account_name,
+                  :default_account_subdomain,
+                  :default_user_email,
+                  :default_user_password
 
   class << self
     # @return the base path for the Cadenero named routes
