@@ -14,7 +14,7 @@ feature 'Accounts' do
   end
 
   scenario "cannot create an account with an already used subdomain" do
-    Cadenero::V1::Account.create!(create_account)
+    Cadenero::V1::Account.create!(create_account_params_json)
     sign_up_account
     expected_json_errors(errors_already_taken_subdomain)
   end

@@ -72,4 +72,19 @@ describe Cadenero::Generators::InstallGenerator do
                                                                             {:name=>"updated_at"}]
   end
 
+  context "no-migrate" do
+    before { subject.stub :options => {"no-migrate" => true}}
+    it "should not load the seeds" do
+      subject.seed_database
+      expect(Cadenero::V1::Account.count).to eq 0
+      expect(Cadenero::User.count).to eq 0      
+    end
+    it "should not output as a finished message that the migrations were run" do
+      output = capture(:stdout) do
+        subject.finished
+      end
+      expect(output).not_to include("rake db:migrate")    
+    end
+  end
+
 end
