@@ -172,12 +172,7 @@ output += step("`rake db:migrate` was run, running all the migrations against yo
         @user_class
       end
 
-      # keep track of the migration numbers
-      def next_migration_number
-        last_migration = Dir[Rails.root + "db/migrate/*.rb"].sort.last.split("/").last
-        current_migration_number = /^(\d+)_/.match(last_migration)[1]
-        current_migration_number.to_i + 1
-      end
+
     end
   end
 end

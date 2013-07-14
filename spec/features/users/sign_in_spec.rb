@@ -54,7 +54,7 @@ feature 'User sign in' do
   end
 
   it "cannot sign in if the subdomain does not exist" do 
-    sign_in_user error_url, account_user(account.owner)
+    sign_in_user error_url, account_user_params_json(account.owner)
     expected_json_errors(errors_invalid_subdomain)
   end   
 end

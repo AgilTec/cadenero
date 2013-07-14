@@ -130,6 +130,8 @@ If you discover a problem with **Cadenero**, we would like to know about it. How
 
 https://github.com/AgilTec/cadenero/wiki/Bug-reports
 
+To submit the bug or issue go to: https://github.com/AgilTec/cadenero/issues
+
 If you found a security bug, do *NOT* use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.
 
 ### Contributing
@@ -139,6 +141,10 @@ We hope that you will consider contributing to **Cadenero**. Please read this sh
 https://github.com/AgilTec/cadenero/Contributing
 
 You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into **Cadenero**'s top-level directory and run "bundle install" and "rspec".  For the tests to pass, you will need to have a Postgresql server running on your system.
+
+If you have not contribute before in a Github repo please review first: 
+  * https://help.github.com/articles/fork-a-repo
+  * https://help.github.com/articles/using-pull-requests
 
 ### Warden
 
