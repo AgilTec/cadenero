@@ -7,24 +7,17 @@ feature "User signup" do
   let!(:account) { FactoryGirl.create(:account_with_schema) }
   let(:root_url) { "http://#{account.subdomain}.example.com/" }
   scenario "under an account" do
-    sign_up_user root_url
-    expect(last_response.status).to eq 201
-    expect(json_last_response_body["user"]["membership_ids"]).to eq [account.id]
-    expect(last_request.url).to eq "#{root_url}v1/users"
-    get "#{root_url}v1/users/#{json_last_response_body['user']['id']}"
-    expect(json_last_response_body["user"]["membership_ids"]).to eq [account.id]
+    user_email = successful_sign_up_user_in_existing_account account
+    expect(user_email).to eq("user@example.com")
   end
 
   scenario "under two accounts" do
-    sign_up_user root_url
-    user_id = json_last_response_body['user']['id']
-    get "#{root_url}v1/users/#{user_id}"
-    expect(json_last_response_body["user"]["membership_ids"]).to eq [account.id]
-    second_account = FactoryGirl.create(:account_with_schema, owner: Cadenero::User.where(id: user_id).first)
-    sign_up_user "http://#{second_account.subdomain}.example.com/"
-    expect(json_last_response_body["user"]["membership_ids"]).to eq [second_account.id]
-    get "#{root_url}v1/users/#{user_id}"
-    expect(json_last_response_body["user"]["membership_ids"]).to eq [account.id, second_account.id]
+    account_user_email = successful_sign_up_user_in_existing_account account
+    owner = Cadenero::User.where(email: account_user_email).first
+    second_account = FactoryGirl.create(:account_with_schema, owner: owner)
+    second_account_user_email = successful_sign_up_user_in_existing_account second_account
+    get "#{root_url}v1/users/#{owner.id}"
+    expect_subject_ids_to_have("user", "membership_ids", [account.id, second_account.id], 200)
     get "#{root_url}v1/users"
     expect(json_last_response_body["users"].length).to eq 2
   end
