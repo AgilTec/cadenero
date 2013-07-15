@@ -400,12 +400,12 @@ account.</p>
       <pre class="lines">
 
 
-71
-72
-73</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span>
   <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='symbol'>:authentication_token</span><span class='rparen'>)</span>
@@ -507,7 +507,9 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 24
 25
 26
-27</pre>
+27
+28
+29</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 21</span>
@@ -516,6 +518,8 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
   <span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
     <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_users'>users</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span>
+    <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_create_schema'>create_schema</span>
+    <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_account'>account</span>
 <span class='kw'>end</span></pre>
@@ -588,15 +592,15 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-79
-80
 81
 82
 83
-84</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
@@ -676,17 +680,17 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-34
-35
 36
 37
 38
 39
 40
-41</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_by_subdomain'>get_by_subdomain</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_account'>account</span> <span class='op'>=</span> <span class='id identifier rubyid_find_by_subdomain'>find_by_subdomain</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
@@ -733,12 +737,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-44
-45
-46</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_schema'>create_schema</span>
   <span class='const'>Apartment</span><span class='op'>::</span><span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
@@ -774,12 +778,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-49
-50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token'>ensure_authentication_token</span>
   <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -815,12 +819,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-54
-55
-56</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
   <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -856,12 +860,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-59
-60
-61</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span>
@@ -897,13 +901,13 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-64
-65
 66
-67</pre>
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span>
   <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
@@ -919,7 +923,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 13 10:47:02 2013 by
+  Generated on Sun Jul 14 21:53:14 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

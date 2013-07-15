@@ -18,6 +18,8 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
 
+You can use [Warden](https://github.com/hassox/warden) or [Devise](https://github.com/plataformatec/devise) directly but for API apps the rewritting and monkey patching can be messy.
+
 ### Installing **Cadenero**
 
 Generate first your Rails.API app as usual using:
@@ -145,6 +147,20 @@ You will usually want to write tests for your changes using BDD tools as RSpec, 
 If you have not contribute before in a Github repo please review first: 
   * https://help.github.com/articles/fork-a-repo
   * https://help.github.com/articles/using-pull-requests
+
+
+#### Running the Specs
+**Cadenero** use [RSpec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara). If you want to extend **Cadenero** please fork and clone the repo. To run the specs you only need to do:
+```
+    $ RAILS_ENV=test bundle exec rake db:create
+    $ RAILS_ENV=test bundle exec rake db:migrate
+    $ bundle exec rspec spec
+```
+
+You can `binstub` the command bins to avoid writing `bundle exec`. You only need to write:
+```
+    $ bundle binstubs rspec-core
+    $ bundle binstubs rake
 
 ### Warden
 

@@ -22,6 +22,8 @@ module Cadenero::V1
       account = new(params)
       if account.save
         account.users << account.owner
+        account.create_schema
+        account.ensure_authentication_token!
       end
       account
     end

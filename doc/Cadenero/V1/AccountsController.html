@@ -238,12 +238,12 @@ as a JSON with the account inrormation.</p>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_account_params'>account_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:account</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:subdomain</span><span class='comma'>,</span> <span class='label'>owner_attributes:</span> <span class='lbracket'>[</span><span class='symbol'>:email</span><span class='comma'>,</span> <span class='symbol'>:password</span><span class='comma'>,</span> <span class='symbol'>:password_confirmation</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -325,9 +325,7 @@ created.</p>
 30
 31
 32
-33
-34
-35</pre>
+33</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/cadenero/v1/accounts_controller.rb', line 22</span>
@@ -335,8 +333,6 @@ created.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_create_with_owner'>create_with_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_account_params'>account_params</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
-    <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_create_schema'>create_schema</span>
-    <span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
     <span class='id identifier rubyid_force_authentication!'>force_authentication!</span><span class='lparen'>(</span><span class='ivar'>@account</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='ivar'>@account</span><span class='comma'>,</span> <span class='label'>serializer:</span> <span class='const'>AccountSerializer</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:created</span>
   <span class='kw'>else</span>
@@ -399,7 +395,7 @@ created.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jul 13 10:47:02 2013 by
+  Generated on Sun Jul 14 21:53:14 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

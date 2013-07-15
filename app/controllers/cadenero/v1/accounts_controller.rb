@@ -22,8 +22,6 @@ module Cadenero
       def create
         @account = Cadenero::V1::Account.create_with_owner(account_params)
         if @account.valid?
-          @account.create_schema
-          @account.ensure_authentication_token!
           force_authentication!(@account.owner)
           render json: @account, serializer: AccountSerializer, status: :created
         else

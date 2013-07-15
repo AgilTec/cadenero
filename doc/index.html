@@ -81,6 +81,8 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <h3 id="why-cadenero">Why Cadenero?</h3>
 <p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. </p>
 
+<p>You can use <a href="https://github.com/hassox/warden">Warden</a> or <a href="https://github.com/plataformatec/devise">Devise</a> directly but for API apps the rewritting and monkey patching can be messy.</p>
+
 <h3 id="installing-cadenero">Installing <strong>Cadenero</strong></h3>
 
 <p>Generate first your Rails.API app as usual using:</p>
@@ -195,6 +197,8 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 
 <p>https://github.com/AgilTec/cadenero/wiki/Bug-reports</p>
 
+<p>To submit the bug or issue go to: https://github.com/AgilTec/cadenero/issues</p>
+
 <p>If you found a security bug, do <em>NOT</em> use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.</p>
 
 <h3 id="contributing">Contributing</h3>
@@ -204,6 +208,23 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 <p>https://github.com/AgilTec/cadenero/Contributing</p>
 
 <p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>’s top-level directory and run “bundle install” and “rspec”.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
+
+<p>If you have not contribute before in a Github repo please review first: 
+  * https://help.github.com/articles/fork-a-repo
+  * https://help.github.com/articles/using-pull-requests</p>
+
+<h4 id="running-the-specs">Running the Specs</h4>
+<p><strong>Cadenero</strong> use <a href="https://github.com/rspec/rspec">RSpec</a> and <a href="https://github.com/jnicklas/capybara">Capybara</a>. If you want to extend <strong>Cadenero</strong> please fork and clone the repo. To run the specs you only need to do:
+<code>
+    $ RAILS_ENV=test bundle exec rake db:create
+    $ RAILS_ENV=test bundle exec rake db:migrate
+    $ bundle exec rspec spec
+</code></p>
+
+<p>You can <code>binstub</code> the command bins to avoid writing <code>bundle exec</code>. You only need to write:
+```
+    $ bundle binstubs rspec-core
+    $ bundle binstubs rake</p>
 
 <h3 id="warden">Warden</h3>
 
@@ -232,7 +253,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 </div></div>
 
     <div id="footer">
-  Generated on Sat Jul 13 10:47:01 2013 by
+  Generated on Sun Jul 14 21:53:14 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

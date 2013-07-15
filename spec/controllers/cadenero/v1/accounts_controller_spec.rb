@@ -14,8 +14,6 @@ module Cadenero
         account.stub :valid? => true
       end     
       it "should create a schema and ensure a token is returned for the account on successful creation" do
-        account.should_receive(:create_schema)
-        account.should_receive(:ensure_authentication_token!)
         post :create, format: :json, account: { name: "First Account", subdomain: "first" }, use_route: :cadenero
         expect(response.status).to eq(201)
         expect(assigns(:account)).to eq(account)
