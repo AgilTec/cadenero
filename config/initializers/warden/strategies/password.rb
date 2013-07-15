@@ -15,7 +15,7 @@ Warden::Strategies.add(:password) do
   def valid?
     subdomain.present? && json_params["user"]
   end
-  
+
   def authenticate!
     account = Cadenero::V1::Account.get_by_subdomain(subdomain)
     if account

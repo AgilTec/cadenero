@@ -28,7 +28,7 @@
     end
   end
 
-# Check to see if there is an authenticated user  
+# Check to see if there is an authenticated user
   def user_signed_in?
     env['warden'].authenticated?(:user) unless env['warden'].nil?
   end

@@ -16,7 +16,8 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 ## Information
 
 ### Why Cadenero?
-**"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules. 
+**"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.
+You can use [Warden](https://github.com/hassox/warden) or [Devise](https://github.com/plataformatec/devise) directly but for API apps the rewritting and monkey patching can be messy.
 
 ### Installing **Cadenero**
 
@@ -111,7 +112,7 @@ Have fun!
 You can check them running:
 
 ```
-    rake routes
+    $ rake routes
 ```
 ### Documentation
 You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/frames
@@ -139,6 +140,20 @@ We hope that you will consider contributing to **Cadenero**. Please read this sh
 https://github.com/AgilTec/cadenero/Contributing
 
 You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into **Cadenero**'s top-level directory and run "bundle install" and "rspec".  For the tests to pass, you will need to have a Postgresql server running on your system.
+
+#### Running the Specs
+**Cadenero** use [RSpec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara). If you want to extend **Cadenero** please fork and clone the repo. To run the specs you only need to do:
+```
+    $ RAILS_ENV=test bundle exec rake db:create
+    $ RAILS_ENV=test bundle exec rake db:migrate
+    $ bundle exec rspec spec
+```
+
+You can `binstub` the command bins to avoid writing `bundle exec`. You only need to write:
+```
+    $ bundle binstubs rspec-core
+    $ bundle binstubs rake
+```
 
 ### Warden
 

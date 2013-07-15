@@ -4,7 +4,7 @@ module Cadenero::V1
     belongs_to :owner,  :class_name => "Cadenero::User"
     has_many :members, :class_name => "Cadenero::Member"
     has_many :users, :through => :members,  :class_name => "Cadenero::User"
-    
+
     accepts_nested_attributes_for :owner
     attr_accessible :name, :subdomain, :owner_attributes, :owner
     validates :subdomain, :presence => true, :uniqueness => true
@@ -12,10 +12,10 @@ module Cadenero::V1
     after_create :ensure_authentication_token!
 
     # Creates an account and assign the provided [Cadenero::User] as owner to the account
-    # @param [Hash] params list 
+    # @param [Hash] params list
     # @example
-    #    Example for the params JSON: {name: "Testy", subdomain: "test", 
-    #    owner_attributes: {email: "testy@example.com", password: "changeme", 
+    #    Example for the params JSON: {name: "Testy", subdomain: "test",
+    #    owner_attributes: {email: "testy@example.com", password: "changeme",
     #    password_confirmation: "changeme"} }
     # @return [Cadenero::V1::Account] created
     # @note because this model uses accepts_nested_attributes_for :owner the JSOB should have owner_attributes
@@ -23,15 +23,17 @@ module Cadenero::V1
       account = new(params)
       if account.save
         account.users << account.owner
+        account.create_schema
+        account.ensure_authentication_token!
       end
       account
     end
 
-    # Gets the account for the specified subdomain and guards errors 
-    # @param [String] subdomain 
+    # Gets the account for the specified subdomain and guards errors
+    # @param [String] subdomain
     # @example
     #    get_by_subdomain("www")
-    # @return [Cadenero::V1::Account] for that subdomain  
+    # @return [Cadenero::V1::Account] for that subdomain
     def self.get_by_subdomain(subdomain)
       account = find_by_subdomain(subdomain)
       if account

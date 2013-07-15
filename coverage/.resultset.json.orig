@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/factories/account_factory.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/support/factories/account_factory.rb": [
         1,
         1,
         12,
@@ -18,7 +18,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/factories/user_factory.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/support/factories/user_factory.rb": [
         1,
         1,
         12,
@@ -26,7 +26,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/support/generator_macros.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/support/generator_macros.rb": [
         1,
         1,
         1,
@@ -57,7 +57,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/controllers/cadenero/v1/users_controller_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/controllers/cadenero/v1/users_controller_spec.rb": [
         1,
         null,
         1,
@@ -112,7 +112,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/features/accounts/sign_up_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/features/accounts/sign_up_spec.rb": [
         1,
         1,
         null,
@@ -135,7 +135,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/lib/cadenero/testing_support/authentication_helpers.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/lib/cadenero/testing_support/authentication_helpers.rb": [
         1,
         null,
         1,
@@ -236,7 +236,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/features/users/sign_in_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/features/users/sign_in_spec.rb": [
         1,
         1,
         1,
@@ -298,7 +298,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/lib/cadenero/testing_support/subdomain_helpers.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/lib/cadenero/testing_support/subdomain_helpers.rb": [
         1,
         null,
         1,
@@ -315,7 +315,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/features/users/sign_up_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/features/users/sign_up_spec.rb": [
         1,
         1,
         null,
@@ -349,7 +349,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/generators/install_generator_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/generators/install_generator_spec.rb": [
         1,
         1,
         null,
@@ -441,7 +441,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/lib/generators/cadenero/install_generator.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/lib/generators/cadenero/install_generator.rb": [
         1,
         1,
         null,
@@ -621,7 +621,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/models/cadenero/account_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/models/cadenero/account_spec.rb": [
         1,
         null,
         1,
@@ -660,7 +660,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/models/cadenero/member_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/models/cadenero/member_spec.rb": [
         1,
         null,
         1,
@@ -669,7 +669,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/models/cadenero/user_spec.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/models/cadenero/user_spec.rb": [
         1,
         null,
         1,
@@ -678,7 +678,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/config/initializers/cadenero.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/dummy/config/initializers/cadenero.rb": [
         1,
         null,
         null,
@@ -693,7 +693,7 @@
         null,
         null
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/db/seeds.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/db/seeds.rb": [
         1,
         null,
         null,
@@ -703,7 +703,7 @@
         1,
         1
       ],
-      "/Users/manuelevidaurrea/Documents/work/agiltec/workspace/ruby/rails/cadenero/spec/dummy/db/schema.rb": [
+      "/Users/supinchecompilla/rails3tests/cadenero/spec/dummy/db/schema.rb": [
         null,
         null,
         null,
@@ -751,7 +751,11 @@
         null
       ]
     },
-    "timestamp": 1373853809
+<<<<<<< HEAD
+    "timestamp": 1373769695
+=======
+    "timestamp": 1373814693
+>>>>>>> e167fcb91d2e06577b68077f7faf1bafeb15ec27
   },
   "Cucumber Features": {
     "coverage": {

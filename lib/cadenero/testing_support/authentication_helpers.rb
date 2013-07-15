@@ -19,7 +19,7 @@ module Cadenero
       def find_account_by_email
         @account = Cadenero::V1::Account.where(name: create_account_params_json_user_params_json_params_json[:email]).first
       end
-      
+
       # find an account in the Database using the name of the owner
       # @return [Cadenero::V1::Account] the corresponding account that was founded
       def find_account_by_name
@@ -39,7 +39,7 @@ module Cadenero
       # @param msg [JSON] the  errors: as JSON
       def expected_json_errors(msg)
         expect(last_response.body).to eql(msg)
-        expect(last_response.status).to eq 422    
+        expect(last_response.status).to eq 422
       end
 
       # Expect that the JSON response will be a default error message when the user has not signed in yet

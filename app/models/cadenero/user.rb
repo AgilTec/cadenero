@@ -1,5 +1,5 @@
 module Cadenero
-  # Defines a user of one or more accounts for the multitenant  Rails App
+  # Defines a user of one or more accounts for the multitenant Rails App
   class User < ActiveRecord::Base
     attr_accessible :email, :password, :password_confirmation
     has_secure_password
@@ -8,9 +8,9 @@ module Cadenero
     has_many :memberships, through: :members, source: :account
 
     # Obtain the authentication_token from the account to be use for the User
-    def auth_token      
+    def auth_token
       accounts.map{|acc| acc.authentication_token}
     end
-  
+
   end
 end
