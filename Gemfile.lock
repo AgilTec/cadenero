@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    cadenero (0.0.2.b4)
+    cadenero (0.0.2.b5)
       actionpack (~> 4.0.0)
       active_model_serializers (~> 0.8.1)
       apartment (~> 0.22)

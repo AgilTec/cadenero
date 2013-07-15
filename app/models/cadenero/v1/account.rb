@@ -4,20 +4,20 @@ module Cadenero::V1
     belongs_to :owner,  :class_name => "Cadenero::User"
     has_many :members, :class_name => "Cadenero::Member"
     has_many :users, :through => :members,  :class_name => "Cadenero::User"
-    
+
     accepts_nested_attributes_for :owner
     validates :subdomain, :presence => true, :uniqueness => true
     validates :owner, :presence => true
     after_create :ensure_authentication_token!
 
     # Creates an account and assign the provided [Cadenero::User] as owner to the account
-    # @param [Hash] params list 
+    # @param [Hash] params list
     # @example
-    #    Example for the params JSON: {name: "Testy", subdomain: "test", 
-    #    owner_attributes: {email: "testy@example.com", password: "changeme", 
+    #    Example for the params JSON: {name: "Testy", subdomain: "test",
+    #    owner_attributes: {email: "testy@example.com", password: "changeme",
     #    password_confirmation: "changeme"} }
     # @return [Cadenero::V1::Account] created
-    # @note because this model uses accepts_nested_attributes_for :owner the JSON should have owner_attributes
+    # @note because this model uses accepts_nested_attributes_for :owner the JSOB should have owner_attributes
     def self.create_with_owner(params={})
       account = new(params)
       if account.save
@@ -28,11 +28,11 @@ module Cadenero::V1
       account
     end
 
-    # Gets the account for the specified subdomain and guards errors 
-    # @param [String] subdomain 
+    # Gets the account for the specified subdomain and guards errors
+    # @param [String] subdomain
     # @example
     #    get_by_subdomain("www")
-    # @return [Cadenero::V1::Account] for that subdomain  
+    # @return [Cadenero::V1::Account] for that subdomain
     def self.get_by_subdomain(subdomain)
       account = find_by_subdomain(subdomain)
       if account
@@ -45,6 +45,11 @@ module Cadenero::V1
     # Create a database schema using the subdomain
     def create_schema
       Apartment::Database.create(subdomain)
+    end
+
+    # Obtain the auth_token from the members to be use for the Account
+    def auth_token
+      members.map{|member| member.auth_token}
     end
 
     # Generate authentication token unless already exists.
@@ -77,7 +82,7 @@ module Cadenero::V1
       protected
       # Generate a token by looping and ensuring does not already exist.
       # @param [String] column is the name of the column that has the authentication token
-      # @return a unique generated authentication_token
+      # @return {String]} a unique generated authentication_token
       def generate_token(column)
         loop do
           token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')

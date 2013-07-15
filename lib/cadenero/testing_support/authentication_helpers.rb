@@ -5,8 +5,8 @@ module Cadenero
     module AuthenticationHelpers
       # creates a dummy user for testing
       # @return a dummy user JSON parameters for sign up
-      def create_account_params_json_user_params_json_params_json
-        @user ||= { email: "user@example.com", password: "password", password_confirmation: "password" }
+      def create_user_params_json(suffix = nil)
+        @user = { email: "user#{suffix}@example.com", password: "password", password_confirmation: "password" }
       end
       # @param user [Cadenero::User]
       # @return [JSON] a dummy user JSON parameters for sign in
@@ -17,9 +17,9 @@ module Cadenero
       # find an account in the Database using the email of the owner
       # @return [Cadenero::V1::Account] the corresponding account that was founded
       def find_account_by_email
-        @account = Cadenero::V1::Account.where(name: create_account_params_json_user_params_json_params_json[:email]).first
+        @account = Cadenero::V1::Account.where(name: create_user_params_json[:email]).first
       end
-      
+
       # find an account in the Database using the name of the owner
       # @return [Cadenero::V1::Account] the corresponding account that was founded
       def find_account_by_name
@@ -39,7 +39,7 @@ module Cadenero
       # @param msg [JSON] the  errors: as JSON
       def expected_json_errors(msg)
         expect(last_response.body).to eql(msg)
-        expect(last_response.status).to eq 422    
+        expect(last_response.status).to eq 422
       end
 
       # Expect that the JSON response will be a default error message when the user has not signed in yet
@@ -52,8 +52,8 @@ module Cadenero
 
       # Sign up a dummy user for testing
       # @return [Cadenero::V1::Account] the corresponding account that was founded
-      def sign_up_user(url)
-        post "#{url}/v1/users", format: :json, user: create_account_params_json_user_params_json_params_json
+      def sign_up_user(url, suffix=nil)
+        post "#{url}/v1/users", format: :json, user: create_user_params_json(suffix)
         find_account_by_email
       end
 
@@ -64,14 +64,45 @@ module Cadenero
         expect(json_last_response_body).to have_content "auth_token"
         expect(json_last_response_body[subject]["auth_token"]).to eq auth_token
       end
-      # Expect that a owner sign in successfuly to an account
+
+      # Expect that the last_response JSON key subject for the ids_key to have the ids_values
+      # @param [String] subject The key to look in the JSON
+      # @param [String] ids_key THe key for the subject that identify the ids
+      # @param [Array] ids_values THe array of expected ids values
+      # @param [Integer] http_code Optional expected returned HTTP Code from last_response
+      def expect_subject_ids_to_have(subject, ids_key, ids_values, http_code=201)
+        expect(last_response.status).to eq http_code
+        expect(json_last_response_body[subject][ids_key]).to eq ids_values
+      end
+
+      # Expect that a owner sign in successfuly to one of his accounts
       # @param  [Cadenero::V1::Account] account
       # @return [String] email  for the last response user
       def successful_sign_in_owner(account)
         sign_in_user sessions_url, account_user_params_json(account.owner)
-        expect(last_response.status).to eq 201
-        expect(json_last_response_body["user"]["account_ids"]).to eq [account.id]
-        expect_auth_token("user", [account.authentication_token])
+        expect_subject_ids_to_have("user", "account_ids", [account.id])
+        expect_auth_token("user", account.auth_token)
+        return json_last_response_body["user"]["email"]
+      end
+
+      # Expect that a user sign in successfuly to an account
+      # @param  [Cadenero::V1::Account] account
+      # @return [String] email  for the last response user
+      def successful_sign_in_user(account, user)
+        sign_in_user sessions_url, user
+        expect_subject_ids_to_have("user", "membership_ids", [account.id])
+        return json_last_response_body["user"]["email"]
+      end
+
+      # Expect that a user sign in successfuly to an account
+      # @param  [Cadenero::V1::Account] account
+      # @return [String] email  for the last response user
+      def successful_sign_up_user_in_existing_account(account, suffix=nil)
+        url = "http://#{account.subdomain}.example.com/" 
+        sign_up_user url, suffix
+        expect(last_request.url).to eq "#{url}v1/users"
+        get "#{url}v1/users/#{json_last_response_body['user']['id']}"
+        expect_subject_ids_to_have("user", "membership_ids", [account.id], 200)
         return json_last_response_body["user"]["email"]
       end
 

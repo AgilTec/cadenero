@@ -190,7 +190,7 @@ account.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#generate_token-class_method" title="generate_token (class method)">+ (Object) <strong>generate_token</strong>(column) </a>
+      <a href="#generate_token-class_method" title="generate_token (class method)">+ (String) <strong>generate_token</strong>(column) </a>
     
 
     
@@ -243,6 +243,30 @@ account.</p>
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#auth_token-instance_method" title="#auth_token (instance method)">- (Object) <strong>auth_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Obtain the auth_token from the members to be use for the Account.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -400,12 +424,12 @@ account.</p>
       <pre class="lines">
 
 
-73
-74
-75</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span>
   <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='symbol'>:authentication_token</span><span class='rparen'>)</span>
@@ -430,7 +454,7 @@ account.</p>
   <div class="note notetag">
     <strong>Note:</strong>
     <div class='inline'>
-<p>because this model uses accepts_nested_attributes_for :owner the JSON
+<p>because this model uses accepts_nested_attributes_for :owner the JSOB
 should have owner_attributes</p>
 </div>
   </div>
@@ -448,8 +472,8 @@ account</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code>Example for the params JSON: {name: &quot;Testy&quot;, subdomain: &quot;test&quot;, 
-owner_attributes: {email: &quot;testy@example.com&quot;, password: &quot;changeme&quot;, 
+      <pre class="example code"><code>Example for the params JSON: {name: &quot;Testy&quot;, subdomain: &quot;test&quot;,
+owner_attributes: {email: &quot;testy@example.com&quot;, password: &quot;changeme&quot;,
 password_confirmation: &quot;changeme&quot;} }</code></pre>
     
   </div>
@@ -531,7 +555,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="generate_token-class_method">
   
-    + (<tt>Object</tt>) <strong>generate_token</strong>(column)  <span class="extras">(protected)</span>
+    + (<tt>String</tt>) <strong>generate_token</strong>(column)  <span class="extras">(protected)</span>
   
 
   
@@ -573,13 +597,13 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
     <li>
       
       
-        <span class='type'></span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
-        
+        &mdash;
         <div class='inline'>
-<p>a unique generated authentication_token</p>
+<p>} a unique generated authentication_token</p>
 </div>
       
     </li>
@@ -592,15 +616,15 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-81
-82
-83
-84
-85
-86</pre>
+86
+87
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_token'>generate_token</span><span class='lparen'>(</span><span class='id identifier rubyid_column'>column</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
@@ -712,7 +736,48 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="create_schema-instance_method">
+  <h3 class="signature first" id="auth_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>auth_token</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Obtain the auth_token from the members to be use for the Account</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_auth_token'>auth_token</span>
+  <span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_member'>member</span><span class='op'>|</span> <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_auth_token'>auth_token</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_schema-instance_method">
   
     - (<tt>Object</tt>) <strong>create_schema</strong> 
   
@@ -778,12 +843,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-51
-52
-53</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token'>ensure_authentication_token</span>
   <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -819,12 +884,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ensure_authentication_token!'>ensure_authentication_token!</span>
   <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_authentication_token'>authentication_token</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
@@ -860,12 +925,12 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-61
-62
-63</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_authentication_token'>authentication_token</span>
@@ -901,13 +966,13 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
       <pre class="lines">
 
 
-66
-67
-68
-69</pre>
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/v1/account.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_authentication_token!'>reset_authentication_token!</span>
   <span class='id identifier rubyid_reset_authentication_token'>reset_authentication_token</span>
@@ -923,7 +988,7 @@ password_confirmation: &quot;changeme&quot;} }</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Sun Jul 14 21:53:14 2013 by
+  Generated on Mon Jul 15 13:45:07 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

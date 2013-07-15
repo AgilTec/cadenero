@@ -7,7 +7,7 @@ module Cadenero
       manager.default_strategies :password
     end
 
-    config.generators do |g|                                                               
+    config.generators do |g|
       g.test_framework :rspec
       g.integration_tool :rspec
     end

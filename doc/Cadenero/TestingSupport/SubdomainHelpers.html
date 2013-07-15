@@ -183,7 +183,7 @@ visible for Capybara</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_within_account_subdomain'>within_account_subdomain</span>
   <span class='id identifier rubyid_let'>let</span><span class='lparen'>(</span><span class='symbol'>:subdomain_url</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rbrace'>}</span><span class='tstring_content'>.example.com</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_before'>before</span> <span class='lbrace'>{</span> <span class='const'>Capybara</span><span class='period'>.</span><span class='id identifier rubyid_default_host'>default_host</span> <span class='op'>=</span> <span class='id identifier rubyid_subdomain_url'>subdomain_url</span> <span class='rbrace'>}</span> 
+  <span class='id identifier rubyid_before'>before</span> <span class='lbrace'>{</span> <span class='const'>Capybara</span><span class='period'>.</span><span class='id identifier rubyid_default_host'>default_host</span> <span class='op'>=</span> <span class='id identifier rubyid_subdomain_url'>subdomain_url</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_after'>after</span> <span class='lbrace'>{</span> <span class='const'>Capybara</span><span class='period'>.</span><span class='id identifier rubyid_default_host'>default_host</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://example.com</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
   <span class='kw'>yield</span>
 <span class='kw'>end</span></pre>
@@ -197,7 +197,7 @@ visible for Capybara</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Jul 14 21:53:14 2013 by
+  Generated on Mon Jul 15 13:45:07 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
