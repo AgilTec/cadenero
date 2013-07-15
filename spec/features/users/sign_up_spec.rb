@@ -17,7 +17,7 @@ feature "User signup" do
     second_account = FactoryGirl.create(:account_with_schema, owner: owner)
     second_account_user_email = successful_sign_up_user_in_existing_account second_account
     get "#{root_url}v1/users/#{owner.id}"
-    expect_subject_ids_to_have("user", "membership_ids", [account.id, second_account.id], 200)
+    expect_subject_ids_to_have("user", "membership_ids", [second_account.id, account.id], 200)
     get "#{root_url}v1/users"
     expect(json_last_response_body["users"].length).to eq 2
   end

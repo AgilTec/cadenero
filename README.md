@@ -31,7 +31,7 @@ Generate first your Rails app as usual using:
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b4'
+    gem 'cadenero', '~> 0.0.2.b5'
     gem 'pg'
 ```
 
@@ -123,7 +123,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 - [ ] Examples of use and demo
 
 ### Versions
-**Cadenero** use [Semantic Versioning 2.0.0](http://semver.org/) the current version is: 0.0.2-alpha meaning MAJOR.MINOR.PATCH format
+**Cadenero** use [Semantic Versioning 2.0.0](http://semver.org/) the current version is: 0.0.2-b5 meaning MAJOR.MINOR.PATCH format
 
 ### Bug reports
 

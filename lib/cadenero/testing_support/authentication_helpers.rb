@@ -6,7 +6,7 @@ module Cadenero
       # creates a dummy user for testing
       # @return a dummy user JSON parameters for sign up
       def create_user_params_json(suffix = nil)
-        @user ||= { email: "user#{suffix}@example.com", password: "password", password_confirmation: "password" }
+        @user = { email: "user#{suffix}@example.com", password: "password", password_confirmation: "password" }
       end
       # @param user [Cadenero::User]
       # @return [JSON] a dummy user JSON parameters for sign in
@@ -81,7 +81,7 @@ module Cadenero
       def successful_sign_in_owner(account)
         sign_in_user sessions_url, account_user_params_json(account.owner)
         expect_subject_ids_to_have("user", "account_ids", [account.id])
-        expect_auth_token("user", [account.authentication_token])
+        expect_auth_token("user", account.auth_token)
         return json_last_response_body["user"]["email"]
       end
 

@@ -41,6 +41,21 @@ feature 'User sign in' do
       check_error_for_not_signed_in_yet
     end
 
+    scenario "two users of the same account should have different auth_tokens" do
+      user_email = successful_sign_in_owner account
+      user_auth_token = json_last_response_body["user"]["auth_token"]
+      user = Cadenero::User.where(email: user_email).first
+      delete sessions_url, id: user.id
+      check_error_for_not_signed_in_yet
+      second_user_email = successful_sign_up_user_in_existing_account account, "_second"
+      second_user = Cadenero::User.where(email: second_user_email).first
+      successful_sign_in_user(account, account_user_params_json(second_user))
+      second_user_auth_token = json_last_response_body["user"]["auth_token"]
+      expect(second_user_auth_token).not_to eq([])
+      expect(user).not_to eq(second_user)
+      expect(user_auth_token).not_to eq(second_user_auth_token)
+    end
+
   end
 
   context "without sign in" do

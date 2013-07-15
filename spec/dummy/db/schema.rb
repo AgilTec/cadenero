@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612073709) do
+ActiveRecord::Schema.define(:version => 20130715174857) do
 
   create_table "cadenero_accounts", :force => true do |t|
     t.string   "name"
@@ -30,9 +30,11 @@ ActiveRecord::Schema.define(:version => 20130612073709) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "auth_token"
   end
 
   add_index "cadenero_members", ["account_id"], :name => "index_cadenero_members_on_account_id"
+  add_index "cadenero_members", ["auth_token"], :name => "index_cadenero_members_on_auth_token"
   add_index "cadenero_members", ["user_id"], :name => "index_cadenero_members_on_user_id"
 
   create_table "cadenero_users", :force => true do |t|

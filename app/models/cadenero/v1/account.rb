@@ -48,6 +48,11 @@ module Cadenero::V1
       Apartment::Database.create(subdomain)
     end
 
+    # Obtain the auth_token from the members to be use for the Account
+    def auth_token
+      members.map{|member| member.auth_token}
+    end
+
     # Generate authentication token unless already exists.
     def ensure_authentication_token
       reset_authentication_token if authentication_token.blank?
