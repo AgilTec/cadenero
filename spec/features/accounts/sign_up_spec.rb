@@ -1,8 +1,6 @@
 require 'spec_helper'
-require 'cadenero/testing_support/authentication_helpers'
 
 feature 'Accounts' do
-  include Cadenero::TestingSupport::AuthenticationHelpers
 
   let(:errors_already_taken_subdomain)  {{ errors: {subdomain:["has already been taken"]} }.to_json} 
 

@@ -8,6 +8,7 @@ require 'factory_girl'
 require 'database_cleaner'
 require 'coveralls'
 require 'cadenero/testing_support/database_cleaning'
+require 'cadenero/testing_support/authentication_helpers'
 
 Coveralls.wear!
 
@@ -26,6 +27,7 @@ Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
 RSpec.configure do |config|
   include ApiHelper
   config.include Cadenero::TestingSupport::DatabaseCleaning
+  config.include Cadenero::TestingSupport::AuthenticationHelpers, type: :feature
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

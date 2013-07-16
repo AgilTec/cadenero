@@ -1,8 +1,6 @@
 require 'spec_helper'
-require 'cadenero/testing_support/authentication_helpers'
 
 feature "User signup" do
-  include Cadenero::TestingSupport::AuthenticationHelpers
 
   let!(:account) { FactoryGirl.create(:account_with_schema) }
   let(:root_url) { "http://#{account.subdomain}.example.com/" }

@@ -1,10 +1,8 @@
 require 'spec_helper'
 require 'cadenero/testing_support/subdomain_helpers'
-require 'cadenero/testing_support/authentication_helpers'
 
 feature 'User sign in' do
   extend Cadenero::TestingSupport::SubdomainHelpers
-  include Cadenero::TestingSupport::AuthenticationHelpers
 
   let(:account) { FactoryGirl.create(:account_with_schema) }
   let(:errors_redirect_ro_sign_in) {{errors: %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}, links: "/v1/sessions"}.to_json}
