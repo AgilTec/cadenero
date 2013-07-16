@@ -8,7 +8,7 @@ module Cadenero
     end
 
     config.generators do |g|
-      g.test_framework :rspec
+      g.test_framework :rspec, view_specs: false
       g.integration_tool :rspec
     end
 
