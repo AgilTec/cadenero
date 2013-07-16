@@ -3,6 +3,7 @@ module Cadenero
   module TestingSupport
     # RSpec Helper for subdomains
     module AuthenticationHelpers
+      include Warden::Test::Helpers
       # creates a dummy user for testing
       # @return a dummy user JSON parameters for sign up
       def create_user_params_json(suffix = nil)

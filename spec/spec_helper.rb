@@ -7,6 +7,7 @@ require 'capybara/rspec'
 require 'factory_girl'
 require 'database_cleaner'
 require 'coveralls'
+require 'cadenero/testing_support/database_cleaning'
 
 Coveralls.wear!
 
@@ -24,6 +25,7 @@ Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
   include ApiHelper
+  config.include Cadenero::TestingSupport::DatabaseCleaning
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -38,7 +40,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -51,28 +53,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
-    header "Content-Type", "application/json"
-  end
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-  config.after(:each) do
-    Apartment::Database.reset
-    DatabaseCleaner.clean
-    connection = ActiveRecord::Base.connection.raw_connection
-    schemas = connection.query(%Q{
-      SELECT 'drop schema ' || nspname || ' cascade;'
-      from pg_namespace 
-      where nspname != 'public' 
-      AND nspname != 'pg_toast' 
-      AND nspname != 'pg_catalog' 
-      AND nspname != 'information_schema';
-    })
-    schemas.each do |query|
-      connection.query(query.values.first)
-    end
-  end
 end
