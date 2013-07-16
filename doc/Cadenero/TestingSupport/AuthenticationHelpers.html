@@ -75,11 +75,15 @@
     
   
     
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">Warden::Test::Helpers</dd>
+      
+    
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/cadenero/testing_support/authentication_helpers.rb</dd>
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/cadenero/testing_support/authentication_helpers.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -503,6 +507,7 @@ msg.</p>
   
 
 
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -567,12 +572,12 @@ msg.</p>
       <pre class="lines">
 
 
-13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_account_user_params_json'>account_user_params_json</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='ivar'>@user</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>email:</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
@@ -610,14 +615,14 @@ previously defined is a Spec</p>
       <pre class="lines">
 
 
-47
 48
 49
 50
-51</pre>
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_error_for_not_signed_in_yet'>check_error_for_not_signed_in_yet</span>
   <span class='id identifier rubyid_errors_redirect_ro_sign_in'>errors_redirect_ro_sign_in</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='tstring'><span class='tstring_beg'>%Q{</span><span class='tstring_content'>Please sign in. posting the user json credentials as: {&quot;user&quot;: {&quot;email&quot;: &quot;testy2@example.com&quot;, &quot;password&quot;: &quot;changeme&quot;}} to /v1/sessions</span><span class='tstring_end'>}</span></span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/sessions</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
@@ -673,13 +678,13 @@ previously defined is a Spec</p>
       <pre class="lines">
 
 
-111
 112
 113
-114</pre>
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 112</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_account_params_json'>create_account_params_json</span>
   <span class='ivar'>@visitor</span> <span class='op'>||=</span> <span class='lbrace'>{</span> <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Testy</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>subdomain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>owner_attributes:</span>
@@ -734,12 +739,12 @@ previously defined is a Spec</p>
       <pre class="lines">
 
 
-8
 9
-10</pre>
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_user_params_json'>create_user_params_json</span><span class='lparen'>(</span><span class='id identifier rubyid_suffix'>suffix</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@user</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_suffix'>suffix</span><span class='rbrace'>}</span><span class='tstring_content'>@example.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>password_confirmation:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
@@ -802,13 +807,13 @@ equal to the provided auth_token</p>
       <pre class="lines">
 
 
-63
 64
 65
-66</pre>
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect_auth_token'>expect_auth_token</span><span class='lparen'>(</span><span class='id identifier rubyid_subject'>subject</span><span class='comma'>,</span> <span class='id identifier rubyid_auth_token'>auth_token</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expect'>expect</span><span class='lparen'>(</span><span class='id identifier rubyid_json_last_response_body'>json_last_response_body</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_have_content'>have_content</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>auth_token</span><span class='tstring_end'>&quot;</span></span>
@@ -916,13 +921,13 @@ ids_values</p>
       <pre class="lines">
 
 
-73
 74
 75
-76</pre>
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expect_subject_ids_to_have'>expect_subject_ids_to_have</span><span class='lparen'>(</span><span class='id identifier rubyid_subject'>subject</span><span class='comma'>,</span> <span class='id identifier rubyid_ids_key'>ids_key</span><span class='comma'>,</span> <span class='id identifier rubyid_ids_values'>ids_values</span><span class='comma'>,</span> <span class='id identifier rubyid_http_code'>http_code</span><span class='op'>=</span><span class='int'>201</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expect'>expect</span><span class='lparen'>(</span><span class='id identifier rubyid_last_response'>last_response</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_eq'>eq</span> <span class='id identifier rubyid_http_code'>http_code</span>
@@ -980,13 +985,13 @@ msg</p>
       <pre class="lines">
 
 
-40
 41
 42
-43</pre>
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_expected_json_errors'>expected_json_errors</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expect'>expect</span><span class='lparen'>(</span><span class='id identifier rubyid_last_response'>last_response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_eql'>eql</span><span class='lparen'>(</span><span class='id identifier rubyid_msg'>msg</span><span class='rparen'>)</span>
@@ -1041,12 +1046,12 @@ msg</p>
       <pre class="lines">
 
 
-19
 20
-21</pre>
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_account_by_email'>find_account_by_email</span>
   <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_create_user_params_json'>create_user_params_json</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -1100,12 +1105,12 @@ msg</p>
       <pre class="lines">
 
 
-25
 26
-27</pre>
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_account_by_name'>find_account_by_name</span>
   <span class='ivar'>@account</span> <span class='op'>=</span> <span class='const'>Cadenero</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Account</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='ivar'>@visitor</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -1159,12 +1164,12 @@ msg</p>
       <pre class="lines">
 
 
-125
 126
-127</pre>
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 125</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 126</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_json_last_response_body'>json_last_response_body</span>
   <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_last_response'>last_response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span>
@@ -1254,13 +1259,13 @@ msg</p>
       <pre class="lines">
 
 
-33
 34
 35
-36</pre>
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_in_user'>sign_in_user</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_post'>post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:json</span><span class='comma'>,</span> <span class='label'>user:</span> <span class='id identifier rubyid_user'>user</span>
@@ -1315,13 +1320,13 @@ msg</p>
       <pre class="lines">
 
 
-118
 119
 120
-121</pre>
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_up_account'>sign_up_account</span>
   <span class='id identifier rubyid_post'>post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/accounts</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:json</span><span class='comma'>,</span> <span class='label'>account:</span> <span class='id identifier rubyid_create_account_params_json'>create_account_params_json</span>
@@ -1376,13 +1381,13 @@ msg</p>
       <pre class="lines">
 
 
-55
 56
 57
-58</pre>
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_up_user'>sign_up_user</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix'>suffix</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_post'>post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='rbrace'>}</span><span class='tstring_content'>/v1/users</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:json</span><span class='comma'>,</span> <span class='label'>user:</span> <span class='id identifier rubyid_create_user_params_json'>create_user_params_json</span><span class='lparen'>(</span><span class='id identifier rubyid_suffix'>suffix</span><span class='rparen'>)</span>
@@ -1452,15 +1457,15 @@ msg</p>
       <pre class="lines">
 
 
-81
 82
 83
 84
 85
-86</pre>
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_owner'>successful_sign_in_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sign_in_user'>sign_in_user</span> <span class='id identifier rubyid_sessions_url'>sessions_url</span><span class='comma'>,</span> <span class='id identifier rubyid_account_user_params_json'>account_user_params_json</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
@@ -1532,14 +1537,14 @@ msg</p>
       <pre class="lines">
 
 
-91
 92
 93
 94
-95</pre>
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_user'>successful_sign_in_user</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sign_in_user'>sign_in_user</span> <span class='id identifier rubyid_sessions_url'>sessions_url</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span>
@@ -1610,17 +1615,17 @@ msg</p>
       <pre class="lines">
 
 
-100
 101
 102
 103
 104
 105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_up_user_in_existing_account'>successful_sign_up_user_in_existing_account</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix'>suffix</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rbrace'>}</span><span class='tstring_content'>.example.com/</span><span class='tstring_end'>&quot;</span></span> 
@@ -1640,7 +1645,7 @@ msg</p>
 </div>
 
     <div id="footer">
-  Generated on Mon Jul 15 13:45:07 2013 by
+  Generated on Mon Jul 15 19:55:33 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

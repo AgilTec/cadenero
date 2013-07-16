@@ -88,27 +88,30 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <p>Generate first your Rails.API app as usual using:</p>
 
 <p><code>
-    $ rails-api new your_app --skip-test-unit
+    $ rails-api new your_app --skip-test-unit -d postgresql
 </code></p>
 
 <p>In the <code>Gemfile</code> add the following lines:
 <code>ruby
     gem 'cadenero', github: 'AgilTec/cadenero', branch: 'rails4'
-    gem 'pg'
     gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 </code></p>
 
-<p>In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:</p>
+<p>In the <code>config/database.yml</code> edit as follow:</p>
 
 <p>```
     development:
       adapter: postgresql
+      encoding: unicode
       database: your_app_development 
+      pool: 5
       min_messages: warning</p>
 
 <pre class="code ruby"><code class="ruby">test:
   adapter: postgresql
-  database: your_app_test 
+  encoding: unicode
+  database: your_app_test
+  pool: 5
   min_messages: warning ```
 </code></pre>
 
@@ -163,14 +166,14 @@ Body
 <p><strong>Cadenero</strong> creates the following versioned routes for exposing the authentication RESTful API</p>
 
 <p><code>
-            v1_root GET    /v1(.:format)           cadenero/v1/account/dashboard#index {:default=&gt;:json}
-        v1_sessions POST   /v1/sessions(.:format)  cadenero/v1/account/sessions#create {:default=&gt;:json}
-                    DELETE /v1/sessions(.:format)  cadenero/v1/account/sessions#delete {:default=&gt;:json}
-           v1_users POST   /v1/users(.:format)     cadenero/v1/account/users#create {:default=&gt;:json}
-                    GET    /v1/users(.:format)     cadenero/v1/account/users#index {:default=&gt;:json}
-            v1_user GET    /v1/users/:id(.:format) cadenero/v1/account/users#show {:default=&gt;:json}
-        v1_accounts POST   /v1/accounts(.:format)  cadenero/v1/accounts#create {:default=&gt;:json}
-               root GET    /                       cadenero/v1/account/dashboard#index {:default=&gt;:json}
+        v1_root GET    /v1(.:format)           cadenero/v1/account/dashboard#index {:default=&gt;:json}
+    v1_sessions POST   /v1/sessions(.:format)  cadenero/v1/account/sessions#create {:default=&gt;:json}
+                DELETE /v1/sessions(.:format)  cadenero/v1/account/sessions#delete {:default=&gt;:json}
+       v1_users POST   /v1/users(.:format)     cadenero/v1/account/users#create {:default=&gt;:json}
+                GET    /v1/users(.:format)     cadenero/v1/account/users#index {:default=&gt;:json}
+        v1_user GET    /v1/users/:id(.:format) cadenero/v1/account/users#show {:default=&gt;:json}
+    v1_accounts POST   /v1/accounts(.:format)  cadenero/v1/accounts#create {:default=&gt;:json}
+           root GET    /                       cadenero/v1/account/dashboard#index {:default=&gt;:json}
 </code></p>
 
 <p>You can check them running:</p>
@@ -253,7 +256,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 </div></div>
 
     <div id="footer">
-  Generated on Mon Jul 15 13:45:06 2013 by
+  Generated on Mon Jul 15 19:55:32 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
