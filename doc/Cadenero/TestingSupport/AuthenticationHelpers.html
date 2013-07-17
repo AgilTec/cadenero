@@ -434,7 +434,7 @@ msg.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#successful_sign_in_owner-instance_method" title="#successful_sign_in_owner (instance method)">- (String) <strong>successful_sign_in_owner</strong>(account) </a>
+      <a href="#successful_sign_in_owner_with_session-instance_method" title="#successful_sign_in_owner_with_session (instance method)">- (String) <strong>successful_sign_in_owner_with_session</strong>(account) </a>
     
 
     
@@ -449,7 +449,8 @@ msg.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Expect that a owner sign in successfuly to one of his accounts.</p>
+<p>Expect that a owner sign in successfuly to one of his accounts creating a
+session.</p>
 </div></span>
   
 </li>
@@ -458,7 +459,7 @@ msg.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#successful_sign_in_user-instance_method" title="#successful_sign_in_user (instance method)">- (String) <strong>successful_sign_in_user</strong>(account, user) </a>
+      <a href="#successful_sign_in_user_with_session-instance_method" title="#successful_sign_in_user_with_session (instance method)">- (String) <strong>successful_sign_in_user_with_session</strong>(account, user) </a>
     
 
     
@@ -482,7 +483,7 @@ msg.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#successful_sign_up_user_in_existing_account-instance_method" title="#successful_sign_up_user_in_existing_account (instance method)">- (String) <strong>successful_sign_up_user_in_existing_account</strong>(account, suffix = nil) </a>
+      <a href="#successful_sign_up_user_in_existing_account_with_session-instance_method" title="#successful_sign_up_user_in_existing_account_with_session (instance method)">- (String) <strong>successful_sign_up_user_in_existing_account_with_session</strong>(account, suffix = nil) </a>
     
 
     
@@ -625,7 +626,7 @@ previously defined is a Spec</p>
       <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_error_for_not_signed_in_yet'>check_error_for_not_signed_in_yet</span>
-  <span class='id identifier rubyid_errors_redirect_ro_sign_in'>errors_redirect_ro_sign_in</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='tstring'><span class='tstring_beg'>%Q{</span><span class='tstring_content'>Please sign in. posting the user json credentials as: {&quot;user&quot;: {&quot;email&quot;: &quot;testy2@example.com&quot;, &quot;password&quot;: &quot;changeme&quot;}} to /v1/sessions</span><span class='tstring_end'>}</span></span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/sessions</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
+  <span class='id identifier rubyid_errors_redirect_ro_sign_in'>errors_redirect_ro_sign_in</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='label'>errors:</span> <span class='tstring'><span class='tstring_beg'>%Q{</span><span class='tstring_content'>Please sign in. posting the user json credentials as: {&quot;user&quot;: {&quot;email&quot;: &quot;testy2@example.com&quot;, &quot;password&quot;: &quot;changeme&quot;}} or {&quot;user&quot;: {&quot;auth_token&quot;: d8Ff8uvupXQfChangeMe}} to /v1/sessions</span><span class='tstring_end'>}</span></span><span class='comma'>,</span> <span class='label'>links:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/v1/sessions</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
   <span class='id identifier rubyid_get'>get</span> <span class='id identifier rubyid_cadenero'>cadenero</span><span class='period'>.</span><span class='id identifier rubyid_v1_root_url'>v1_root_url</span><span class='lparen'>(</span><span class='symbol'>:subdomain</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expected_json_errors'>expected_json_errors</span><span class='lparen'>(</span><span class='id identifier rubyid_errors_redirect_ro_sign_in'>errors_redirect_ro_sign_in</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1399,9 +1400,9 @@ msg</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="successful_sign_in_owner-instance_method">
+  <h3 class="signature " id="successful_sign_in_owner_with_session-instance_method">
   
-    - (<tt>String</tt>) <strong>successful_sign_in_owner</strong>(account) 
+    - (<tt>String</tt>) <strong>successful_sign_in_owner_with_session</strong>(account) 
   
 
   
@@ -1410,7 +1411,8 @@ msg</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Expect that a owner sign in successfuly to one of his accounts</p>
+<p>Expect that a owner sign in successfuly to one of his accounts creating a
+session</p>
 
 
   </div>
@@ -1467,7 +1469,7 @@ msg</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 82</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_owner'>successful_sign_in_owner</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_owner_with_session'>successful_sign_in_owner_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sign_in_user'>sign_in_user</span> <span class='id identifier rubyid_sessions_url'>sessions_url</span><span class='comma'>,</span> <span class='id identifier rubyid_account_user_params_json'>account_user_params_json</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expect_subject_ids_to_have'>expect_subject_ids_to_have</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>account_ids</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_expect_auth_token'>expect_auth_token</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_auth_token'>auth_token</span><span class='rparen'>)</span>
@@ -1479,9 +1481,9 @@ msg</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="successful_sign_in_user-instance_method">
+  <h3 class="signature " id="successful_sign_in_user_with_session-instance_method">
   
-    - (<tt>String</tt>) <strong>successful_sign_in_user</strong>(account, user) 
+    - (<tt>String</tt>) <strong>successful_sign_in_user_with_session</strong>(account, user) 
   
 
   
@@ -1546,7 +1548,7 @@ msg</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 92</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_user'>successful_sign_in_user</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_in_user_with_session'>successful_sign_in_user_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sign_in_user'>sign_in_user</span> <span class='id identifier rubyid_sessions_url'>sessions_url</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span>
   <span class='id identifier rubyid_expect_subject_ids_to_have'>expect_subject_ids_to_have</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>membership_ids</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_json_last_response_body'>json_last_response_body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>email</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
@@ -1557,9 +1559,9 @@ msg</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="successful_sign_up_user_in_existing_account-instance_method">
+  <h3 class="signature " id="successful_sign_up_user_in_existing_account_with_session-instance_method">
   
-    - (<tt>String</tt>) <strong>successful_sign_up_user_in_existing_account</strong>(account, suffix = nil) 
+    - (<tt>String</tt>) <strong>successful_sign_up_user_in_existing_account_with_session</strong>(account, suffix = nil) 
   
 
   
@@ -1627,7 +1629,7 @@ msg</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/cadenero/testing_support/authentication_helpers.rb', line 101</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_up_user_in_existing_account'>successful_sign_up_user_in_existing_account</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix'>suffix</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_successful_sign_up_user_in_existing_account_with_session'>successful_sign_up_user_in_existing_account_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_account'>account</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix'>suffix</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account'>account</span><span class='period'>.</span><span class='id identifier rubyid_subdomain'>subdomain</span><span class='rbrace'>}</span><span class='tstring_content'>.example.com/</span><span class='tstring_end'>&quot;</span></span> 
   <span class='id identifier rubyid_sign_up_user'>sign_up_user</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix'>suffix</span>
   <span class='id identifier rubyid_expect'>expect</span><span class='lparen'>(</span><span class='id identifier rubyid_last_request'>last_request</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_eq'>eq</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='rbrace'>}</span><span class='tstring_content'>v1/users</span><span class='tstring_end'>&quot;</span></span>
@@ -1645,7 +1647,7 @@ msg</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Jul 16 10:47:15 2013 by
+  Generated on Wed Jul 17 14:01:02 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

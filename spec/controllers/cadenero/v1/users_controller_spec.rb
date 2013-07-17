@@ -5,7 +5,7 @@ module Cadenero
     let!(:user) { stub_model(Cadenero::User, id: 101, email: "testy@example.com", password: "12345678")}
     let!(:account) { stub_model(Cadenero::V1::Account, id: 1001, authentication_token: "dsdaefer412add", 
       owner: user) }
-    let(:errors_redirect_ro_sign_in) {%Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}}
+    let(:errors_redirect_ro_sign_in) {%Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} or {"user": {"auth_token": d8Ff8uvupXQfChangeMe}} to /v1/sessions}}
   
 
     context "User signed out" do  
