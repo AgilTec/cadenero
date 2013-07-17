@@ -1,6 +1,7 @@
 module Cadenero::V1
   # Defines a subdomain with a default admin (owner) as a tenant in the Rails App
   class Account < ActiveRecord::Base
+    include Cadenero::AuthToken
     belongs_to :owner,  :class_name => "Cadenero::User"
     has_many :members, :class_name => "Cadenero::Member"
     has_many :users, :through => :members,  :class_name => "Cadenero::User"
@@ -46,11 +47,6 @@ module Cadenero::V1
     # Create a database schema using the subdomain
     def create_schema
       Apartment::Database.create(subdomain)
-    end
-
-    # Obtain the auth_token from the members to be use for the Account
-    def auth_token
-      members.map{|member| member.auth_token}
     end
 
     # Generate authentication token unless already exists.
