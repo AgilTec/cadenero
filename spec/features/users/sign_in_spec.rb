@@ -5,7 +5,7 @@ feature 'User sign in' do
   extend Cadenero::TestingSupport::SubdomainHelpers
 
   let(:account) { FactoryGirl.create(:account_with_schema) }
-  let(:errors_redirect_ro_sign_in) {{errors: %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} to /v1/sessions}, links: "/v1/sessions"}.to_json}
+  let(:errors_redirect_ro_sign_in) {{errors: %Q{Please sign in. posting the user json credentials as: {"user": {"email": "testy2@example.com", "password": "changeme"}} or {"user": {"auth_token": d8Ff8uvupXQfChangeMe}} to /v1/sessions}, links: "/v1/sessions"}.to_json}
   let(:errors_invalid_email_or_password)  {{ errors: {user:["Invalid email or password"]} }.to_json} 
   let(:errors_invalid_subdomain)  {{ errors: {subdomain:["Invalid subdomain"]} }.to_json} 
   let(:sessions_url) { "http://#{account.subdomain}.example.com/v1/sessions" }
@@ -105,6 +105,13 @@ feature 'User sign in' do
         get root_url, {:auth_token => second_user.auth_token}
         expect(last_response.status).to eq 200
         expect(json_last_response_body["message"]).to have_content second_user.email
+      end
+      scenario "can not access with an auth_token from a user of other account" do
+        second_account = FactoryGirl.create(:account_with_schema)
+        user = second_account.owner
+        check_error_for_not_signed_in_yet
+        get root_url, {:auth_token => user.auth_token}
+        expected_json_errors(errors_redirect_ro_sign_in)
       end
     end
   end
