@@ -83,5 +83,29 @@ feature 'User sign in' do
       end
     end     
   end
-  
+
+  context "with token_authentication strategy" do
+    let(:account) { FactoryGirl.create(:account_with_schema) }
+    within_account_subdomain do
+      scenario "can access with the auth_token as signed in" do
+        user = account.owner
+        check_error_for_not_signed_in_yet
+        get root_url, {:auth_token => user.auth_token}
+        expect(last_response.status).to eq 200
+        expect(json_last_response_body["message"]).to have_content user.email
+      end
+      scenario "two users of the same account could access with their own auth_tokens" do
+        user = account.owner
+        check_error_for_not_signed_in_yet
+        second_user_email = successful_sign_up_user_in_existing_account_with_session account, "_second"
+        second_user = Cadenero::User.where(email: second_user_email).first
+        get root_url, {:auth_token => user.auth_token}
+        expect(last_response.status).to eq 200
+        expect(json_last_response_body["message"]).to have_content user.email
+        get root_url, {:auth_token => second_user.auth_token}
+        expect(last_response.status).to eq 200
+        expect(json_last_response_body["message"]).to have_content second_user.email
+      end
+    end
+  end
 end

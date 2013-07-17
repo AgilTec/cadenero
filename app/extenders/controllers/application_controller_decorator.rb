@@ -30,6 +30,10 @@
 
 # Check to see if there is an authenticated user
   def user_signed_in?
+    unless env['action_dispatch.request.parameters']["auth_token"].nil?
+      env['warden'].logout(:user)
+      env['warden'].authenticate!(:token_authentication, scope: :user)
+    end
     env['warden'].authenticated?(:user) unless env['warden'].nil?
   end
 
