@@ -4,8 +4,10 @@ source "http://rubygems.org"
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
+gem 'rails', '~> 3.2.13'
 gem 'rails-api'
 gem "bcrypt-ruby", "~> 3.0.0"
+gem "active_model_serializers", "~> 0.8.1"
 
 
 group :test do

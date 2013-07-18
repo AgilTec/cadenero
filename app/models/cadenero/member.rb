@@ -6,7 +6,5 @@ module Cadenero
     belongs_to :account,  :class_name => "Cadenero::V1::Account"
     belongs_to :user,  :class_name => "Cadenero::User"
     after_create :ensure_auth_token!
-
   end
-  
 end

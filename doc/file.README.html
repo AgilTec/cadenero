@@ -70,6 +70,8 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <a href="https://coveralls.io/r/AgilTec/cadenero?branch=master"><img src="https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master" alt="Coverage Status" /></a>
 <a href="https://gemnasium.com/AgilTec/cadenero"><img src="https://gemnasium.com/AgilTec/cadenero.png" alt="Dependency Status" /></a></p>
 
+<p>THIS README IS FOR THE MASTER BRANCH OF <strong>CADENERO</strong> AND REFLECTS THE WORK CURRENTLY EXISTING ON THE MASTER BRANCH. IF YOU ARE WISHING TO USE A NON-MASTER BRANCH OF <strong>CADENERO</strong>, PLEASE CONSULT THAT BRANCH’S README AND NOT THIS ONE.</p>
+
 <p>Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
 * Use token authentication as strategy for the API
@@ -79,36 +81,61 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 <h2 id="information">Information</h2>
 
 <h3 id="why-cadenero">Why Cadenero?</h3>
-<p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.
-You can use <a href="https://github.com/hassox/warden">Warden</a> or <a href="https://github.com/plataformatec/devise">Devise</a> directly but for API apps the rewritting and monkey patching can be messy.</p>
+<p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.</p>
+
+<p>You can use <a href="https://github.com/hassox/warden">Warden</a> or <a href="https://github.com/plataformatec/devise">Devise</a> directly but for API apps the rewritting and monkey patching can be messy.</p>
 
 <h3 id="installing-cadenero">Installing <strong>Cadenero</strong></h3>
+
+<h4 id="preconditions">Preconditions</h4>
+
+<h5 id="postgresql">Postgresql</h5>
+<p>You should have a Postgresql server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using <a href="http://mxcl.github.io/homebrew/">Homebrew</a> for that you can follow the following this <a href="http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/">instructions</a></p>
+
+<h5 id="ruby-19x-or-2x">Ruby 1.9.x or 2.x</h5>
+<p>For that we recommend that you use <a href="https://github.com/sstephenson/rbenv">rbenv</a> with <a href="https://github.com/sstephenson/ruby-build">ruby-build</a> or <a href="https://rvm.io/">rvm</a></p>
+
+<p>We use the standard <code>rake</code>, <code>bundler</code> and <code>gem</code></p>
+
+<h5 id="gitgithub">Git/Github</h5>
+<p>You are here. Then you know what to do ;-)</p>
+
+<h4 id="setup">Setup</h4>
 
 <p>Rails 3.2.13 is the master version used now by <strong>Cadenero</strong>, if you want to use Rails 4 goodness please use the branch “rails4”</p>
 
 <p>Generate first your Rails app as usual using:</p>
 
 <p><code>
-    $ rails _3.2.13_ new your_app --skip-test-unit
+    $ rails _3.2.13_ new your_app --skip-test-unit  -d postgresql
 </code></p>
 
 <p>In the <code>Gemfile</code> add the following lines:
-<code>ruby
-    gem 'cadenero', '~&gt; 0.0.2.b6'
-    gem 'pg'
-</code></p>
+```ruby
+    gem ‘cadenero’, ‘~&gt; 0.0.2.b8’</p>
+
+<pre class="code ruby"><code class="ruby">group :development, :test do
+  gem 'rspec-rails', '~&gt; 2.14.0'
+  gem 'capybara', '~&gt; 2.1.0'
+  gem 'rack-test', '~&gt; 0.6.2'
+end ```
+</code></pre>
 
 <p>In the <code>config/database.yml</code> replace the <code>sqlite3</code> adapter for <code>postgresql</code> as follow:</p>
 
 <p>```
     development:
       adapter: postgresql
+      encoding: unicode
       database: your_app_development 
+      pool: 5
       min_messages: warning</p>
 
 <pre class="code ruby"><code class="ruby">test:
   adapter: postgresql
-  database: your_app_test 
+  encoding: unicode
+  database: your_app_test
+  pool: 5
   min_messages: warning ```
 </code></pre>
 
@@ -177,8 +204,17 @@ Body
 <p><code>
     $ rake routes
 </code>
-### Documentation
-You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/frames</p>
+### Strategies
+For authentication <strong>Cadenero</strong> has two default Warden Strategies:
+  * <strong>Password</strong>. That expect that the client to keep a session cookie and using for authentication the user <code>email</code> and <code>password</code>.
+  * <strong>Token Authentication</strong>. That is stateless and expects that for each request the user include the <code>auth_token</code> as a key-value of the request params.</p>
+
+<p>In any case when you signed up <strong>Cadenero</strong> creates an auth_token for the membership to the account that you signed up.</p>
+
+<p>If you want to know more about Warden Strategies see: https://github.com/hassox/warden/wiki/Strategies</p>
+
+<h3 id="documentation">Documentation</h3>
+<p>You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/frames</p>
 
 <h3 id="the-cadenero-task-list">The Cadenero Task List</h3>
 <ul>
@@ -188,7 +224,11 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 </ul>
 
 <h3 id="versions">Versions</h3>
-<p><strong>Cadenero</strong> use <a href="http://semver.org/">Semantic Versioning 2.0.0</a> the current version is: 0.0.2-b6 meaning MAJOR.MINOR.PATCH format</p>
+<p><strong>Cadenero</strong> aims to adhere to <a href="http://semver.org/">Semantic Versioning 2.0.0</a> the current version is: 0.0.2-b8 meaning MAJOR.MINOR.PATCH format. Violations of this scheme should be reported as bugs. Specifically, if a minor or patch version is released that breaks backward compatibility, that version should be immediately yanked and/or a new version should be immediately released that restores compatibility. Breaking changes to the public API will only be introduced with new major versions. As a result of this policy, you can (and should) specify a dependency on this gem using the <a href="http://docs.rubygems.org/read/chapter/16#page74">Pessimistic Version Constraint</a> with two digits of precision. For example:</p>
+
+<p><code>
+    spec.add_dependency 'cadenero', '~&gt; 1.0'
+</code></p>
 
 <h3 id="bug-reports">Bug reports</h3>
 
@@ -196,19 +236,36 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 
 <p>https://github.com/AgilTec/cadenero/wiki/Bug-reports</p>
 
+<p>To submit the bug or issue go to: https://github.com/AgilTec/cadenero/issues</p>
+
 <p>If you found a security bug, do <em>NOT</em> use the GitHub issue tracker. Send an email to the maintainers listed at the bottom of the README please.</p>
 
 <h3 id="contributing">Contributing</h3>
 
-<p>We hope that you will consider contributing to <strong>Cadenero</strong>. Please read this short overview for some information about how to get started:</p>
+<p>We hope that you will consider contributing to <strong>Cadenero</strong>. You’re encouraged to submit pull requests, propose features and discuss issues.</p>
 
-<p>https://github.com/AgilTec/cadenero/Contributing</p>
+<ul>
+  <li>Fork the project</li>
+  <li>Write test for your new feature or a test that reproduces a bug</li>
+  <li>Implement your feature or make a bug fix</li>
+  <li>Commit, push and make a pull request. Bonus points for topic branches.</li>
+</ul>
 
-<p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into <strong>Cadenero</strong>’s top-level directory and run “bundle install” and “rspec”.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
+<p>You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.</p>
+
+<p>To run the test suite, go into <strong>Cadenero</strong>’s top-level directory and run <code>bundle install</code> and <code>rspec spec</code>.  For the tests to pass, you will need to have a Postgresql server running on your system.</p>
+
+<p>If you have not contribute before in a Github repo please review first:</p>
+
+<ul>
+  <li><a href="https://help.github.com/articles/fork-a-repo">Fork A Repo</a></li>
+  <li><a href="https://help.github.com/articles/using-pull-requests">Using Pull Requests</a></li>
+</ul>
 
 <h4 id="running-the-specs">Running the Specs</h4>
-<p><strong>Cadenero</strong> use <a href="https://github.com/rspec/rspec">RSpec</a> and <a href="https://github.com/jnicklas/capybara">Capybara</a>. If you want to extend <strong>Cadenero</strong> please fork and clone the repo. To run the specs you only need to do:
-<code>
+<p><strong>Cadenero</strong> use <a href="https://github.com/rspec/rspec">RSpec</a> and <a href="https://github.com/jnicklas/capybara">Capybara</a>. To run the specs you only need to do:</p>
+
+<p><code>
     $ RAILS_ENV=test bundle exec rake db:create
     $ RAILS_ENV=test bundle exec rake db:migrate
     $ bundle exec rspec spec
@@ -222,7 +279,10 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 
 <h3 id="warden">Warden</h3>
 
-<p><strong>Cadenero</strong> is based on Warden, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden</p>
+<p><strong>Cadenero</strong> is based on <a href="https://github.com/hassox/warden">Warden</a>, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden/wiki</p>
+
+<h4 id="devise">Devise</h4>
+<p>Some code and architectural decisions in <strong>Cadenero</strong> have been inspired for the excellent gem <a href="https://github.com/plataformatec/devise">Devise</a>.</p>
 
 <h3 id="railsapi">Rails::API</h3>
 
@@ -234,7 +294,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 <h3 id="maintainers">Maintainers</h3>
 
 <ul>
-  <li>Manuel Vidaurre (https://github.com/mvidaurre)</li>
+  <li><a href="https://github.com/mvidaurre">Manuel Vidaurre</a></li>
 </ul>
 
 <h2 id="license">License</h2>
@@ -247,7 +307,7 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 </div></div>
 
     <div id="footer">
-  Generated on Wed Jul 17 21:19:36 2013 by
+  Generated on Wed Jul 17 22:56:12 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
