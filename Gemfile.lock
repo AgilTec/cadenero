@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    cadenero (0.0.2.b6)
+    cadenero (0.0.2.b10)
       actionpack (~> 4.0.0)
       active_model_serializers (~> 0.8.1)
       apartment (~> 0.22)
@@ -110,7 +110,7 @@ GEM
     thread_safe (0.1.0)
       atomic
     tzinfo (0.3.37)
-    warden (1.2.2)
+    warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)

@@ -99,7 +99,7 @@ module Cadenero
       # @param  [Cadenero::V1::Account] account
       # @return [String] email  for the last response user
       def successful_sign_up_user_in_existing_account_with_session(account, suffix=nil)
-        url = "http://#{account.subdomain}.example.com/" 
+        url = "http://#{account.subdomain}.example.com/"
         sign_up_user url, suffix
         expect(last_request.url).to eq "#{url}v1/users"
         get "#{url}v1/users/#{json_last_response_body['user']['id']}"

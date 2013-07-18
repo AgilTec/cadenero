@@ -4,5 +4,6 @@
 #
 module Cadenero
   class ApplicationController < ::ApplicationController
+    include ActiveModel::ForbiddenAttributesProtection
   end
 end

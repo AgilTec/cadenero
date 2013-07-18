@@ -7,8 +7,8 @@ Apartment.configure do |config|
   config.excluded_models = ["Cadenero::V1::Account",
                              "Cadenero::Member",
                              "Cadenero::User"]
-  # Dynamically get database names to migrate
-  # config.database_names = lambda{ Account.pluck(:database_name) }
 end
 
+# Dynamically get database names to migrate
+# config.database_names = lambda{ Account.pluck(:database_name) }
 Apartment.database_names = lambda{ Cadenero::V1::Account.pluck(:subdomain)}
