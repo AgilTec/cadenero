@@ -22,9 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "bcrypt-ruby", "~> 3.0.0"
   s.add_dependency "warden", "~> 1.2.1"
   s.add_dependency "apartment", "~> 0.22"
-  s.add_dependency "strong_parameters", "~> 0.2.1"
   s.add_dependency "active_model_serializers", "~> 0.8.1"
-  # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "pg"
   s.add_development_dependency "rspec-rails", "~> 2.14"
