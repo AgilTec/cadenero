@@ -7,13 +7,6 @@ gemspec
 gem 'rails-api'
 gem "bcrypt-ruby", "~> 3.0.0"
 
-# gems used by the dummy application
-gem "jquery-rails"
-gem "ember-rails", "~> 0.13.0"
-gem "coffee-rails"
-gem 'ember-source', '~> 1.0.0.rc6' # or the version you need
-gem 'handlebars-source', '~> 1.0.12' # or the version you need
-
 
 group :test do
   gem 'rake'

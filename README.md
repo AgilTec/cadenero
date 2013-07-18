@@ -49,7 +49,7 @@ Generate first your Rails app as usual using:
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b7'
+    gem 'cadenero', '~> 0.0.2.b8'
 
     group :development, :test do
       gem 'rspec-rails', '~> 2.14.0'
@@ -159,7 +159,11 @@ You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/fra
 - [ ] Examples of use and demo
 
 ### Versions
-**Cadenero** use [Semantic Versioning 2.0.0](http://semver.org/) the current version is: 0.0.2-b6 meaning MAJOR.MINOR.PATCH format
+**Cadenero** aims to adhere to [Semantic Versioning 2.0.0](http://semver.org/) the current version is: 0.0.2-b8 meaning MAJOR.MINOR.PATCH format. Violations of this scheme should be reported as bugs. Specifically, if a minor or patch version is released that breaks backward compatibility, that version should be immediately yanked and/or a new version should be immediately released that restores compatibility. Breaking changes to the public API will only be introduced with new major versions. As a result of this policy, you can (and should) specify a dependency on this gem using the [Pessimistic Version Constraint](http://docs.rubygems.org/read/chapter/16#page74) with two digits of precision. For example:
+
+```
+    spec.add_dependency 'cadenero', '~> 1.0'
+```
 
 ### Bug reports
 
