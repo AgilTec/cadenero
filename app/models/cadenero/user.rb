@@ -6,10 +6,9 @@ module Cadenero
     has_many :members, class_name: "Cadenero::Member"
     has_many :memberships, through: :members, source: :account
 
-    # Obtain the authentication_token from the members to be use for the User
+    # Map the auth_tokens for each account that the User is memeber
     def auth_token
       members.map{|member| member.auth_token}
     end
-
   end
 end

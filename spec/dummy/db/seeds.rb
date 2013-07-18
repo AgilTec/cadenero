@@ -5,4 +5,4 @@
                                                             password_confirmation: '12345678'))
 
 @account.create_schema
-@account.ensure_authentication_token!
+@account.ensure_auth_token!

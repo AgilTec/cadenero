@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Cadenero
   describe V1::AccountsController do
-    let!(:account) { stub_model(Cadenero::V1::Account, id: 1001, authentication_token: "dsdaefer412add") }
+    let!(:account) { stub_model(Cadenero::V1::Account, id: 1001, auth_token: "dsdaefer412add") }
 
     before do
       Cadenero::V1::Account.should_receive(:create_with_owner).and_return(account)
@@ -17,7 +17,7 @@ module Cadenero
         post :create, format: :json, account: { name: "First Account", subdomain: "first" }, use_route: :cadenero
         expect(response.status).to eq(201)
         expect(assigns(:account)).to eq(account)
-        expect(assigns(:account)[:authentication_token]).to eq(account.authentication_token)
+        expect(assigns(:account)[:auth_token]).to eq(account.auth_token)
       end
     end
 

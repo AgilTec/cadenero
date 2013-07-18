@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-  Class: Cadenero::User
+  Module: Cadenero::AuthTokenForMembers
   
     &mdash; Documentation by YARD 0.8.6.2
   
@@ -31,10 +31,10 @@
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (U)</a> &raquo;
+    <a href="../_index.html">Index (A)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Cadenero.html" title="Cadenero (module)">Cadenero</a></span></span>
      &raquo; 
-    <span class="title">User</span>
+    <span class="title">AuthTokenForMembers</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -63,7 +63,7 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><h1>Class: Cadenero::User
+    <div id="content"><h1>Module: Cadenero::AuthTokenForMembers
   
   
   
@@ -71,48 +71,24 @@
 
 <dl class="box">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
-      <span class="inheritName">ActiveRecord::Base</span>
-      
-        <ul class="fullTree">
-          <li>Object</li>
-          
-            <li class="next">ActiveRecord::Base</li>
-          
-            <li class="next">Cadenero::User</li>
-          
-        </ul>
-        <a href="#" class="inheritanceTree">show all</a>
-      
-      </dd>
-    
-  
   
     
   
     
   
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="User.html" title="Cadenero::User (class)">User</a></span></dd>
+    
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">app/models/cadenero/user.rb</dd>
+    <dd class="r2 last">app/models/cadenero/auth_token_for_members.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Defines a user of one or more accounts for the multitenant Rails App</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
 
 
 
@@ -145,7 +121,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Map the auth_tokens for each account that the User is memeber.</p>
+<p>Obtain the authentication_token from the members to be use for the User.</p>
 </div></span>
   
 </li>
@@ -155,7 +131,6 @@
   
 
 
-  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -173,7 +148,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Map the auth_tokens for each account that the User is memeber</p>
+<p>Obtain the authentication_token from the members to be use for the User</p>
 
 
   </div>
@@ -187,12 +162,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+3
+4
+5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/cadenero/user.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/models/cadenero/auth_token_for_members.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auth_token'>auth_token</span>
   <span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_member'>member</span><span class='op'>|</span> <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_auth_token'>auth_token</span><span class='rbrace'>}</span>
@@ -207,7 +182,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul 17 19:44:37 2013 by
+  Generated on Wed Jul 17 19:11:44 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>

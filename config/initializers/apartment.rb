@@ -10,3 +10,5 @@ Apartment.configure do |config|
   # Dynamically get database names to migrate
   # config.database_names = lambda{ Account.pluck(:database_name) }
 end
+
+Apartment.database_names = lambda{ Cadenero::V1::Account.pluck(:subdomain)}
