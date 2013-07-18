@@ -7,7 +7,7 @@ By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/Gpujzv
 [![Coverage Status](https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master)](https://coveralls.io/r/AgilTec/cadenero?branch=master)
 [![Dependency Status](https://gemnasium.com/AgilTec/cadenero.png)](https://gemnasium.com/AgilTec/cadenero)
 
-THIS README IS FOR THE MASTER BRANCH OF **CADENERO** AND REFLECTS THE WORK CURRENTLY EXISTING ON THE MASTER BRANCH. IF YOU ARE WISHING TO USE A NON-MASTER BRANCH OF **CADENERO**, PLEASE CONSULT THAT BRANCH'S README AND NOT THIS ONE.
+THIS README IS FOR THE RAILS 4 BRANCH OF **CADENERO** AND REFLECTS THE WORK CURRENTLY EXISTING ON THE RAILS 4  BRANCH. IF YOU ARE WISHING TO USE THE MASTER BRANCH OR ANOTHER NON-MASTER BRANCH OF **CADENERO**, PLEASE CONSULT THAT BRANCH'S README AND NOT THIS ONE.
 
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
@@ -41,16 +41,16 @@ You are here. Then you know what to do ;-)
 
 #### Setup
 
-Rails 3.2.13 is the master version used now by **Cadenero**, if you want to use Rails 4 goodness please use the branch "rails4"
+Generate first your Rails.API app as usual using:
 
 ```
-    $ rails _3.2.13_ new your_app --skip-test-unit  -d postgresql
+    $ rails-api new your_app --skip-test-unit -d postgresql
 ```
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b10'
-    gem "strong_parameters", "~> 0.2.1"
+    gem 'cadenero', github: 'AgilTec/cadenero', branch: 'rails4'
+    gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
     group :development, :test do
       gem 'rspec-rails', '~> 2.14.0'
