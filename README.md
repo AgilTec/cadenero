@@ -63,7 +63,7 @@ In the `Gemfile` add the following lines:
 
 In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
 
-```
+```YAML
     development:
       adapter: postgresql
       encoding: unicode
@@ -81,25 +81,25 @@ In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as f
 
 Then run bundle, create the databases and run the generator:
 
-```
+```Shell
     $ bundle install; rake db:create; rails-api g cadenero:install
 ```
 
 Finally run the server:
 
-```
+```Shell
     $ rails-api s
 ```
 
 Or much better for checking the multitenancy you can use [Pow](http://pow.cx/). To install or upgrade Pow, open a terminal and run this command:
 
-```
+```Shell
     $ curl get.pow.cx | sh (View Source)
 ```
 
 To set up a Rack app, just symlink it into ~/.pow:
 
-```
+```Shell
     $ cd ~/.pow
     $ ln -s /path/to/myapp
 ```
@@ -108,7 +108,7 @@ Check that you can access the API using the default account `www` and user `test
 
 You can create a new account as follows:
 
-```
+```Shell
     $ curl -v -X POST http://www.cadenero.dev/v1/accounts -H 'Content-Type: application/json' -d '{"account": { "name": "Testy", "subdomain": "tested1", "owner_attributes": {"email": "testy2@example.com", "password": "changeme", "password_confirmation": "changeme"}}}'
 ```
 Or
@@ -130,18 +130,19 @@ Have fun!
 **Cadenero** creates the following versioned routes for exposing the authentication RESTful API
 
 ```
-            v1_root        /v1(.:format)           cadenero/v1/account/dashboard#index {:default=>:json}
-        v1_sessions POST   /v1/sessions(.:format)  cadenero/v1/account/sessions#create {:default=>:json}
-                    DELETE /v1/sessions(.:format)  cadenero/v1/account/sessions#delete {:default=>:json}
-           v1_users POST   /v1/users(.:format)     cadenero/v1/account/users#create {:default=>:json}
-                 v1 GET    /v1/users/:id(.:format) cadenero/v1/account/users#show {:default=>:json}
-        v1_accounts POST   /v1/accounts(.:format)  cadenero/v1/accounts#create {:default=>:json}
-               root        /                       cadenero/v1/account/dashboard#index {:default=>:json}
+      v1_root        /v1(.:format)           cadenero/v1/account/dashboard#index {:default=>:json}
+  v1_sessions POST   /v1/sessions(.:format)  cadenero/v1/account/sessions#create {:default=>:json}
+              DELETE /v1/sessions(.:format)  cadenero/v1/account/sessions#delete {:default=>:json}
+     v1_users POST   /v1/users(.:format)     cadenero/v1/account/users#create {:default=>:json}
+              GET    /v1/users(.:format)     cadenero/v1/account/users#index {:default=>:json}
+      v1_user GET    /v1/users/:id(.:format) cadenero/v1/account/users#show {:default=>:json}
+  v1_accounts POST   /v1/accounts(.:format)  cadenero/v1/accounts#create {:default=>:json}
+         root        /                       cadenero/v1/account/dashboard#index {:default=>:json}
 ```
 
 You can check them running:
 
-```
+```Shell
     $ rake routes
 ```
 ### Strategies
@@ -199,14 +200,15 @@ If you have not contribute before in a Github repo please review first:
 #### Running the Specs
 **Cadenero** use [RSpec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara). To run the specs you only need to do:
 
-```
+```Shell
     $ RAILS_ENV=test bundle exec rake db:create
     $ RAILS_ENV=test bundle exec rake db:migrate
     $ bundle exec rspec spec
 ```
 
 You can `binstub` the command bins to avoid writing `bundle exec`. You only need to write:
-```
+
+```Shell
     $ bundle binstubs rspec-core
     $ bundle binstubs rake
 ```
