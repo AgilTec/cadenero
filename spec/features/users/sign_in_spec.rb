@@ -113,6 +113,18 @@ feature 'User sign in' do
         get root_url, {:auth_token => user.auth_token}
         expected_json_errors(errors_redirect_ro_sign_in)
       end
+      scenario "can access only with the auth_token as signed in and without cookies" do
+        user = account.owner
+        check_error_for_not_signed_in_yet
+        get root_url, {:auth_token => user.auth_token}
+        expect(last_response.status).to eq 200
+        expect(json_last_response_body["message"]).to have_content user.email
+        get "#{root_url}/users/#{user.id}", {}, 'HTTP_COOKIE' => '_session_id='
+        expected_json_errors(errors_redirect_ro_sign_in)
+        get "#{root_url}/users/#{user.id}", {:auth_token => user.auth_token}, 'HTTP_COOKIE' => '_session_id='
+        expect(last_response.status).to eq 200
+        expect(json_last_response_body["user"]["email"]).to eq(user.email)
+      end
     end
   end
 end
