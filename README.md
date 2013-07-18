@@ -7,6 +7,8 @@ By [![Agiltec Logo](https://launchrock-assets.s3.amazonaws.com/logo-files/Gpujzv
 [![Coverage Status](https://coveralls.io/repos/AgilTec/cadenero/badge.png?branch=master)](https://coveralls.io/r/AgilTec/cadenero?branch=master)
 [![Dependency Status](https://gemnasium.com/AgilTec/cadenero.png)](https://gemnasium.com/AgilTec/cadenero)
 
+THIS README IS FOR THE MASTER BRANCH OF **CADENERO** AND REFLECTS THE WORK CURRENTLY EXISTING ON THE MASTER BRANCH. IF YOU ARE WISHING TO USE A NON-MASTER BRANCH OF **CADENERO**, PLEASE CONSULT THAT BRANCH'S README AND NOT THIS ONE.
+
 Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It:
 * Is Racked based
 * Use token authentication as strategy for the API
@@ -17,22 +19,43 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.
+
 You can use [Warden](https://github.com/hassox/warden) or [Devise](https://github.com/plataformatec/devise) directly but for API apps the rewritting and monkey patching can be messy.
 
 ### Installing **Cadenero**
+
+#### Preconditions
+
+##### Postgresql
+You should have a Postgresql server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using [Homebrew](http://mxcl.github.io/homebrew/) for that you can follow the following this [instructions](http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
+
+##### Ruby 1.9.x or 2.x
+For that we recommend that you use [rbenv](https://github.com/sstephenson/rbenv) with [ruby-build](https://github.com/sstephenson/ruby-build) or [rvm](https://rvm.io/)
+
+We use the standard `rake`, `bundler` and `gem`
+
+##### Git/Github
+You are here. Then you know what to do ;-)
+
+#### Setup
 
 Rails 3.2.13 is the master version used now by **Cadenero**, if you want to use Rails 4 goodness please use the branch "rails4"
 
 Generate first your Rails app as usual using:
 
 ```
-    $ rails _3.2.13_ new your_app --skip-test-unit
+    $ rails _3.2.13_ new your_app --skip-test-unit  -d postgresql
 ```
 
 In the `Gemfile` add the following lines:
 ```ruby
-    gem 'cadenero', '~> 0.0.2.b6'
-    gem 'pg'
+    gem 'cadenero', '~> 0.0.2.b7'
+
+    group :development, :test do
+      gem 'rspec-rails', '~> 2.14.0'
+      gem 'capybara', '~> 2.1.0'
+      gem 'rack-test', '~> 0.6.2'
+    end
 ```
 
 In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as follow:
@@ -40,12 +63,16 @@ In the `config/database.yml` replace the `sqlite3` adapter for `postgresql` as f
 ```
     development:
       adapter: postgresql
+      encoding: unicode
       database: your_app_development 
+      pool: 5
       min_messages: warning
 
     test:
       adapter: postgresql
-      database: your_app_test 
+      encoding: unicode
+      database: your_app_test
+      pool: 5
       min_messages: warning
 ```
 
@@ -114,6 +141,15 @@ You can check them running:
 ```
     $ rake routes
 ```
+### Strategies
+For authentication **Cadenero** has two default Warden Strategies:
+  * **Password**. That expect that the client to keep a session cookie and using for authentication the user `email` and `password`.
+  * **Token Authentication**. That is stateless and expects that for each request the user include the `auth_token` as a key-value of the request params.
+
+In any case when you signed up **Cadenero** creates an auth_token for the membership to the account that you signed up.
+
+If you want to know more about Warden Strategies see: https://github.com/hassox/warden/wiki/Strategies
+
 ### Documentation
 You can review the YARD docs in: http://rubydoc.info/github/AgilTec/cadenero/frames
 
@@ -135,14 +171,20 @@ If you found a security bug, do *NOT* use the GitHub issue tracker. Send an emai
 
 ### Contributing
 
-We hope that you will consider contributing to **Cadenero**. Please read this short overview for some information about how to get started:
+We hope that you will consider contributing to **Cadenero**. You're encouraged to submit pull requests, propose features and discuss issues.
 
-https://github.com/AgilTec/cadenero/Contributing
+  * Fork the project
+  * Write test for your new feature or a test that reproduces a bug
+  * Implement your feature or make a bug fix
+  * Commit, push and make a pull request. Bonus points for topic branches.
 
-You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.  To run the test suite, go into **Cadenero**'s top-level directory and run "bundle install" and "rspec".  For the tests to pass, you will need to have a Postgresql server running on your system.
+You will usually want to write tests for your changes using BDD tools as RSpec, Rack::Test and Capybara.
+
+To run the test suite, go into **Cadenero**'s top-level directory and run `bundle install` and `rspec spec`.  For the tests to pass, you will need to have a Postgresql server running on your system.
 
 #### Running the Specs
-**Cadenero** use [RSpec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara). If you want to extend **Cadenero** please fork and clone the repo. To run the specs you only need to do:
+**Cadenero** use [RSpec](https://github.com/rspec/rspec) and [Capybara](https://github.com/jnicklas/capybara). To run the specs you only need to do:
+
 ```
     $ RAILS_ENV=test bundle exec rake db:create
     $ RAILS_ENV=test bundle exec rake db:migrate
@@ -157,7 +199,10 @@ You can `binstub` the command bins to avoid writing `bundle exec`. You only need
 
 ### Warden
 
-**Cadenero** is based on Warden, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden
+**Cadenero** is based on [Warden](https://github.com/hassox/warden), which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden/wiki
+
+#### Devise
+Some code and architectural decisions in **Cadenero** have been inspired for the excellent gem [Devise](https://github.com/plataformatec/devise).
 
 ### Rails::API
 
