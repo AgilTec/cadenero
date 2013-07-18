@@ -15,7 +15,9 @@ Authentication Engine for Rails.API multitenant RESTful APIs based on Warden. It
 * Is RESTful API
 * Allows you to have multiple roles (or models/scopes) signed in at the same time
 
-## Information
+# Information
+
+## About Cadenero
 
 ### Why Cadenero?
 **"Cadenero"** is the spanish word for ["Bouncer (doorman)"](http://en.wikipedia.org/wiki/Bouncer_(doorman\)). The main function of **Cadenero** is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, **Cadenero** aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.
@@ -26,8 +28,8 @@ You can use [Warden](https://github.com/hassox/warden) or [Devise](https://githu
 
 #### Preconditions
 
-##### Postgresql
-You should have a Postgresql server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using [Homebrew](http://mxcl.github.io/homebrew/) for that you can follow the following this [instructions](http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
+##### PostgreSQL
+You should have a PostgreSQL server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using [Homebrew](http://mxcl.github.io/homebrew/) for that you can follow the following this [instructions](http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/)
 
 ##### Ruby 1.9.x or 2.x
 For that we recommend that you use [rbenv](https://github.com/sstephenson/rbenv) with [ruby-build](https://github.com/sstephenson/ruby-build) or [rvm](https://rvm.io/)
@@ -50,6 +52,7 @@ Generate first your Rails app as usual using:
 In the `Gemfile` add the following lines:
 ```ruby
     gem 'cadenero', '~> 0.0.2.b10'
+    gem "strong_parameters", "~> 0.2.1"
 
     group :development, :test do
       gem 'rspec-rails', '~> 2.14.0'
@@ -208,6 +211,8 @@ You can `binstub` the command bins to avoid writing `bundle exec`. You only need
     $ bundle binstubs rake
 ```
 
+## About Dependencies and Inspirations
+
 ### Warden
 
 **Cadenero** is based on [Warden](https://github.com/hassox/warden), which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden/wiki
@@ -219,7 +224,10 @@ Some code and architectural decisions in **Cadenero** have been inspired for the
 
 **Cadenero** is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don't require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don't need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api
 
-### Multitenancy with Rails And subscriptions too!
+### Multitenancy
+**Cadenero** use [Apartment](https://github.com/influitive/apartment) for Database multi-tenancy for Rack. **Cadenero** creates a new PostgreSQL Schema (like a NameSpace) for each account with subdomain, this means that each account has access only to its own information in that Schema. If you want to persist models that will have information that should be namespaced by the account Schemas rather than use the usual `rake db:migrate` for creating the tables you should use `rake apartment:migrate`. **Cadenero** creates for you the required `config.database_names` required for Apartment. We encourage you to review the [Apartment README](https://github.com/influitive/apartment/blob/development/README.md) to have more details
+
+#### Multitenancy with Rails And subscriptions too!
 Parts of the code of **Cadenero** have been based on the excellent work of [Ryan Bigg](https://github.com/radar) in his book ["Multitenancy with Rails And subscriptions too!"](https://leanpub.com/multi-tenancy-rails) but modified to be use in a RESTful API
 
 ### Maintainers

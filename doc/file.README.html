@@ -78,7 +78,9 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 * Is RESTful API
 * Allows you to have multiple roles (or models/scopes) signed in at the same time</p>
 
-<h2 id="information">Information</h2>
+<h1 id="information">Information</h1>
+
+<h2 id="about-cadenero">About Cadenero</h2>
 
 <h3 id="why-cadenero">Why Cadenero?</h3>
 <p><strong>“Cadenero”</strong> is the spanish word for <a href="http://en.wikipedia.org/wiki/Bouncer_(doorman\)">“Bouncer (doorman)”</a>. The main function of <strong>Cadenero</strong> is to be a resource for authenticating consumers of the services that the API provides. As the real bouncers, <strong>Cadenero</strong> aims to provide security, check authorized access, to refuse entry for intoxication, aggressive behavior or non-compliance with statutory or establishment rules.</p>
@@ -89,8 +91,8 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 
 <h4 id="preconditions">Preconditions</h4>
 
-<h5 id="postgresql">Postgresql</h5>
-<p>You should have a Postgresql server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using <a href="http://mxcl.github.io/homebrew/">Homebrew</a> for that you can follow the following this <a href="http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/">instructions</a></p>
+<h5 id="postgresql">PostgreSQL</h5>
+<p>You should have a PostgreSQL server (for downloading see: http://www.postgresql.org/download/). If you are using OSX, you can install using <a href="http://mxcl.github.io/homebrew/">Homebrew</a> for that you can follow the following this <a href="http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/">instructions</a></p>
 
 <h5 id="ruby-19x-or-2x">Ruby 1.9.x or 2.x</h5>
 <p>For that we recommend that you use <a href="https://github.com/sstephenson/rbenv">rbenv</a> with <a href="https://github.com/sstephenson/ruby-build">ruby-build</a> or <a href="https://rvm.io/">rvm</a></p>
@@ -112,7 +114,8 @@ By <a href="http://agiltec.github.io/"><img src="https://launchrock-assets.s3.am
 
 <p>In the <code>Gemfile</code> add the following lines:
 ```ruby
-    gem ‘cadenero’, ‘~&gt; 0.0.2.b10’</p>
+    gem ‘cadenero’, ‘~&gt; 0.0.2.b10’
+    gem “strong_parameters”, “~&gt; 0.2.1”</p>
 
 <pre class="code ruby"><code class="ruby">group :development, :test do
   gem 'rspec-rails', '~&gt; 2.14.0'
@@ -277,6 +280,8 @@ For authentication <strong>Cadenero</strong> has two default Warden Strategies:
     $ bundle binstubs rake
 </code></p>
 
+<h2 id="about-dependencies-and-inspirations">About Dependencies and Inspirations</h2>
+
 <h3 id="warden">Warden</h3>
 
 <p><strong>Cadenero</strong> is based on <a href="https://github.com/hassox/warden">Warden</a>, which is a general Rack authentication framework created by Daniel Neighman. We encourage you to read more about Warden here: https://github.com/hassox/warden/wiki</p>
@@ -288,7 +293,10 @@ For authentication <strong>Cadenero</strong> has two default Warden Strategies:
 
 <p><strong>Cadenero</strong> is a Rails::API Engine, Rails::API is a subset of a normal Rails application, created for applications that don’t require all functionality that a complete Rails application provides. It is a bit more lightweight, and consequently a bit faster than a normal Rails application. The main example for its usage is in API applications only, where you usually don’t need the entire Rails middleware stack nor template generation. Rails::API was created by Santiago Pastorino. We encourage you to read more about Rails::API here: https://github.com/rails-api/rails-api</p>
 
-<h3 id="multitenancy-with-rails-and-subscriptions-too">Multitenancy with Rails And subscriptions too!</h3>
+<h3 id="multitenancy">Multitenancy</h3>
+<p><strong>Cadenero</strong> use <a href="https://github.com/influitive/apartment">Apartment</a> for Database multi-tenancy for Rack. <strong>Cadenero</strong> creates a new PostgreSQL Schema (like a NameSpace) for each account with subdomain, this means that each account has access only to its own information in that Schema. If you want to persist models that will have information that should be namespaced by the account Schemas rather than use the usual <code>rake db:migrate</code> for creating the tables you should use <code>rake apartment:migrate</code>. <strong>Cadenero</strong> creates for you the required <code>config.database_names</code> required for Apartment. We encourage you to review the <a href="https://github.com/influitive/apartment/blob/development/README.md">Apartment README</a> to have more details</p>
+
+<h4 id="multitenancy-with-rails-and-subscriptions-too">Multitenancy with Rails And subscriptions too!</h4>
 <p>Parts of the code of <strong>Cadenero</strong> have been based on the excellent work of <a href="https://github.com/radar">Ryan Bigg</a> in his book <a href="https://leanpub.com/multi-tenancy-rails">“Multitenancy with Rails And subscriptions too!”</a> but modified to be use in a RESTful API</p>
 
 <h3 id="maintainers">Maintainers</h3>
@@ -307,7 +315,7 @@ For authentication <strong>Cadenero</strong> has two default Warden Strategies:
 </div></div>
 
     <div id="footer">
-  Generated on Wed Jul 17 23:40:19 2013 by
+  Generated on Thu Jul 18 00:02:47 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.6.2 (ruby-1.9.3).
 </div>
