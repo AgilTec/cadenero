@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715174857) do
+ActiveRecord::Schema.define(:version => 20130717234244) do
 
   create_table "cadenero_accounts", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
-    t.string   "authentication_token"
+    t.string   "auth_token"
     t.integer  "owner_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "cadenero_accounts", ["authentication_token"], :name => "index_cadenero_accounts_on_authentication_token"
+  add_index "cadenero_accounts", ["auth_token"], :name => "index_cadenero_accounts_on_auth_token"
   add_index "cadenero_accounts", ["owner_id"], :name => "index_cadenero_accounts_on_owner_id"
 
   create_table "cadenero_members", :force => true do |t|

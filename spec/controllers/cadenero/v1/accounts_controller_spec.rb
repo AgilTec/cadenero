@@ -17,7 +17,7 @@ module Cadenero
         post :create, format: :json, account: { name: "First Account", subdomain: "first" }, use_route: :cadenero
         expect(response.status).to eq(201)
         expect(assigns(:account)).to eq(account)
-        expect(assigns(:account)[:authentication_token]).to eq(account.authentication_token)
+        expect(assigns(:account)[:authentication_token]).to eq(account.auth_token)
       end
     end
 

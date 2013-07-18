@@ -73,7 +73,7 @@ module Cadenero
       # @param [Integer] http_code Optional expected returned HTTP Code from last_response
       def expect_subject_ids_to_have(subject, ids_key, ids_values, http_code=201)
         expect(last_response.status).to eq http_code
-        expect(json_last_response_body[subject][ids_key]).to eq ids_values
+        expect(json_last_response_body[subject][ids_key].sort).to eq ids_values.sort
       end
 
       # Expect that a owner sign in successfuly to one of his accounts creating a session
@@ -82,7 +82,7 @@ module Cadenero
       def successful_sign_in_owner_with_session(account)
         sign_in_user sessions_url, account_user_params_json(account.owner)
         expect_subject_ids_to_have("user", "account_ids", [account.id])
-        expect_auth_token("user", account.auth_token)
+        expect_auth_token("user", account.owner.auth_token)
         return json_last_response_body["user"]["email"]
       end
 
