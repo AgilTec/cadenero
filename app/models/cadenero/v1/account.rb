@@ -7,7 +7,6 @@ module Cadenero::V1
     has_many :users, :through => :members,  :class_name => "Cadenero::User"
 
     accepts_nested_attributes_for :owner
-    attr_accessible :name, :subdomain, :owner_attributes, :owner
     validates :subdomain, :presence => true, :uniqueness => true
     validates :owner, :presence => true
     after_create :ensure_auth_token!

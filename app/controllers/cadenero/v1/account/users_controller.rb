@@ -20,9 +20,9 @@ module Cadenero
       #   fulfilled and resulted in a new resource being created.
       def create
         account = Cadenero::V1::Account.where(subdomain: request.subdomain).first
-        @user = account.users.create(params[:user])
+        @user = account.users.create(user_params)
         force_authentication!(@user)
-        render json: @user, status: :created
+        render json: @user, serializer: UserSerializer, status: :created
       end
 
       # Send as JSON the user that match the params[:user]
@@ -35,6 +35,13 @@ module Cadenero
       def index
         @users = current_account.users
         render json: @users, status: :ok
+      end
+
+      private
+      
+      # Permited parameters using strong parameters format
+      def user_params
+        params.require(:user).permit(:email, :password, :password_confirmation)
       end
     end
   end

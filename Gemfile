@@ -8,6 +8,7 @@ gem 'rails', '~> 3.2.13'
 gem 'rails-api'
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "active_model_serializers", "~> 0.8.1"
+gem "strong_parameters", "~> 0.2.1"
 
 
 group :test do
